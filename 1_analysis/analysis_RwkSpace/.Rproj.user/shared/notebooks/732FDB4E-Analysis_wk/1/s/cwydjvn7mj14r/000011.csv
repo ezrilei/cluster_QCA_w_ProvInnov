@@ -1,0 +1,8 @@
+"0","# 找 组间一致性调整距离大于0.2的条件组合的 每一年的 组间一致性、组间覆盖度"
+"0",""
+"0","yearly_table_BECON_AdjDis_greater_0_2 <- yearly_table %>%"
+"0","  semi_join("
+"0","    summary_table_BECON_AdjDis_greater_0_2,"
+"0","    by = c(""outcome_var"", ""Result_Type"")"
+"0","  )"
+"0","print(yearly_table_BECON_AdjDis_greater_0_2)"

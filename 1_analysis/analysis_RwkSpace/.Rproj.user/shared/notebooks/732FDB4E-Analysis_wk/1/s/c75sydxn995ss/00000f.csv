@@ -1,0 +1,22 @@
+"0","# 一个地区"
+"0","# plot_PIMS_radar(""湖北"")"
+"0",""
+"0","plot_PIMS_radar_batch(regions_to_plot)"
+"2","plotting radar：北京
+"
+"2","
+Attaching package: ‘scales’
+
+"
+"2","The following object is masked from ‘package:purrr’:
+
+    discard
+
+"
+"2","The following object is masked from ‘package:readr’:
+
+    col_factor
+
+"
+"0","plot_PIMS_radar_batch(regions_to_plot)"
+"0",""

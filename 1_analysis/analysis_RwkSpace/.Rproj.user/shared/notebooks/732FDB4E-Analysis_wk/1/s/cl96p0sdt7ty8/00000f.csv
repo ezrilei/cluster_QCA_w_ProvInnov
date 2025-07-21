@@ -1,0 +1,4 @@
+"0","# 不能直接写等于，因为可能有float point error"
+"0","for (var in names(thresholds)) {"
+"0","  df.Fuzzy[[var]][abs(df.Fuzzy[[var]] - 0.5) < 1e-8] <- 0.501"
+"0","}"

@@ -1,0 +1,6 @@
+"0","plot_PIMS_batch <- function(region_vector) {"
+"0","  for (region in region_vector) {"
+"0","    message(""plotting："", region)"
+"0","    plot_PIMS(region)"
+"0","  }"
+"0","}"

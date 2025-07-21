@@ -1,0 +1,2956 @@
+---
+title: "R Notebook"
+
+author: "Lei Zhenyu"
+date: "`r Sys.Date()`"
+
+output:
+  html_notebook:
+    theme: journal
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: yes
+  pdf_document:
+    includes:
+      keep_tex: yes
+    latex_engine: xelatex
+    toc: yes
+    toc_depth: 4
+---
+
+
+
+# 0. set up
+
+## 设置工作目录
+
+```{r include=FALSE}
+# set the folder where the RScript locates as working dir (you need Rstudio to do this)
+#setwd(
+#  dirname(rstudioapi::getSourceEditorContext()$path)
+#)
+
+```
+
+## load package
+
+
+package "admisc" version太新了，QCA有些函数引用的函数名不对 会报错。
+
+Warning: Function writePrimeimp() is deprecated, use writePIs().
+
+这是报错的版本
+install_version("admisc", version = "0.38")
+install_version("QCA", version = "3.23")
+
+```{r eval=FALSE, include=FALSE}
+#install.packages('devtools')
+#library(devtools)
+
+devtools::install_version("admisc", version = "0.36")
+devtools::install_version("QCA", version = "3.23")
+
+# install_version("admisc", version = "0.38")
+# install_version("QCA", version = "3.23")
+```
+
+
+
+
+```{r}
+
+
+library(dplyr)
+#library(admisc)
+#library(QCA)
+# library(ggrepel)
+library(ggplot2)
+library(patchwork) 
+# library(stargazer)
+# library(SetMethods)
+# library(xfun) # In attr(x, "knit_meta") : 'xfun::attr()' is deprecated.Use 'xfun::attr2()' instead.
+```
+
+## 设置 scientific penalty 选项以取消科学计数法表示
+
+```{r}
+options(scipen = 999)
+```
+
+## 打印更多内容， 10000个元素
+
+```{r}
+options(max.print = 10000)
+```
+
+## Importing Data
+
+```{r}
+df.input <- readxl::read_excel(path = "./input/MOI_GovInnov_2016_2023_DataSet.xlsx",
+                               sheet = 1
+                               )
+```
+
+## def outcome & conditions
+
+```{r}
+outcome <- "Y"
+conditions <- c( "X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9") 
+```
+
+# 1. 校准
+
+## def e, c, i
+
+> `罗光强,宋新宇.数字生态赋能农业新质生产力培育的制度组态——基于必要条件分析法与动态定性比较分析法[J].中国流通经济,2025,39(01):115-126.`
+>
+> 参考格德斯（Guedes）等 `[31]`研究， 采用直接校准法计算各变量的完全隶属、交叉点以及完全不隶属的3个校准点数值， 分别对应原始数据的`第95个百分位数`、`中位数`与`第5个百分位数`。
+>
+> > `[31]` `Guedes M J, da Conceição Gonçalves V, Soares N, et al. UK evidence for the determinants of R&D intensity from a panel fsQCA[J]. Journal of Business Research, 2016, 69(11): 5431-5436.`
+
+
+> `胡海青,秦欣悦,刘方南.数字生态下创业质量多元驱动机制研究——基于省域面板数据的动态QCA分析[J/OL].科技进步与对策,1-12[2025-04-19].http://kns.cnki.net/kcms/detail/42.1224.G3.20241217.1002.002.html.`
+> 
+> 基于动态QCA方法，本研究对数据进行标准化处理和统一校准。根据数据特征，本研究选用直接校准法，以95%分位数、50%分位数和5%分位数作校准锚点，分别代表完全隶属、交叉点和完全不隶属［25］，校准结果如表3所示。
+> 
+> > `[25] SCHNEIDER CQ, WAGEMANN C. Set-theoretic methods for the social sciences: a guide to qualitative comparative analysis [M]. Cambridge: Cambridge University Press,2012.`
+
+
+> `王治,彭星星.我国“专精特新”企业新质生产力发展路径研究——基于企业面板数据的动态QCA分析[J/OL].科技进步与对策,1-11[2025-04-19].http://kns.cnki.net/kcms/detail/42.1224.G3.20250305.1649.010.html.`
+> 
+> 2.3 数据校准
+> 
+> 在现有理论研究的基础上，本文利用直接校准法将变量统一校准成0到1的模糊集，以便于直观分析整体、组内与组间的一致性和覆盖度。根据变量数据特点，本文将锚点设为样本的95%、50%和5%分位数，分别代表完全隶属、交叉点和完全不隶属，具体校准结果见表3。
+
+
+> `舒辉,唐飞.区域数字创新生态系统韧性提升多维组态路径研究[J/OL].科技进步与对策,1-12[2025-04-19].http://kns.cnki.net/kcms/detail/42.1224.G3.20240903.0947.002.html.`
+> 
+> 2.2.3 变量校准
+> 
+> 校准（calibration）是赋予结果变量和条件变量相应集合隶属分数的过程［27]。本文采用直接校准法，将5%分位数、50%分位数和95%分位数分别设定为完全不隶属、交叉点和完全隶属三个锚点。同时，为避免模糊隶属的案例被剔除，将0.500的隶属分数统一调整 0.499，校准锚点见表3。
+> 
+> > `[27] SCHNEIDER C Q, WAGEMANN C. Set-theoretic methods for the social sciences: a guide to qualitative comparative analysis[M]. Cambridge University Press, 2012.`
+
+
+> 胡海晨,赵瑞彤,杨濛,等.数实融合演进中新质生产力发展路径——基于动态QCA的分析[J].科技进步与对策,2024,41(22):37-47.
+> 
+> 本文在现有理论及之前学者研究的基础上，对数据进行统一校准，以便后续分析组内、组间及整体一致性与覆盖度[26]。根据本次变量的数值特点，采用直接校准法，将90%分位数、50%分位数、10%分位数设为校准锚点，分别代表完全隶属、交叉点、完全不隶属，具体校准结果如表2所示。
+> 
+> > `[26]Pappas I O, Woodside A G. Fuzzy-set Qualitative Comparative Analysis (fsQCA): Guidelines for research practice in Information Systems and marketing[J]. International journal of information management, 2021, 58: 102310.`
+
+
+> `Cangialosi N. Fuzzy-set qualitative comparative analysis (fsQCA) in organizational psychology: Theoretical overview, research guidelines, and a step-by-step tutorial using R software[J]. The Spanish journal of psychology, 2023, 26: e21.`
+> 
+> The first step of fsQCA is to carry out the data calibration procedure. `This process allows for the transformation of the values of the study variables from raw numerical data into membership scores, or fuzzy sets (Duşa, 2018)`. Most types of data can be calibrated into fuzzy scores (e.g., test results, performance ratings, sociodemographic indicators, etc.); however, as typically psychosocial research relies on survey responses, it is important to note that where a variable includes several items, the calibration process works with the average aggregate value of the construct. `Fuzzy sets are pseudo-continuous measures ranging from 0 to 1 (Ragin, 2000).` From a set theory perspective this implies that the level of values is reflective of the degree of inclusion to a specific set: The more the condition belongs to the set the higher the value associated with it, `where 1 represents full membership in a set, 0 no membership and 0.5 represents the point of maximum ambiguity`.
+> 
+> > `Duşa A. QCA with R: A comprehensive resource[M]. Springer, 2018.`
+>
+> > `Ragin C C. Fuzzy-set social science[M]. University of Chicago Press, 2000.`
+> 
+> There are different approaches to this procedure, however, the so-called `direct calibration` is emerging as common practice in the field as it leads to results that are directly comparable with others found in the literature (Pappas & Woodside, 2021). `The direct calibration requires indicating three anchoring values for full inclusion, full exclusion, and the cross-over point`. In practical terms this means that specific values must be established to determine what can be regarded as low levels (no membership to a set), high levels (full membership in the set), and, additionally, a crossover point where values cannot be classified high or low (neither in nor out the set). As a result, the calibration process will allocate fuzzy scores ranging from 0.50 to 1 to raw values between the full inclusion anchor and the point of maximum ambiguity, and from 0 and 0.50 to those between the point of maximum ambiguity and the full exclusion anchor.
+> 
+> The anchors should be selected based on theoretical or substantive principles (Ragin, 2009; Schneider & Wagemann, 2010) and replicability of the process is ensured by transparency when defining them (Greckhamer et al., 2018). The anchor selection can be guided by allocating a particular value point on the `Likert` or aided by statistical measures, such as percentiles. The most common anchor values for full fullexclusion, crossover, and full inclusion are, respectively for a 7-point Likert scales 2, 4, and 6 (e.g., Meuer, 2014) and for 5-point Likert values 2, 3, and 4 (e.g., Pappas & Woodside, 2021). As per, `the percentiles approach, the usual anchor values 5th, 50th, and 95th percentiles (Pappas & Woodside, 2021)`; however, the 20th, 50th, and 80th percentiles are also considered appropriate choices when data are asymmetrical or that do not conform to normality assumptions (Pappas, 2017).
+> 
+> > `[26]Pappas I O, Woodside A G. Fuzzy-set Qualitative Comparative Analysis (fsQCA): Guidelines for research practice in Information Systems and marketing[J]. International journal of information management, 2021, 58: 102310.`
+> 
+> `The calibration process is carried out through the mathematical estimation of the degree of membership for any given raw number by calculating the equivalent of the log odds (Duşa, 2018)`. Many types of functions can be used to aid this procedure (e.g., Thiem, 2014).
+> 
+> Nevertheless, a logistic function is frequently preferred as it allows accounting for the normal distribution of data points. By giving more weight to the cross-over point, the logistic function accounts for the fact that values that are normally distributed tend to cluster around the mean (Duşa, 2019). 
+
+【为何需要进行变量校准】
+
+在集合论方法（Set-Theoretic Methods, STM）中，无论是条件变量，还是结果变量，都被视为一个集合，而每一个案例是集合中的一个成员（member），具有某种程度的隶属度（membership）。然而，变量的原始数值只能反映案例之间的相对位置，无法说明某个案例是否属于某个集合（set）[^Ragin_2009]，因此不能直接用于集合分析（set-theoretic reasoning）。
+
+[^Ragin_2009]: Ragin C C. Redesigning social inquiry: Fuzzy sets and beyond[M]. University of Chicago Press, 2009.
+
+所谓“校准”，就是将原始数值映射为0.0~1.0区间的`模糊集隶属度得分（fuzzy set membership scores）的过程`[^Duşa_2018]，从而回答一个核心的问题：该案例是否以及在多大程度上属于我们所关注的这些集合？
+
+[^Duşa_2018]:`Duşa A. QCA with R: A comprehensive resource[M]. Springer, 2018.`
+
+
+【隶属度得分含义】
+
+隶属度得分越高，表示案例越隶属于该集合；隶属度得分越低，表示案例越不隶属于该集合。在模糊集中，集隶属度得分1.0代表完全隶属（full membership）；集隶属度得分0.0代表完全不隶属（nonmembership）；集隶属度得分0.5为交叉点（crossover point）表示处于“隶属”与“不隶属”之间的最大模糊状态（maximum ambiguity）
+。[^Ragin_2009][^Cangialosi_2023]
+
+[^Cangialosi_2023]: Cangialosi N. Fuzzy-set qualitative comparative analysis (fsQCA) in organizational psychology: Theoretical overview, research guidelines, and a step-by-step tutorial using R software[J]. The Spanish journal of psychology, 2023, 26: e21.
+
+
+【为什么要选用直接校准法】
+
+变量校准的方式主要可分为两类：直接校准法（direct method）与间接校准法（indirect method）[^Ragin_2009]。`间接校准法`通常适用于原始数据已经具备明确等级划分的情境，如李克特量表[^Fiss_2011][^杜运周_2017]、四值模糊集[^陈曦_2023]等。
+
+[^Fiss_2011]: Fiss P C. Building better causal theories: A fuzzy set approach to typologies in organization research[J]. Academy of management journal, 2011, 54(2): 393-420.
+
+[^陈曦_2023]: 陈曦,白长虹,陈晔,等.数字治理与高质量旅游目的地服务供给——基于31座中国城市的综合案例研究[J].管理世界,2023,39(10):126-150.
+
+[^杜运周_2017]: 杜运周,贾良定.组态视角与定性比较分析(QCA):管理学研究的一条新道路[J].管理世界,2017,(06):155-167.
+
+
+鉴于本研究涉及的变量均缺乏明确的、公认的等级划分，故参照现有研究[^Garcia-Castro_2016]的做法，采用`直接校准法`，为每个变量设定三个校准锚点（anchor points），分别对应该变量的完全隶属、交叉点与完全不隶属三个集合状态。以这三个点为基础，通过借助逻辑斯蒂函数，将原始变量映射为0~1区间的模糊集隶属度得分。
+
+[^Garcia-Castro_2016]: Garcia-Castro R, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2(63-76): 526.
+
+【校准锚点的选择】
+
+为增强锚点设定的合理性与增强校准的重复性，进一步参考现有研究的做法[^Pappas_2021][^Schneider_2012][^罗光强_2025]，采用了百分位数（percentiles）作为锚点设定依据，具体的，以变量原数数值的第95百分位数作为该变量的完全隶属点的校准锚点，第50百分位数（即中位数）作为交叉点的校准锚点，第5百分位数为完全不隶属点的校准锚点。
+
+
+
+[^Pappas_2021]: Pappas I O, Woodside A G. Fuzzy-set Qualitative Comparative Analysis (fsQCA): Guidelines for research practice in Information Systems and marketing[J]. International journal of information management, 2021, 58: 102310.
+
+[^Schneider_2012]: Schneider C Q, Wagemann C. Set-theoretic methods for the social sciences: A guide to qualitative comparative analysis[M]. Cambridge University Press, 2012.
+
+[^罗光强_2025]: 罗光强,宋新宇.数字生态赋能农业新质生产力培育的制度组态——基于必要条件分析法与动态定性比较分析法[J].中国流通经济,2025,39(01):115-126.
+
+
+
+
+```{r include=FALSE}
+## def e, c, i
+
+exclu_qt <- 0.05
+cross_qt <- 0.50
+inclu_qt <- 0.95
+
+# exclu_qt <- 0.25
+# cross_qt <- 0.50
+# inclu_qt <- 0.75
+
+
+## calculate quantile for all variables (outcome and conditions) ----
+quantiles <- df.input %>%
+  select(-c(CASE, YEAR, ID)) %>%
+  lapply(
+    function(column) {
+      quantile(column,
+               probs = c(exclu_qt, cross_qt, inclu_qt)
+               )
+      }
+    )
+
+## create string for Calibration functions setting ----
+thresholds <- quantiles %>%
+  lapply(
+    function(qt) {
+      paste0("e=", qt[1], ", c=", qt[2], ", i=", qt[3])
+      }
+    )
+```
+
+## visualization: Calibration anchor points Table
+
+校准锚点见表×。
+
+```{r echo=FALSE}
+## visualization: Calibration anchor points Table ----
+df.anchor <- data.frame(
+  variable = c(outcome, conditions),
+  inclusion = sapply(quantiles, function(qt) qt[3]),
+  crossover = sapply(quantiles, function(qt) qt[2]),
+  exclusion = sapply(quantiles, function(qt) qt[1])
+)
+
+# 移除rownames
+rownames(df.anchor) <- NULL
+
+# add column "type" to indicate "outcome" and  "condition"
+# and move it to the first col
+df.anchor <- df.anchor %>%
+  mutate(type = if_else(variable == outcome, "outcome", "condition")) %>%
+  select(type, everything())
+
+### write df.anchor xlsx ----
+writexl::write_xlsx(x = df.anchor,
+                    path = "./output/【Analysis_wk】1.校准_df.anchor.xlsx"
+                    )
+
+print(df.anchor)
+```
+
+## Calibration
+
+> logistic = TRUE：specifies the inclusion degree of membership for the logistic function
+
+```{r}
+df.Fuzzy <- df.input
+
+for (var in names(thresholds)) {
+  df.Fuzzy[[var]] <- df.input[[var]] %>%
+    QCA::calibrate(type = "fuzzy", 
+                   thresholds = thresholds[[var]], 
+                   logistic = TRUE)
+}
+
+```
+
+## 处理Crossover point
+
+> Cangialosi N. Fuzzy-set qualitative comparative analysis (fsQCA) in organizational psychology: Theoretical overview, research guidelines, and a step-by-step tutorial using R software[J]. The Spanish journal of psychology, 2023, 26: e21.
+> 
+> fuzzy scores of 0.50 are replaced with 0.501 to prevent dropping significant configurations from the subsequent analyses
+> 
+> Once the calibration process is completed, it is important to subsequently verify that no fuzzy scores fall on the value of 0.50. Because `the point of maximal ambiguity` cannot be characterized as belonging to or not belonging to the set, configurations with at least one condition at the crossover point are unavoidably excluded from the analysis (`Wagemann et al., 2016`). To avoid this occurrence, researchers commonly add a constant of 0.001 to the original fuzzy scores (e.g., `Fiss, 2011`).
+> 
+> > Wagemann C, Buche J, Siewert M B. QCA and business research: Work in progress or a consolidated agenda?[J]. Journal of Business Research, 2016, 69(7): 2531-2540.
+
+> `盛亚, 冯媛媛, 施宇. 政府科研机构科技资源配置效率影响因素组态分析[J]. 科技进步与对策, 2022, 39(8): 1-9.`
+>
+> 由于在fsQCA分析中条件值为`0.5的会被自动删除`， 因此本文`以0.501替换校准后为0.5的条件值`［２８］。
+>
+> > `［２８］Ragin C C, Drass K A, Davey S. Fuzzy-set/qualitative comparative analysis 2.0[J]. Tucson, Arizona: Department of Sociology, University of Arizona, 2006, 23(6): 1949-1955.`
+>
+> > `Fiss P C. Building better causal theories: A fuzzy set approach to typologies in organization research[J]. Academy of management journal, 2011, 54(2): 393-420.`
+
+
+此外，由于隶属度得分为0.5表示最大模糊状态，即案例隶属于该集合的程度与案例不隶属与该集合的程度相当，这意味着，若某个案例在任一条件变量上，存在隶属度得分恰好为0.5的情况，该案例将无法在后续被纳入真值表（truth table）的条件组合（configuration），进而可能导致某些条件组合因为支持的案例过少，在后续真值表简化时被忽略[^Wagemann_2016]。
+
+[^Wagemann_2016]: Wagemann C, Buche J, Siewert M B. QCA and business research: Work in progress or a consolidated agenda?[J]. Journal of Business Research, 2016, 69(7): 2531-2540.
+
+故为防止重要的条件组合被遗漏，参考现有研究[^Fiss_2011][^盛亚_2022]的做法，采用技术性的规避策略——将所有为0.5的隶属度得分替换为 0.501，使其偏向集合一侧，从而确保其被纳入后续的真值表分析。
+
+[^盛亚_2022]: 盛亚,冯媛媛,施宇.政府科研机构科技资源配置效率影响因素组态分析[J].科技进步与对策,2022,39(08):1-9.
+
+
+
+```{r}
+# 不能直接写等于，因为可能有float point error
+for (var in names(thresholds)) {
+  df.Fuzzy[[var]][abs(df.Fuzzy[[var]] - 0.5) < 1e-8] <- 0.501
+}
+```
+
+## write df.Fuzzy xlsx
+
+```{r}
+writexl::write_xlsx(x = df.Fuzzy,
+                    path = "./output/【Analysis_wk】1.校准_df.Fuzzy.xlsx"
+)
+
+print(df.Fuzzy)
+```
+
+## visualization：Raw data - Calibrated data
+
+> `Cangialosi N. Fuzzy-set qualitative comparative analysis (fsQCA) in organizational psychology: Theoretical overview, research guidelines, and a step-by-step tutorial using R software[J]. The Spanish journal of psychology, 2023, 26: e21.`
+> 
+> Figure 1 illustrates the numerical relationship between raw data and calibrated values resulting from the logistic function. Raw data is presented on the horizontal axis while fuzzy scores (ranging 0–1) are presented on the vertical axis. The figure shows each original value converted into a fuzzy score, starting with the low scores in the lower left and gradually moving towards the high ones in the upper right.
+
+```{r echo=FALSE}
+
+# def function -----
+fun_plot_rawVSfuzzy <- function(var){
+  ggplot(data = data.frame(Raw = df.input[[var]], Calibrated = df.Fuzzy[[var]]), 
+                          aes(x = Raw, y = Calibrated)
+                          ) +
+  geom_point(color = "black", size = 1) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "red") +
+  labs(
+    title = paste0("XY Plot: Raw vs Calibrated", " (", var, ")"),
+    x = paste0("Raw Data - ", var),
+    y = paste0("Calibrated Fuzzy Set - ", var)
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+        )  # 调整图形的边距
+}
+
+# draw plot -----
+p_rawVSfuzzy_Y <- fun_plot_rawVSfuzzy(var = "Y")
+p_rawVSfuzzy_X1 <- fun_plot_rawVSfuzzy(var = "X1")
+p_rawVSfuzzy_X2 <- fun_plot_rawVSfuzzy(var = "X2")
+p_rawVSfuzzy_X3 <- fun_plot_rawVSfuzzy(var = "X3")
+p_rawVSfuzzy_X4 <- fun_plot_rawVSfuzzy(var = "X4")
+p_rawVSfuzzy_X5 <- fun_plot_rawVSfuzzy(var = "X5")
+p_rawVSfuzzy_X6 <- fun_plot_rawVSfuzzy(var = "X6")
+p_rawVSfuzzy_X7 <- fun_plot_rawVSfuzzy(var = "X7")
+p_rawVSfuzzy_X8 <- fun_plot_rawVSfuzzy(var = "X8")
+p_rawVSfuzzy_X9 <- fun_plot_rawVSfuzzy(var = "X9")
+
+
+
+# store to pdf (create a pdf device) 
+
+pdf(file = "./output/【Analysis_wk】1.校准_rawVSfuzzy.pdf", 
+    width = 12, height = 16
+)
+
+# patch up -----
+p_rawVSfuzzy_patch <- wrap_plots(p_rawVSfuzzy_X1,
+                                 p_rawVSfuzzy_X2,
+                                 p_rawVSfuzzy_X3,
+                                 p_rawVSfuzzy_X4,
+                                 p_rawVSfuzzy_X5,
+                                 p_rawVSfuzzy_X6,
+                                 p_rawVSfuzzy_X7,
+                                 p_rawVSfuzzy_X8,
+                                 p_rawVSfuzzy_X9,
+                                 p_rawVSfuzzy_Y,
+                                 ncol = 3)  # 自动调整
+
+# 显示拼接后的图
+print(p_rawVSfuzzy_patch)
+
+# pdf device off
+dev.off() 
+
+
+p_rawVSfuzzy_patch # 输出到Rstudio Plots里 看一眼
+```
+
+
+
+## CASE col to df rownames
+
+```{r}
+# 后面Setmethod::cluster运算时，CASE要在rownames，
+# 不然会报错：
+# Error in SetMethods::cluster(data = data, results = result_label, outcome_var,  : 
+# 'list' object cannot be coerced to type 'double'
+
+df.Fuzzy <- as.data.frame(df.Fuzzy)
+rownames(df.Fuzzy) <- df.Fuzzy$CASE
+df.Fuzzy.case <- df.Fuzzy %>% select(-CASE)
+```
+
+
+# 2. 必要条件分析
+
+
+## 2.0 def数据汇总函数
+
+
+```{r}
+
+cluster_necessity_analysis <- function(data, outcome_vars, conditions, unit_id, cluster_id) {
+  
+  # 初始化汇总表（指定列名，防止 add_row 报错）
+  summary_table <- tibble(
+    outcome_var = character(),
+    Result_Type = character(),
+    Pooled_Consistency = numeric(),
+    Between_to_Pooled = numeric(), 
+    Within_to_Pooled = numeric(),  
+    Pooled_Coverage = numeric()
+  )
+  
+  
+  # 初始化年度表（基础列名，年份列后续动态添加）
+  yearly_table <- tibble(
+    outcome_var = character(),
+    Result_Type = character(),
+    指标 = character(),
+    x = character()
+  )  
+  
+  
+  # 遍历每一个结果变量（例如 Y 和 ~Y）
+  for (outcome_var in outcome_vars) {
+    
+    # 遍历每一个条件变量（例如 X1、X2、X3...）
+    for (condition in conditions) {
+      
+      # 条件变量的正反两种形式
+      for (inclusion_type in c("", "~")) {
+        
+        result_label <- paste(inclusion_type, condition, sep = "")
+        
+        # 运行 cluster 分析
+        output <- SetMethods::cluster(
+          data = data,
+          results = result_label,
+          outcome = outcome_var,
+          unit_id = unit_id,
+          cluster_id = cluster_id,
+          necessity = TRUE
+        )
+        
+        # 提取主指标
+        pooled_consistency <- output$POCOS
+        between_to_pooled <- output$dBP
+        within_to_pooled <- output$dWP
+        pooled_coverage <- output$Coverages$pooled
+        
+        # 添加到汇总表
+        summary_table <- summary_table %>%
+          tibble::add_row(
+            outcome_var = outcome_var,
+            Result_Type = result_label,
+            Pooled_Consistency = pooled_consistency,
+            Between_to_Pooled = between_to_pooled,
+            Within_to_Pooled = within_to_pooled,
+            Pooled_Coverage = pooled_coverage
+          )
+        
+        # 年度数据处理
+        years <- output$cluster_ids %>% 
+          gsub(pattern = "\\(.*\\)", replacement = "") %>%
+          gsub(pattern = "\\s+", replacement = "")
+        BECON <- output$BECOS
+        BECOV <- output$Coverages$between
+        
+        # 构建年度表（两行）
+        df_yearly <- data.frame(
+          outcome_var = rep(outcome_var, 2),
+          Result_Type = rep(result_label, 2),
+          指标 = c("组间一致性", "组间覆盖度"),
+          x = c("Consistencies", "Coverages"),
+          stringsAsFactors = FALSE
+        )
+        
+        for (i in seq_along(years)) {
+          df_yearly[[years[i]]] <- c(
+            round(BECON[i], 3),
+            round(BECOV[i], 3)
+          )
+        }
+        
+        # 合并到年度总表
+        yearly_table <- bind_rows(yearly_table, df_yearly)
+      }
+    }
+  }
+  
+  # summary_table保留3位小数
+  summary_table <- summary_table %>%
+    mutate(across(where(is.numeric), ~round(., 3)))
+  
+  # 返回最终结果
+  return(list(
+    summary_table = summary_table,
+    yearly_table = yearly_table
+  ))
+}
+```
+
+
+
+```{r}
+
+res_nec <- cluster_necessity_analysis(
+  data = df.Fuzzy,
+  outcome_vars = c("Y", "~Y"),
+  conditions = c("X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9"),
+  unit_id = "ID",
+  cluster_id = "YEAR"
+)
+
+summary_table <- res_nec$summary_table
+yearly_table  <- res_nec$yearly_table
+
+
+```
+
+
+#### 2.0.1 calculate adjusted distance
+
+> `Castro R G, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2: 63-76.`
+
+$$
+\text{BECONS adjusted distance} = \frac{\text{BECONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+\\
+\text{WICONS adjusted distance} = \frac{\text{WICONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}} 
+$$
+
+> n is equal to the number of elements in the vector
+
+
+```{r}
+n.t.vec <- df.Fuzzy$YEAR %>% unique() %>% length()
+n.N.vec <- df.Fuzzy$ID %>% unique() %>% length()
+
+summary_table <- summary_table %>% 
+  rename(BECONS_distance = "Between_to_Pooled") %>%
+  rename(WICONS_distance = "Within_to_Pooled") %>%  
+  # calculate BECONS_adjusted_distance
+  mutate(BECONS_adjusted_distance = BECONS_distance/sqrt(n.t.vec / (n.t.vec^2 + 3 * n.t.vec + 2))) %>%
+  
+  # caluculate WICONS_adjusted_distance
+  mutate(WICONS_adjusted_distance = WICONS_distance/sqrt(n.N.vec / (n.N.vec^2 + 3 * n.N.vec + 2))) %>%
+  
+  # rm BECONS_distance、WICONS_distance
+  select(-c(BECONS_distance, WICONS_distance)) %>%
+  
+  # 保留3位小数
+  mutate(across(where(is.numeric), ~ round(., 3)))
+  
+# summary_table
+
+
+```
+
+
+#### 2.0.2 print summary_table, yearly_table
+
+```{r}
+
+writexl::write_xlsx(x = summary_table, path = "./output/【Analysis_wk】2.必要性分析_summary_table.xlsx")
+writexl::write_xlsx(x = yearly_table, path = "./output/【Analysis_wk】2.必要性分析_yearly_table.xlsx")
+
+summary_table
+yearly_table
+
+```
+
+### 2.x.x test - a help to understand the function
+
+```{r eval=FALSE, include=FALSE}
+
+output.test <- SetMethods::cluster(data = df.Fuzzy,
+                    results = conditions[1], # "X1"
+                    outcome = outcome_var,   # "Y"
+                    unit_id = "ID",
+                    cluster_id = "YEAR",
+                    necessity = TRUE, #  Perform the diagnostic for the relationship of necessity
+                    wicons = TRUE # print within consistencies and coverages
+                    )
+
+output.test
+
+output.test$Coverages$between
+
+output.test$BECOS
+
+output.test$cluster_ids %>%
+  gsub(pattern = "\\(.*\\)", replacement = "") %>%
+  gsub(pattern = "\\s+", replacement = "")
+
+
+output.test$dBP
+output.test$dWP
+
+
+```
+
+
+## 2.1 必要条件分析：结果解读
+
+### 2.1.1 【汇总结果分析】
+
+#### 初步判断标准：POCON \> 0.9 & POCOV \> 0.5
+
+`汇总一致性`大于0.9，同时`汇总覆盖度`大于0.5，可以`初步`认定为`结果变量的单一必要条件`。
+
+i.e. Pooled_Consistency \> 0.9 & Pooled_Coverage \> 0.5
+
+> 在进行组态分析之前， 首先需要对单个前因条件进行必要性分析，识别单个前因条件是不是结果发生的必要条件， 但并不意味着该前因条件的存在一定会导致结果发生。 判断标准是`一致性水平若大于0.9`，说明`该条件是结果发生的必要条件`，反之则该条件不是结果发生的必要条件。
+>
+> > 方芳,张立杰,赵军.制度组态视角下提升农业绿色全要素生产率的多元路径探析------基于动态QCA的面板数据分析[J].中国农村经济,2024,(02):44-66.DOI:10.20077/j.cnki.11-1262/f.2024.02.003.
+
+> 与传统QCA检验必要条件的步骤类似， 借助一致性水平和覆盖度两个指标对单个条件变量是否构成充分或必要条件进行验证。 一般认为，`当一致性介于0.8~0.9之间时，X是Y的一个充分条件`； `当一致性大于0.9时，则X是Y的一个必要条件`。
+>
+> > 荆玲玲,黄慧丽.时空双维下数字创新生态系统对区域创新能力的激发与影响研究------基于省域面板数据的动态QCA分析[J].科技进步与对策,2024,41(16):13-23.
+
+------------------------------------------------------------------------
+
+> > Cangialosi N. Fuzzy-set qualitative comparative analysis (fsQCA) in organizational psychology: Theoretical overview, research guidelines, and a step-by-step tutorial using R software[J]. The Spanish journal of psychology, 2023, 26: e21.
+>
+> In fsQCA, `conditions are considered necessary when their consistency value is greater than 0.90 in the analysis of necessity`, which translates into that at least 90% of the observations showing high-levels of the outcome also have high-levels of the condition. Although this threshold is set to account for data noise, randomness, and measurement inaccuracies (`Ragin, 2000`; `Schneider & Wagemann, 2010`), even when the consistency value surpasses 0.90, the result can be subject to Type 1 errors (`Ragin, 2006`).
+>
+> This case is referred to as `triviality`, as opposed to relevance; a trivial condition can be described as a much larger set than the outcome. An `example` of this could be the necessity of a minimum amount of job tenure for innovation. An employee must have at least a minimal experience on the job in order to generate, promote and implement new and useful ideas in a workplace. But this is a trivial necessary condition because the mere presence of job tenure is an overarching condition that does not directly cause individual innovation.
+>
+> To measure the relative importance of a condition in the causal mix and avoid Type 1 errors `coverage scores can be adopted as an auxiliary indicator` (`Schneider & Wagemann, 2010`). Coverage scores represent the percentage of X that is covered by Y, or more precisely by the intersection of X and Y, assuming that Y is already a (perfect) subset of X (Duşa, 2019). Therefore, a rule of thumb is that `a condition is necessary` when it concurrently shows `consistency above 0.90 and coverage above 0.60` (`Mattke et al., 2021`).
+
+------------------------------------------------------------------------
+
+> 王治,彭星星.我国"专精特新"企业新质生产力发展路径研究------基于企业面板数据的动态QCA分析[J/OL].科技进步与对策,1-11[2025-04-13].
+>
+> 在传统QCA方法中,`当一致性水平高于0.9且整体覆盖度大于0.5时,说明该前因变量是结果变量的必要条件`[29],这一标准在动态面板QCA中同样适用
+>
+> > [29] SCHNEIDERC Q, WAGEMANN C. Set-theoretic methods for the social sciences: a guide to qualitative comparative analysis[ M]. NY:Cambridge University Press, 2012, 56(4)12-33.
+
+> 舒辉,唐飞.区域数字创新生态系统韧性提升多维组态路径研究[J/OL].科技进步与对策,1-12[2025-04-13].
+>
+> 首先，借助汇总一致性和汇总覆盖度衡量前因变量在跨时间、跨案例情况下与结果变量的必要性关系。`若前因变量的汇总一致性系数大于0.9且汇总覆盖度大于0.5，则说明该前因变量是结果出现的必要条件`[27]。
+>
+> > [27] SCHNEIDER C Q, WAGEMANN C. Set-theoretic methods for the social sciences: a guide to qualitative comparative analysis[M]. Cambridge University Press, 2012.
+
+#### 初步结果
+
+`下列条件组合`存在`Pooled_Consistency > 0.9 & Pooled_Coverage > 0.5`的情况。
+
+```{r}
+summary_table_POCON_POCOV <- summary_table %>%
+  filter(Pooled_Consistency > 0.9 & Pooled_Coverage > 0.5)
+
+print(summary_table_POCON_POCOV)
+
+writexl::write_xlsx(x = summary_table_POCON_POCOV,
+                    path = "output/【Analysis_wk】2.必要性分析_summary_table_汇总一致性大于0.9且汇总覆盖度大于0.5.xlsx")
+```
+
+#### 进一步检验：XY-plot
+
+##### 进一步检验：判断标准
+
+> 3.1单个条件必要性分析 与传统QCA检验必要条件的步骤类似，借助一致性水平和覆盖度两个指标对单个条件变量是否构成充分或必要条件进行验证。一般认为，当一致性介于0.8\~0.9之间时，X是Y的一个充分条件；当一致性大于0.9时，则X是Y的一个必要条件。在QCA面板数据分析中，当调整距离小于0.2时，汇总一致性精确度更高，对判断结果的支撑性更强［30］。当调整距离大于0.2时，需进一步研究条件必要性。表3结果显示，在高水平区域创新能力中，`“数字治理环境（G1）”的汇总一致性大于0.9，且汇总覆盖度远大于0.5，是构成高水平区域创新能力的必要条件`，其它条件变量均低于判断标准，不构成必要条件。在低水平区域创新能力中，`低政府参与（~A1）、低企业参与（~B1）和低中介机构参与（~D1）的汇总一致性大于0.9，且条件变量的汇总覆盖度也大于0.5，因此上述因素是导致低水平区域创新能力的必要条`件，但这里的"高水平"和"低水平"并非绝对意义上互斥的两个方面。 进一步对组间一致性调整距离大于0.2的因果关系组合进行分析，如表4所示。结果显示：首先，情况1-4、7和9中的组间一致性水平均小于0.9，故不存在必要性关系；其次，情况5虽然在2019-2021年的一致性大于0.9，且覆盖度也大于0.5，但`借助X－Y散点图检验发现，该条件变量未通过必要条件检验`［31,32］；类似地，如图2所示，`通过绘制2021年情况6和2017-2018年情况8的散点图发现，条件变量也未通过必要性检验`。
+
+↓
+
+> 谭海波,范梓腾,杜运周.技术管理能力、注意力分配与地方政府网站建设------一项基于TOE框架的组态分析[J].管理世界,2019,35(09):81-94.
+>
+> 注释③首先，对于`强同侪竞争压力`而言，我们通过做出`该条件变量与结果变量的X-Y散点图`发现，`接近1/3的案例点均分布在对角线以上`。这表明，尽管该条件变量的一致性通过检验，但依然无法构成高水平政府网站绩效的必要条件。详见Schneider和Wagemann（2012）的相关论述。
+>
+> 对于`其余4个条件变量`而言， 一方面，它们的==覆盖度均低于0.5==； 另一方面，通过对`X-Y散点图`的检验发现，`多数案例点均分布在右侧Y轴附近`。 这表明，3个条件均未通过"不相关性（Trivialness）"检验。详见Schneider和Wagemann（2012）的相关论述。
+>
+> > `Schneider C Q, Wagemann C. Set-theoretic methods for the social sciences: A guide to qualitative comparative analysis[M]. Cambridge University Press, 2012.`
+
+↓
+
+> > `Schneider C Q, Wagemann C. Set-theoretic methods for the social sciences: A guide to qualitative comparative analysis[M]. Cambridge University Press, 2012.`
+
+> P76
+>
+> The fact that A is not a superset of \~Y is neatly captured in the XY plot displayed in Figure 3.9. If A were necessary for \~Y, `the area above the main diagonal would need to be empty of cases`
+>
+> A condition is necessary, if, whenever the outcome is present, the condition is also present. Formally, a condition is necessary, if `X ≥ Y for all cases`. This also denotes an asymmetrical relationship. In a Venn diagram, Y is a subset of X. In an XY plot, `all cases fall below or onto the main diagonal`.
+
+> P144 The condition STOCK has the highest consistency value (0.89) and researchers might see good reasons to interpret it as a necessary condition. However, an inspection of the XY plot (Figure 5.6) reveals that this is not so clear, in the end. First, `a considerable number of cases fall above the diagonal`. Second, among the inconsistent cases there are two true logical contradictory cases (section 5.2; see footnote 1, above)
+>
+> > footnote 1:【The notion of a true logical contradiction also extends to statements of necessity (see section 5.4). Here, a true logically contradictory case is one with X \< Y and X \< 0.5 and Y \> 0.5.】
+>
+> : France in 1995 (STOCK = 0.41; EXPORT = 0.62), and Germany in 2003 (STOCK = 0.49; EXPORT = 0.69). Both cases are more out of than in the alleged necessary condition while being more in than out of the outcome. Therefore, interpreting STOCK as a necessary condition for EXPORT does not seem warranted.
+
+> P146 values for coverage necessity tend to be rather high. Unlike coverage sufficiency, in research practice, values far below 0.5 are rare and those close to 0 hardly ever seen. This suggests that when assessing the trivialness of necessary conditions, researchers should not be misled by seemingly high coverage values. In addition, `the XY plot` should always be carefully examined to ascertain whether `most cases are clustering close to the vertical right axis thus suggesting trivialness`.
+
+##### 进一步检验：绘制XY-plot
+
+```{r echo=FALSE}
+# load package ----
+library(dplyr)
+library(ggplot2)
+
+library(patchwork)  # 加载 patchwork
+
+# Importing Data ----
+
+df.Fuzzy <- readxl::read_excel(path = "./output/【Analysis_wk】1.校准_df.Fuzzy.xlsx",
+                              sheet = 1
+                              )
+
+# plot ----
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add('fangSong', regular = './fonts/方正仿宋_GBK.TTF') # <<<<<<<<<<<<<<
+
+
+## Y / X2 all (对照 - 肯定不是必要条件)
+
+df.Fuzzy.0 <- df.Fuzzy
+
+
+p_Y_X2_all <- ggplot(data = df.Fuzzy.0, aes(x = X2, y = Y)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 Y / X2：对照 - 肯定不是必要条件") +
+  xlab("X2值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.0$X2, df.Fuzzy.0$Y))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.0$X2, df.Fuzzy.0$Y))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+
+p_Y_X2_all # 绘图
+
+
+## Y / X1 all ----
+
+
+# store to pdf (create a pdf device) 
+# pdf(file = "./output_manual/【Analysis_wk】必要性条件检验散点图_情况Y-X7_2017年.pdf", width = 8, height = 8)
+
+df.Fuzzy.1 <- df.Fuzzy
+
+
+p_Y_X1_all <- ggplot(data = df.Fuzzy.1, aes(x = X1, y = Y)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 Y / X1") +
+  xlab("X1值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.1$X1, df.Fuzzy.1$Y))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.1$X1, df.Fuzzy.1$Y))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+
+p_Y_X1_all # 绘图
+
+# pdf device off
+#dev.off() 
+
+
+## ~Y / ~X5 all ----
+
+df.Fuzzy.3 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX5 = 1 - X5)
+
+
+p_negY_negX5_all <- ggplot(data = df.Fuzzy.3, aes(x = negX5, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X5") +
+  xlab("~X5值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.3$negX5, df.Fuzzy.3$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.3$negX5, df.Fuzzy.3$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+
+p_negY_negX5_all
+
+
+## ~Y / ~X7 all----
+
+df.Fuzzy.2 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX7 = 1 - X7)
+
+
+p_negY_negX7_all <- ggplot(data = df.Fuzzy.2, aes(x = negX7, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X7") +
+  xlab("~X7值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.2$negX7, df.Fuzzy.2$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.2$negX7, df.Fuzzy.2$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+
+p_negY_negX7_all # 绘图
+
+
+## 拼图 ----
+
+# library(patchwork)  # 加载 patchwork
+
+
+# store to pdf (create a pdf device) 
+pdf(file = "./output/【Analysis_wk】2.必要性分析_汇总一致性大于0.9_且_汇总覆盖度大于0.5.pdf", 
+    width = 24, height = 8
+    )
+
+# 3 张 ggplot 图
+
+
+
+# final_plot <- (p1 | p2 | p3) / (p4 | p5 | p6) / (p7 | plot_spacer() | plot_spacer())
+final_plot <- wrap_plots(p_Y_X1_all, 
+                         p_negY_negX5_all,
+                         p_negY_negX7_all,
+                         ncol = 3)  # 自动调整
+
+# 显示拼接后的图
+print(final_plot)
+
+# pdf device off
+dev.off() 
+
+
+final_plot # 输出到Rstudio Plots里 看一眼
+
+
+```
+
+##### 进一步检验：结果解读
+
+为进一步检验前因条件是否构成结果变量的**必要条件**，本文依据 Schneider 和 Wagemann（2012）的建议，结合 XY 散点图对条件变量与结果变量的关系进行可视化分析。从集合论角度来看，必要条件应满足集合 $X \supseteq Y$，即每一个属于结果集合 $Y$ 的案例，其在条件集合 $X$ 中的隶属度必须大于或等于在 $Y$ 中的隶属度。因此，在 XY 图中，若条件变量 $X$ 是结果变量 $Y$ 的必要条件，则所有点应落在主对角线（X=Y）及其下方（X ≥ Y）。一旦有显著比例的点位于主对角线上方（即 X \< Y），则该条件将无法满足必要性要求。
+
+此外，Schneider 和 Wagemann（2012: 230--232）还指出，**即便一致性值较高，也不能忽视条件变量是否为一种"平庸的必要条件"（trivial necessary condition）**。具体而言，若 XY 图中大量案例点集中于 X ≈ 1 区域（靠近右侧边界），则表明该条件可能是一个"几乎对所有案例都成立"的常量集合，虽然形式上满足一致性标准，但在理论上缺乏解释力与区分度。
+
+
+------------------------------------------------------------------------
+
+
+##### 进一步检验：结果解读
+
+为进一步检验前因条件是否构成结果变量的**必要条件**，本文依据 Schneider 和 Wagemann（2012）的建议，结合 XY 散点图对条件变量与结果变量的关系进行可视化分析。从集合论角度来看，必要条件应满足集合 $X \supseteq Y$，即每一个属于结果集合 $Y$ 的案例，其在条件集合 $X$ 中的隶属度必须大于或等于在 $Y$ 中的隶属度。因此，在 XY 图中，若条件变量 $X$ 是结果变量 $Y$ 的必要条件，则所有点应落在主对角线（X=Y）及其下方（X ≥ Y）。一旦有显著比例的点位于主对角线上方（即 X \< Y），则该条件将无法满足必要性要求。
+
+此外，Schneider 和 Wagemann（2012: 230--232）还指出，**即便一致性值较高，也不能忽视条件变量是否为一种"平庸的必要条件"（trivial necessary condition）**。具体而言，若 XY 图中大量案例点集中于 X ≈ 1 区域（靠近右侧边界），则表明该条件可能是一个"几乎对所有案例都成立"的常量集合，虽然形式上满足一致性标准，但在理论上缺乏解释力与区分度。
+
+
+------------------------------------------------------------------------
+
+###### 图 5.1(a)：Y / X1
+
+-   条件 X1 的一致性值约为 0.91，覆盖度大于 0.5；
+-   然而，XY 图显示该变量存在较多案例点（约三分之一）**分布在主对角线之上**，即存在结果变量 Y 的隶属度高于条件变量 X1 的情况；
+-   该现象表明，尽管一致性值达标，但 X1 并未能在集合意义上完全覆盖结果变量 Y；
+-   **结论**：X1 未能通过必要性检验，原因是存在较多违反集合包含关系的案例（X \< Y），而非因平庸性所致。
+
+------------------------------------------------------------------------
+
+###### 图 5.1(b)：\~Y / \~X7（等效于 Y ← X7）
+
+-   条件 X7 的一致性值高于 0.9，覆盖度较高；
+-   然而，XY 图显示大量案例点集中于 X ≈ 1 区域，形成明显的"右侧壁状分布"；
+-   说明该条件在样本中几乎对所有案例都成立，属于"常态变量"；
+-   尽管形式上满足必要性要求，但其解释力有限，存在构成"平庸必要条件"（trivialness）的风险；
+-   **结论**：X7 涉嫌为平庸必要条件，应谨慎解释其因果地位。
+
+------------------------------------------------------------------------
+
+###### 图 5.1(c)：\~Y / \~X5（等效于 Y ← X5）
+
+-   图中呈现出更为极端的右上角聚集现象，X5 值几乎恒为高值（\> 0.9）；
+-   点位分布呈明显"垂直壁状"，大部分案例点集中在右侧靠近 X=1 的区域；
+-   此图形特征符合 Schneider 和 Wagemann（2012）对"平庸必要条件"的典型描述；
+-   尽管一致性和覆盖度指标可能均达标，但图形特征显示该条件变量接近常量，缺乏理论区分度；
+-   **结论**：X5 强烈疑似为平庸必要条件，不宜作为解释性前因变量纳入结论。
+
+------------------------------------------------------------------------
+
+##### 小结
+
+综上所述，本文通过结合一致性数值与 XY 图形分布，对前因条件的必要性进行了更为细致的判断。结果显示，X1 因存在较多违反集合包含关系的案例而未能通过必要性检验；而 X7 与 X5 虽然形式上满足一致性要求，但因其变量分布近似常量，构成"平庸必要条件"的风险较高。因此，本文在后续解释中对这两个条件保持谨慎态度，避免过度推断其因果性。
+
+-   `情况Y/X1`接近1/3的案例点均分布在对角线以上
+-   `情況~Y/~X7`、`情況~Y/~X5`多数案例点均分布在右侧Y轴附近。
+
+表明这些条件变量`均未通过必要性检验`。
+
+
+### 2.1.2 【组间结果分析】组间 一致性的调整距离 BECONS
+
+#### 判断依据
+
+`组间调整一致性距离`大于0.1或者0.2，`具有明显`的`时间效应`。
+i.e. BECONS_adjusted_distance > 0.1 or 0.2
+
+`组内调整一致性距离`大于0.1或者0.2，`具有明显`的`案例差异性`或者称为`案例效应`。
+i.e. WICONS_adjusted_distance > 0.1 or 0.2
+
+> our Monte Carlo simulations with samples size of 10, 15, 50, 100, 500, 1,000 and 10,000 shows that 
+>`an adjusted distance of .1` indicates that approximately 95% of the consistencies lie within an interval of +/- .1 around the average of the consistencies. 
+>Similarly, an adjusted distance of .2 indicates that approximately 95% of the consistencies lie within an interval of `+/- .2` around the average. 
+>
+>`Adjusted distances above these thresholds` signal some sort of `panel data structure` in the data.[^Castro_2016]
+
+[^Castro_2016]: Castro R G, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2: 63-76.
+
+
+> 在QCA面板数据分析中，当调整距离小于0.2时，汇总一致性精确度更高，对判断结果的支撑性更强[30]。当调整距离大于0.2时，需进一步研究条件必要性。[^荆玲玲_2024]
+
+[^荆玲玲_2024]:荆玲玲,黄慧丽.时空双维下数字创新生态系统对区域创新能力的激发与影响研究——基于省域面板数据的动态QCA分析[J].科技进步与对策,2024,41(16):13-23.
+
+
+
+#### 组间一致性调整距离：大于0.2的因果组合情况
+
+`下列条件组合`存在`BECONS_adjusted_distance > 0.2`的情况。
+
+##### 找 组间一致性调整距离大于0.2的条件组合
+
+```{r}
+# 找 组间一致性调整距离大于0.2的条件组合
+
+summary_table_BECON_AdjDis_greater_0_2 <- summary_table %>%
+  filter(BECONS_adjusted_distance > 0.2)
+
+print(summary_table_BECON_AdjDis_greater_0_2)
+
+writexl::write_xlsx(x = summary_table_BECON_AdjDis_greater_0_2,
+                    path = "output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况.xlsx")
+
+```
+
+
+##### 找 组间一致性调整距离大于0.2的条件组合的 每一年的 组间一致性、组间覆盖度
+
+```{r}
+# 找 组间一致性调整距离大于0.2的条件组合的 每一年的 组间一致性、组间覆盖度
+
+yearly_table_BECON_AdjDis_greater_0_2 <- yearly_table %>%
+  semi_join(
+    summary_table_BECON_AdjDis_greater_0_2,
+    by = c("outcome_var", "Result_Type")
+  )
+print(yearly_table_BECON_AdjDis_greater_0_2)
+
+writexl::write_xlsx(x = yearly_table_BECON_AdjDis_greater_0_2,
+                    path = "output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况_分年度.xlsx")
+
+
+```
+
+##### 找 组间一致性调整距离大于0.2的条件组合中，组间一致性 大于0.9，同时覆盖度大于0.5的，条件组合及年份
+
+有没有 组间一致性 大于0.9，同时覆盖度大于0.5的
+i.e. Consistencies > 0.9 & Coverage > 0.5
+如果有，那就说明`该条件变量`在`那一年`初步构成了这个`结果变量`的`单一必要条件`。
+
+
+
+```{r}
+# library(dplyr)
+# library(tidyr)
+
+# 1. 将数据转为 long 格式
+long_yearly <- yearly_table_BECON_AdjDis_greater_0_2 %>%
+  tidyr::pivot_longer(cols = as.character(2016:2023), names_to = "year", values_to = "value")
+
+
+# 2. 分别筛选符合条件的 Consistencies > 0.9 且 Coverages > 0.5
+consistency_high <- long_yearly %>%
+  filter(x == "Consistencies", value > 0.9) %>%
+  select(outcome_var, Result_Type, year) %>%
+  distinct()
+
+coverage_high <- long_yearly %>%
+  filter(x == "Coverages", value > 0.5) %>%
+  select(outcome_var, Result_Type, year) %>%
+  distinct()
+
+# 3. 找出同时满足两个条件的组合
+matched_cases <- inner_join(consistency_high, coverage_high,
+                            by = c("outcome_var", "Result_Type", "year"))
+
+# 查看结果
+matched_cases
+
+```
+
+
+##### 找 组间一致性调整距离大于0.2的条件组合中，组间一致性 大于0.9，同时覆盖度大于0.5的 条件组合及年份 - 组间一致性、覆盖度
+
+
+```{r}
+# 1. 把文献中常见的表格样式 调整为标准的数据格式
+
+wide_yearly_BECON_AdjDis_greater_0_2 <- yearly_table_BECON_AdjDis_greater_0_2 %>%
+  tidyr::pivot_longer(cols = `2016`:`2023`, names_to = "YEAR", values_to = "value") %>%
+  #filter(x %in% c("Consistencies", "Coverages")) %>%
+  tidyr::pivot_wider(
+    id_cols = c(outcome_var, Result_Type, YEAR),
+    names_from = x,
+    values_from = value
+  )
+
+# 2. 筛选满足条件的组合
+matched_cases <- wide_yearly_BECON_AdjDis_greater_0_2 %>%
+  filter(Consistencies > 0.9, Coverages > 0.5)
+
+matched_cases
+
+writexl::write_xlsx(x = matched_cases,
+                    path = "./output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况_分年度_其中组间一致性大于0.9_且_组间覆盖度大于0.5的情况.xlsx")
+
+```
+
+### 2.1.3 组间一致性水平趋势（大于0.2的因果组合情况）
+
+
+
+```{r echo=FALSE}
+# 加一列config （e.g. "Y / X3")
+wide_yearly_BECON_AdjDis_greater_0_2_config <- wide_yearly_BECON_AdjDis_greater_0_2 %>% 
+  mutate(Config = paste0(outcome_var, " / ", Result_Type))
+
+# 确保排序正确
+
+label_data <- wide_yearly_BECON_AdjDis_greater_0_2_config %>%
+  group_by(Config) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = "./output_manual/组间一致性水平趋势图.pdf", width = 10, height = 8)
+pdf(file = "./output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合的_组间一致性变化趋势图.pdf", width = 10, height = 8)
+
+
+p_BECON_AdjDis_greater_0_2_Consistencies <- ggplot(
+  data = wide_yearly_BECON_AdjDis_greater_0_2_config, 
+  aes(x = YEAR, y = Consistencies, group = Config, color = Config)
+) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0.90, linetype = "dashed", color = "black") +
+  scale_x_discrete() +
+  scale_y_continuous(breaks = seq(0.0, 1.0, by = 0.1),  # 包括 0.9
+                     limits = c(0.0, 1.0),              # y 轴范围
+                     expand = expansion(mult = c(0.01, 0.01))  # 防止上下太空
+                     ) +
+  labs(
+    x = "年份", 
+    y = "组间一致性", 
+    title = NULL,
+    shape = "条件组合",
+    linetype = "条件组合",
+    color = "条件组合"
+  ) +
+  theme_bw(base_family = "TimesNewRoman") + # 默认字体为 Times
+  
+  theme(
+    axis.title = element_text(family = "fangSong", size = 14),   # 坐标轴 title 用仿宋
+    legend.title = element_text(family = "fangSong", size = 13), # 图例   title 用仿宋
+    plot.margin = unit(c(1, 4, 1, 1), "cm"),  # 右边多留点空间
+    legend.position = "bottom"
+  ) +
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = "TimesNewRoman",
+    data = label_data,
+    aes(label = Config),
+    nudge_x = 0.6,             # 向右偏移
+    direction = "y",           # 避免上下重叠
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,       
+    point.padding = 0.05,
+    #force = 0.6,              # 避让强度降低，避免推太远
+    #force_pull = 0.3,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 "a"
+  )
+
+p_BECON_AdjDis_greater_0_2_Consistencies
+
+# pdf device off---------------
+dev.off() 
+
+
+# print to viewer in Rstudio、
+print(p_BECON_AdjDis_greater_0_2_Consistencies)
+
+
+```
+
+### 2.1.4 进一步检验：XYplot（组间一致性调整距离大于0.2的条件组合中，组间一致性 大于0.9，同时覆盖度大于0.5的 条件组合及年份）
+
+```{r}
+# load package ----
+library(dplyr)
+library(ggplot2)
+
+library(patchwork)  # 加载 patchwork
+
+# Importing Data ----
+
+df.Fuzzy <- readxl::read_excel(path = "./output/【Analysis_wk】1.校准_df.Fuzzy.xlsx",
+                              sheet = 1
+                              )
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add('fangSong', regular = './fonts/方正仿宋_GBK.TTF') # <<<<<<<<<<<<<<
+
+# 组间一致性调整距离：大于0.2的因果组合情况：进一步检验——必要性条件检验散点图 ----
+
+## `Y / ~X3` 2017年 ----
+df.Fuzzy.4 <- df.Fuzzy %>% 
+  mutate(negX3 = 1 - X3) %>% 
+  filter(YEAR == 2017)
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_Y_negX3_2017 <- ggplot(data = df.Fuzzy.4, aes(x = negX3, y = Y)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 Y / X3（2017年）") +
+  xlab("~X3值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.4$negX3, df.Fuzzy.4$Y))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.4$negX3, df.Fuzzy.4$Y))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+        )  # 调整图形的边距
+
+p_Y_negX3_2017 # 绘图
+
+
+## `Y / X6` 2021-2023年 ----
+
+
+### — `Y / X6` 2021年 ----
+
+df.Fuzzy.5 <- df.Fuzzy %>% 
+  filter(YEAR == 2021)
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_Y_X6_2021 <- ggplot(data = df.Fuzzy.5, aes(x = X6, y = Y)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 Y / X6（2021年）") +
+  xlab("X6值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.5$X6, df.Fuzzy.5$Y))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.5$X6, df.Fuzzy.5$Y))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_Y_X6_2021 # 绘图
+
+### — `Y / X6` 2022年 ----
+
+df.Fuzzy.6 <- df.Fuzzy %>% 
+  filter(YEAR == 2022)
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_Y_X6_2022 <- ggplot(data = df.Fuzzy.6, aes(x = X6, y = Y)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 Y / X6（2022年）") +
+  xlab("X6值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.6$X6, df.Fuzzy.6$Y))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.6$X6, df.Fuzzy.6$Y))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_Y_X6_2022 # 绘图
+
+### — `Y / X6` 2023年 ----
+
+df.Fuzzy.7 <- df.Fuzzy %>% 
+  filter(YEAR == 2023)
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_Y_X6_2023 <- ggplot(data = df.Fuzzy.7, aes(x = X6, y = Y)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 Y / X6（2023年）") +
+  xlab("X6值") +
+  ylab("Y值") +
+  xlim(range(c(df.Fuzzy.7$X6, df.Fuzzy.7$Y))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.7$X6, df.Fuzzy.7$Y))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_Y_X6_2023 # 绘图
+
+
+
+## `~Y / ~X3` 2019-2023年 ----
+
+### — `~Y / ~X3` 2019年 ----
+df.Fuzzy.8 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX3 = 1 - X3) %>%
+  filter(YEAR == 2019) 
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_negY_negX3_2019 <- ggplot(data = df.Fuzzy.8, aes(x = negX3, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X3（2019年）") +
+  xlab("~X3值") +
+  ylab("~Y值") +
+  xlim(range(c(df.Fuzzy.8$negX3, df.Fuzzy.8$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.8$negX3, df.Fuzzy.8$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_negY_negX3_2019 # 绘图
+
+### — `~Y / ~X3` 2020年 ----
+df.Fuzzy.9 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX3 = 1 - X3) %>%
+  filter(YEAR == 2020) 
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_negY_negX3_2020 <- ggplot(data = df.Fuzzy.9, aes(x = negX3, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X3（2020年）") +
+  xlab("~X3值") +
+  ylab("~Y值") +
+  xlim(range(c(df.Fuzzy.9$negX3, df.Fuzzy.9$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.9$negX3, df.Fuzzy.9$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_negY_negX3_2020 # 绘图
+
+
+
+### — `~Y / ~X3` 2021年 ----
+df.Fuzzy.10 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX3 = 1 - X3) %>%
+  filter(YEAR == 2021) 
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_negY_negX3_2021 <- ggplot(data = df.Fuzzy.10, aes(x = negX3, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X3（2021年）") +
+  xlab("~X3值") +
+  ylab("~Y值") +
+  xlim(range(c(df.Fuzzy.10$negX3, df.Fuzzy.10$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.10$negX3, df.Fuzzy.10$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_negY_negX3_2021 # 绘图
+
+
+### — `~Y / ~X3` 2022年 ----
+df.Fuzzy.11 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX3 = 1 - X3) %>%
+  filter(YEAR == 2022) 
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_negY_negX3_2022 <- ggplot(data = df.Fuzzy.11, aes(x = negX3, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X3（2022年）") +
+  xlab("~X3值") +
+  ylab("~Y值") +
+  xlim(range(c(df.Fuzzy.11$negX3, df.Fuzzy.11$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.11$negX3, df.Fuzzy.11$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_negY_negX3_2022 # 绘图
+
+
+### — `~Y / ~X3` 2023年 ----
+df.Fuzzy.12 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX3 = 1 - X3) %>%
+  filter(YEAR == 2023) 
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_negY_negX3_2023 <- ggplot(data = df.Fuzzy.12, aes(x = negX3, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X3（2023年）") +
+  xlab("~X3值") +
+  ylab("~Y值") +
+  xlim(range(c(df.Fuzzy.12$negX3, df.Fuzzy.12$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.12$negX3, df.Fuzzy.12$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_negY_negX3_2023 # 绘图
+
+## `~Y / ~X6` 2016年 ----
+df.Fuzzy.13 <- df.Fuzzy %>% 
+  mutate(negY = 1 - Y) %>%
+  mutate(negX6 = 1 - X6) %>%
+  filter(YEAR == 2016) 
+
+# 创建散点图对象，并添加从原点出发的斜对角线
+p_negY_negX6_2016 <- ggplot(data = df.Fuzzy.13, aes(x = negX6, y = negY)) + 
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # y = x 线
+  ggtitle("情况 ~Y / ~X6（2016年）") +
+  xlab("~X6值") +
+  ylab("~Y值") +
+  xlim(range(c(df.Fuzzy.13$negX6, df.Fuzzy.13$negY))) +  # 确保X轴范围与Y轴相同
+  ylim(range(c(df.Fuzzy.13$negX6, df.Fuzzy.13$negY))) +  # 确保Y轴范围与X轴相同
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),  # 标题居中
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), "cm")
+  )  # 调整图形的边距
+
+p_negY_negX6_2016 # 绘图
+
+
+## 拼图 ----
+
+# library(patchwork)  # 加载 patchwork
+
+
+# store to pdf (create a pdf device) 
+pdf(file = "./output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合_汇总一致性大于0.9_且_汇总覆盖度大于0.5.pdf", 
+    width = 12, height = 16
+)
+
+# 3 张 ggplot 图
+
+
+
+# final_plot <- (p1 | p2 | p3) / (p4 | p5 | p6) / (p7 | plot_spacer() | plot_spacer())
+final_plot2 <- wrap_plots(p_Y_negX3_2017,
+                         p_Y_X6_2021,
+                         p_Y_X6_2022,
+                         p_Y_X6_2023,
+                         p_negY_negX3_2019,
+                         p_negY_negX3_2020,
+                         p_negY_negX3_2021,
+                         p_negY_negX3_2022,
+                         p_negY_negX3_2023,
+                         p_negY_negX6_2016,
+                         ncol = 3)  # 自动调整
+
+# 显示拼接后的图
+print(final_plot2)
+
+# pdf device off
+dev.off() 
+
+
+final_plot2 # 输出到Rstudio Plots里 看一眼
+
+
+```
+
+
+
+
+# 3. 充分性分析
+
+## Enhanced Standard Analysis - Y
+
+### 构建真值表 ----
+
+`张明, 杜运周. 组织与管理研究中 QCA 方法的应用: 定位, 策略和方向[J]. 管理学报, 2019, 16(9): 1312.
+> 在`原始一致性阈值`方面，QCA方法专家提出了不同的可接受的`最低阈值`（如 `0.8`和`0.75`）
+
+`张明, 杜运周. 组织与管理研究中 QCA 方法的应用: 定位, 策略和方向[J]. 管理学报, 2019, 16(9): 1312.
+> 在实际操作过程中，一个普遍遵循的准则是：
+> `频数阈值的设定应当至少保留总案例数75％的比例`。
+
+
+`鲁若愚, 张立锴, 陈雪琳, 等. 基于科学的产业发展影响因素组态与路径研究——对中国内地 31 省份医药制造业的 QCA 分析[J]. 科技进步与对策, 2022, 39(16): 20-28.`
+> 为避免某一组态在结果和结果否定中的本文同时子集关系，
+> `PRI一致性门槛值不应低于0.5`，将PRI一致性阈值设定为 0.6。
+
+
+### Truthtable all row - for test
+```{r eval=FALSE, include=FALSE}
+QCA::truthTable(data = df.Fuzzy.case, 
+                        outcome = "Y", 
+                        conditions = conditions, 
+                        incl.cut = 0.6, pri.cut = 0.5
+                        #show.cases = TRUE,
+                        #sort.by = "OUT"
+                        )
+
+
+```
+
+
+
+
+
+```{r}
+tt_Y <- QCA::truthTable(data = df.Fuzzy.case, 
+                        outcome = "Y", 
+                        conditions = conditions, 
+                        incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                        show.cases = TRUE,
+                        sort.by = "OUT"
+                        )
+
+tt_Y
+
+```
+
+
+### 寻找必要的组合 - Necessary Disjunctions of SUIN Conditions
+
+
+
+> Oana I E, Schneider C Q, Thomann E. Qualitative comparative analysis using R: A beginner's guide[M]. Cambridge University Press, 2021.
+> 第81页
+
+
+```{r}
+
+sp_Y <- QCA::superSubset(data = df.Fuzzy.case,
+                         outcome = "Y",
+                         conditions = conditions %>% paste(collapse = ","),  # "X1,X2,X3,X4,X5,X6..."
+                         incl.cut = 0.90,
+                         cov.cut = 0.5, #<-----
+                         ron.cut = 0.5 #<-----
+                         )
+sp_Y
+
+config.SUIN_cond <- sp_Y$coms %>% colnames()
+config.SUIN_cond
+
+```
+
+
+#### test - 阈值太高了 - 滤去的untenable 减少，parsimounious solution过于复杂 xxx
+```{r eval=FALSE, include=FALSE}
+
+sp_Y <- QCA::superSubset(data = df.Fuzzy.case,
+                         outcome = "Y",
+                         conditions = conditions %>% paste(collapse = ","),  # "X1,X2,X3,X4,X5,X6..."
+                         incl.cut = 0.90,
+                         cov.cut = 0.6, #<-----
+                         ron.cut = 0.6 #<-----
+                         )
+sp_Y
+
+config.SUIN_cond <- sp_Y$coms %>% colnames()
+config.SUIN_cond
+
+```
+
+### find CSA - contradictory simplifying assumptions
+
+
+> Bhattacharya P. An Introduction to Panel Data QCA in R[M]. CRC Press, 2024.
+> 第59页
+
+```{r}
+# get row CSA ----
+row.CSA <- QCA::findRows(obj = tt_Y, type = 2)  # contradictory simplifying assumptions
+row.CSA
+
+# get config CSA ----
+
+# 一致性异常的案例 Deviant cases for consistency (DCC)
+
+tt_Y_dcc <-  QCA::truthTable(data = df.Fuzzy.case,
+                             outcome = "Y", 
+                             conditions = conditions %>% paste(collapse = ","), 
+                             incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                             show.cases = TRUE, 
+                             # sort.by = "OUT", # 不能sort by OUT 因为后面slice是按行号进行的
+                             complete = TRUE, 
+                             dcc = TRUE)
+
+
+# get untenable_LR config from truthTable 
+tt_Y_CSA <- tt_Y_dcc$tt %>% 
+  slice(row.CSA) %>% 
+  select(conditions) # select(X1,X2,X3,......)
+
+tt_Y_CSA
+
+# def function
+convert_to_config <- function(row) {
+  names <- colnames(tt_Y_CSA)  # 获取列名 #  "X1" "X2" "X3" "X4" "X5" "X6" "X7" "X8" "X9"
+  terms <- ifelse(row == 1, names, paste0("~", names))  # 1: 直接列名, 0: 加上 ~
+  paste(terms, collapse = "*")  # 用 "*" 连接所有变量
+}
+
+# end def function----
+
+
+# 对数据框的每一行进行转换，并存入向量
+
+# X1 X2 X3 X4 X5 X6 X7 X8 X9
+# 116  0  0  1  1  1  0  0  1  1
+# ↓
+#                              116
+# "~X1*~X2*X3*X4*X5*~X6*~X7*X8*X9"
+
+# 应用函数到 tt_Y_CSA 每一行
+
+config.CSA <- apply(tt_Y_CSA, 1, convert_to_config)
+config.CSA
+
+```
+
+
+### TruthTable - esa - rm untenable
+
+```{r}
+tt_Y_esa <- SetMethods::esa(oldtt = tt_Y, 
+                            nec_cond = config.SUIN_cond, 
+                            untenable_LR = config.CSA
+                            )
+tt_Y_esa
+
+```
+
+
+```{r}
+# 多大比例的Prime Implicant能纳入后续分析 - fun to know
+percent_case_1 <- (tt_Y_esa$tt %>% filter(OUT == 1) %>% .$n %>% sum()) / (tt_Y_esa$tt %>% .$n %>% sum())
+print(paste0(percent_case_1*100, "%的Prime Implicant，能纳入后续分析（在OUT=1的configuration中）"))
+
+```
+
+
+
+### 复杂解 Complex Solution ----
+
+```{r}
+compsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                               details = TRUE, 
+                               row.dom = TRUE # to avoid model ambiguity
+                               )
+
+compsol_Y_esa
+```
+
+
+
+
+### 简单解 Parsimonious Solution ----
+
+```{r}
+parsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                              include = "?", # include LR
+                              details = TRUE, 
+                              row.dom = TRUE # to avoid model ambiguity - else up to 18+ Model in the result
+                              )
+
+parsol_Y_esa
+```
+
+
+`row.dom`: Logical, perform row dominance in the prime implicants' chart to eliminate redundant prime implicants.
+
+Once the PI chart is constructed using the prime implicants found in the previous stages, the argument `row.dom` can be used to further `eliminate irrelevant prime implicants` when solving the PI chart, applying `the principle of row dominance`: 
+
+if a prime implicant A 
+covers the same (intial) positive output configurations as another prime implicant B 
+and in the same time covers other configurations which B does not cover, 
+then `B is irrelevant and eliminated`.
+
+
+
+### 中间解 Intermediate Solution ----
+
+```{r}
+
+intsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                              details = TRUE,
+                              row.dom = TRUE # to avoid model ambiguity
+                              )
+
+intsol_Y_esa
+```
+
+
+```{r eval=FALSE, include=FALSE}
+
+intsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                              include = "?", # include LR
+                              details = TRUE,
+                              dir.exp = "1, 1, 1, 1, 1, 1, 1, 1, 1",
+                              row.dom = TRUE # to avoid model ambiguity
+                              )
+
+intsol_Y_esa
+```
+
+
+
+
+
+### 组间一致性调整距离、组内一致性调整距离
+
+#### sol = 1（intsol 也只有一个model）
+
+##### caculate cluster
+```{r}
+cluster_data_Y <- SetMethods::cluster(data = df.Fuzzy.case, 
+                                      results = intsol_Y_esa, 
+                                      outcome="Y", 
+                                      unit_id = "ID", cluster_id = "YEAR", 
+                                      sol = 1, # <---- 1 st solution (M1)
+                                      wicons = TRUE
+                                      )
+
+cluster_data_Y
+```
+
+##### caculate solution adjusted distance
+```{r}
+
+
+SolutionTerm_names <- names(cluster_data_Y$output)
+
+# distance between pooled (Between Consistency Distance, BECON distance)
+BECONS_distance <- sapply(SolutionTerm_names,
+                          function(solTerm) {
+                            cluster_data_Y$output[[solTerm]]$dBP
+                            }
+                          )
+
+# distance within pooled (Within Consistency Distance, WICON distance)
+WICONS_distance <- sapply(SolutionTerm_names,
+                          function(solTerm) {
+                            cluster_data_Y$output[[solTerm]]$dWP
+                            }
+                          )
+
+# `Castro R G, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2: 63-76.`
+# $$
+# \text{BECONS adjusted distance} = \frac{\text{BECONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+# \text{WICONS adjusted distance} = \frac{\text{WICONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+# $$
+#  n is equal to the number of elements in the vector
+
+# n.t.vec <- df.Fuzzy$YEAR %>% unique() %>% length()
+# n.N.vec <- df.Fuzzy$ID %>% unique() %>% length()
+
+# calculate BECONS_adjusted_distance
+BECONS_adjusted_distance = BECONS_distance/sqrt(n.t.vec / (n.t.vec^2 + 3 * n.t.vec + 2))
+
+# caluculate WICONS_adjusted_distance
+WICONS_adjusted_distance = WICONS_distance/sqrt(n.N.vec / (n.N.vec^2 + 3 * n.N.vec + 2))
+
+df.sol.adj.distance <- tibble(config = SolutionTerm_names,
+                              BECONS_adjusted_distance = BECONS_adjusted_distance,
+                              WICONS_adjusted_distance = WICONS_adjusted_distance
+                              )
+df.sol.adj.distance
+```
+
+### 整理结果
+
+```{r}
+
+# 从intsol_Y_esa提取结果
+intsol_Y_res_Overall <- intsol_Y_esa$IC$sol.incl.cov
+
+intsol_Y_res_SolutionTerm <-  intsol_Y_esa$IC$incl.cov
+rownames(intsol_Y_res_Overall) <- "Overall"
+
+# 添加 config 列
+intsol_Y_res_Overall$config <- "Overall"
+intsol_Y_res_SolutionTerm$config <- rownames(intsol_Y_res_SolutionTerm)
+
+# 补齐缺失列（covU 和 cases）到 Overall 表
+intsol_Y_res_Overall$covU <- NA
+intsol_Y_res_Overall$cases <- NA
+
+
+
+# 确保两张表列顺序一致，并把config列排到最左边
+intsol_Y_res_Overall <- intsol_Y_res_Overall[, c("config", "inclS", "PRI", "covS", "covU", "cases")]
+intsol_Y_res_SolutionTerm <- intsol_Y_res_SolutionTerm[, c("config", "inclS", "PRI", "covS", "covU", "cases")]
+
+# 合并两张表
+intsol_Y_res_Combined <- rbind(intsol_Y_res_SolutionTerm, intsol_Y_res_Overall)
+
+# 移除行名
+rownames(intsol_Y_res_Combined) <- NULL
+
+# 查看合并后的结果
+# print(intsol_Y_res_Combined)
+
+
+# 合并 intsol_Y_res_Combined 和 df.sol.adj.distance
+intsol_Y_res_Final <- intsol_Y_res_Combined %>%
+  left_join(df.sol.adj.distance, by = "config")
+
+
+# 调整列顺序：将 cases 放到最后
+intsol_Y_res_Final <- intsol_Y_res_Final %>%
+  select(-cases, everything(), cases)
+
+
+writexl::write_xlsx(x = intsol_Y_res_Final,
+                    path = "./output/【Analysis_wk】3.充分条件分析_结果_Y.xlsx"
+                    )
+
+
+print(intsol_Y_res_Final)
+
+
+```
+
+
+
+
+## Enhanced Standard Analysis - ~Y
+
+### 构建真值表 ----
+
+
+```{r}
+tt_negY <- QCA::truthTable(data = df.Fuzzy.case, 
+                           outcome = "~Y", 
+                           conditions = conditions, 
+                           incl.cut = 0.75, n.cut = 2, pri.cut = 0.6,
+                           show.cases = TRUE,
+                           sort.by = "OUT"
+                           )
+
+tt_negY
+
+```
+
+
+
+### 寻找必要的组合 - Necessary Disjunctions of SUIN Conditions
+
+
+```{r}
+
+sp_negY <- QCA::superSubset(data = df.Fuzzy.case,
+                         outcome = "~Y",
+                         conditions = conditions %>% paste(collapse = ","),  # "X1,X2,X3,X4,X5,X6..."
+                         incl.cut = 0.90,
+                         cov.cut = 0.5, #<-----
+                         ron.cut = 0.5 #<-----
+                         )
+sp_negY
+
+config.SUIN_cond.negY <- sp_negY$coms %>% colnames()
+config.SUIN_cond.negY
+
+```
+
+
+### find CSA - contradictory simplifying assumptions
+
+
+```{r}
+# get row CSA ----
+row.CSA.negY <- QCA::findRows(obj = tt_negY, type = 2)  # contradictory simplifying assumptions
+row.CSA.negY
+
+# get config CSA ----
+
+# 一致性异常的案例 Deviant cases for consistency (DCC)
+
+tt_negY_dcc <-  QCA::truthTable(data = df.Fuzzy.case,
+                                outcome = "~Y",
+                                conditions = conditions %>% paste(collapse = ","),
+                                incl.cut = 0.75, n.cut = 2, pri.cut = 0.6,
+                                show.cases = TRUE, 
+                                # sort.by = "OUT", # 不能sort by OUT 因为后面slice是按行号进行
+                                complete = TRUE,
+                                dcc = TRUE
+                                )
+
+# get untenable_LR config from truthTable 
+tt_negY_CSA <- tt_negY_dcc$tt %>% 
+  slice(row.CSA) %>% 
+  select(conditions) # select(X1,X2,X3,......)
+
+tt_negY_CSA
+
+# def function
+convert_to_config <- function(row) {
+  names <- colnames(tt_Y_CSA)  # 获取列名 #  "X1" "X2" "X3" "X4" "X5" "X6" "X7" "X8" "X9"
+  terms <- ifelse(row == 1, names, paste0("~", names))  # 1: 直接列名, 0: 加上 ~
+  paste(terms, collapse = "*")  # 用 "*" 连接所有变量
+}
+
+# end def function----
+
+
+# 对数据框的每一行进行转换，并存入向量
+
+# X1 X2 X3 X4 X5 X6 X7 X8 X9
+# 116  0  0  1  1  1  0  0  1  1
+# ↓
+#                              116
+# "~X1*~X2*X3*X4*X5*~X6*~X7*X8*X9"
+
+# 应用函数到 tt_Y_CSA 每一行
+
+config.CSA.negY <- apply(tt_negY_CSA, 1, convert_to_config)
+config.CSA.negY
+
+```
+
+
+
+
+### TruthTable - esa - rm untenable
+
+```{r}
+tt_negY_esa <- SetMethods::esa(oldtt = tt_negY,
+                               nec_cond = config.SUIN_cond.negY, 
+                               untenable_LR = config.CSA.negY
+                               )
+tt_negY_esa
+
+```
+
+
+```{r}
+# 多大比例的Prime Implicant能纳入后续分析 - fun to know
+percent_case_2 <- (tt_negY_esa$tt %>% filter(OUT == 1) %>% .$n %>% sum()) / (tt_negY_esa$tt %>% .$n %>% sum())
+print(paste0(percent_case_1*100, "%的Prime Implicant，能纳入后续分析（在OUT=1的configuration中）"))
+
+```
+
+
+
+### 复杂解 Complex Solution ----
+
+```{r}
+compsol_negY_esa <- QCA::minimize(input = tt_negY_esa,
+                                  details = TRUE,
+                                  row.dom = TRUE # to avoid model ambiguity
+                                  )
+
+compsol_negY_esa
+```
+
+
+### 简单解 Parsimonious Solution ----
+
+```{r}
+parsol_negY_esa <- QCA::minimize(input = tt_negY_esa, 
+                              include = "?", # include LR
+                              details = TRUE, 
+                              row.dom = TRUE # to avoid model ambiguity - else up to 18+ Model in the result
+                              )
+
+parsol_negY_esa
+```
+
+
+### 中间解 Intermediate Solution ----
+
+```{r}
+
+intsol_negY_esa <- QCA::minimize(input = tt_negY_esa,
+                                 details = TRUE,
+                                 row.dom = TRUE # to avoid model ambiguity
+                                 )
+
+intsol_negY_esa
+```
+
+
+
+### 组间一致性调整距离、组内一致性调整距离
+
+#### caculate cluster
+
+```{r}
+cluster_data_negY <- SetMethods::cluster(data = df.Fuzzy.case,
+                                         results = intsol_negY_esa,
+                                         outcome="Y",
+                                         unit_id = "ID", cluster_id = "YEAR",
+                                         sol = 1,
+                                         wicons = TRUE
+                                         )
+
+cluster_data_negY
+
+```
+
+#### caculate solution adjusted distance
+
+
+```{r}
+
+SolutionTerm_names_negY <- names(cluster_data_negY$output)
+
+# distance between pooled (Between Consistency Distance, BECON distance)
+BECONS_distance_negY <- sapply(SolutionTerm_names_negY,
+                          function(solTerm) {
+                            cluster_data_negY$output[[solTerm]]$dBP
+                            }
+                          )
+
+# distance within pooled (Within Consistency Distance, WICON distance)
+WICONS_distance_negY <- sapply(SolutionTerm_names_negY,
+                          function(solTerm) {
+                            cluster_data_negY$output[[solTerm]]$dWP
+                            }
+                          )
+
+# `Castro R G, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2: 63-76.`
+# $$
+# \text{BECONS adjusted distance} = \frac{\text{BECONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+# \text{WICONS adjusted distance} = \frac{\text{WICONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+# $$
+#  n is equal to the number of elements in the vector
+
+# n.t.vec <- df.Fuzzy$YEAR %>% unique() %>% length()
+# n.N.vec <- df.Fuzzy$ID %>% unique() %>% length()
+
+# calculate BECONS_adjusted_distance
+BECONS_adjusted_distance_negY = BECONS_distance_negY/sqrt(n.t.vec / (n.t.vec^2 + 3 * n.t.vec + 2))
+
+# caluculate WICONS_adjusted_distance
+WICONS_adjusted_distance_negY = WICONS_distance_negY/sqrt(n.N.vec / (n.N.vec^2 + 3 * n.N.vec + 2))
+
+df.sol.adj.distance.negY <- tibble(config = SolutionTerm_names_negY,
+                              BECONS_adjusted_distance_negY = BECONS_adjusted_distance_negY,
+                              WICONS_adjusted_distance_negY = WICONS_adjusted_distance_negY
+                              )
+df.sol.adj.distance.negY
+```
+
+
+
+### 整理结果
+
+```{r}
+
+# 从intsol_Y_esa提取结果
+intsol_negY_res_Overall <- intsol_negY_esa$IC$sol.incl.cov
+
+intsol_negY_res_SolutionTerm <-  intsol_negY_esa$IC$incl.cov
+rownames(intsol_negY_res_Overall) <- "Overall"
+
+# 添加 config 列
+intsol_negY_res_Overall$config <- "Overall"
+intsol_negY_res_SolutionTerm$config <- rownames(intsol_negY_res_SolutionTerm)
+
+# 补齐缺失列（covU 和 cases）到 Overall 表
+intsol_negY_res_Overall$covU <- NA
+intsol_negY_res_Overall$cases <- NA
+
+
+
+# 确保两张表列顺序一致，并把config列排到最左边
+intsol_negY_res_Overall <- intsol_negY_res_Overall[, c("config", "inclS", "PRI", "covS", "covU", "cases")]
+intsol_negY_res_SolutionTerm <- intsol_negY_res_SolutionTerm[, c("config", "inclS", "PRI", "covS", "covU", "cases")]
+
+# 合并两张表
+intsol_negY_res_Combined <- rbind(intsol_negY_res_SolutionTerm, intsol_negY_res_Overall)
+
+# 移除行名
+rownames(intsol_negY_res_Combined) <- NULL
+
+# 查看合并后的结果
+# print(intsol_Y_res_Combined)
+
+
+# 合并 intsol_Y_res_Combined 和 df.sol.adj.distance.negY
+intsol_negY_res_Final <- intsol_negY_res_Combined %>%
+  left_join(df.sol.adj.distance.negY, by = "config")
+
+
+# 调整列顺序：将 cases 放到最后
+intsol_negY_res_Final <- intsol_negY_res_Final %>%
+  select(-cases, everything(), cases)
+
+
+writexl::write_xlsx(x = intsol_negY_res_Final,
+                    path = "./output/【Analysis_wk】3.充分条件分析_结果_negY.xlsx"
+                    )
+
+
+print(intsol_negY_res_Final)
+
+
+```
+
+## 组间结果 - BECON、BECOV ------
+
+
+### xTESTx - help understand the following function  - do not run
+```{r eval=FALSE, include=FALSE}
+# take a look at what to extract
+
+cluster_data_Y
+```
+
+        # 年度数据处理
+        years <- output$cluster_ids %>%
+          gsub(pattern = "\\(.*\\)", replacement = "") %>%
+          gsub(pattern = "\\s+", replacement = "")
+        BECON <- output$BECOS
+        BECOV <- output$Coverages$between
+
+```{r eval=FALSE, include=FALSE}
+cluster_data_Y$output %>% names()
+
+cluster_data_Y$output$`X1*X3*X4*X5*X6*X7*X9`$BECOS
+
+cluster_data_Y$output$`X1*X3*X4*X5*X6*X7*X9`$Coverages$between
+```
+
+
+
+### def function to extract BECONS for each solution terms
+
+```{r}
+
+extract_config_BECONS_by_year <- function(cluster_result) {
+  # Get all configurations in the result
+  config_list <- cluster_result$output
+  result_list <- list()
+  
+  for (config_name in names(config_list)) {
+    config_output <- config_list[[config_name]]
+    
+    # Extract year from cluster_ids, e.g., "2016 (31)" → "2016"
+    years <- gsub(" \\(.*\\)", "", config_output$cluster_ids)
+    
+    # Extract BECOS values (same length as years)
+    becos <- config_output$BECOS
+    
+    # Extract BECOV values
+    becov <- config_output$Coverages$between
+
+    
+    # Build a data frame
+    df <- data.frame(
+      YEAR = years,
+      CONFIG = config_name,
+      BECONS = becos,
+      BECOV = becov,
+      stringsAsFactors = FALSE
+    )
+    
+    result_list[[config_name]] <- df
+  }
+  
+  # Combine all configurations
+  final_df <- do.call(rbind, result_list)
+  rownames(final_df) <- NULL
+  return(final_df)
+}
+
+```
+
+
+### extract BECONS for Y & ~Y cluster data
+```{r}
+
+# Y
+df_cluster_data_Y_BECONS_BECOV <- extract_config_BECONS_by_year(cluster_data_Y) %>%
+  mutate(CONFIG = paste0(CONFIG," → Y"))
+
+# print(df_cluster_data_Y_BECONS)
+
+
+# ~Y
+df_cluster_data_negY_BECONS_BECOV <- extract_config_BECONS_by_year(cluster_data_negY) %>%
+  mutate(CONFIG = paste0(CONFIG," → ~Y"))
+
+# print(df_cluster_data_negY_BECONS)
+
+# Y and ~Y
+df_cluster_data_allY_BECONS_BECOV <- rbind(df_cluster_data_Y_BECONS_BECOV,
+                                     df_cluster_data_negY_BECONS_BECOV
+                                     )
+
+print(df_cluster_data_allY_BECONS_BECOV)
+```
+
+### visualization - BECON
+
+```{r}
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+# text repel data
+label_data <- df_cluster_data_allY_BECONS_BECOV %>%
+  group_by(CONFIG) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = "./output_manual/组间一致性水平趋势图.pdf", width = 10, height = 8)
+pdf(file = "./output/【Analysis_wk】3.充分性分析_组间一致性变化趋势图.pdf", width = 10, height = 8)
+
+p_config_BECONS <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECONS, group = CONFIG, color = CONFIG)) +
+  geom_line() +
+  geom_point() +
+  # geom_hline(yintercept = 0.90, linetype = "dashed", color = "black") +
+  scale_x_discrete() +
+  #scale_y_continuous(
+  #  breaks = seq(0.0, 1.0, by = 0.1),
+  #  limits = c(0.0, 1.0),
+  #  expand = expansion(mult = c(0.01, 0.01))
+  #) +
+  labs(
+    x = "年份",
+    y = "组间一致性",
+    color = "因果路径"
+  ) +
+  theme_bw(base_family = "TimesNewRoman") +
+  theme(
+    axis.title = element_text(family = "fangSong", size = 14),
+    legend.title = element_text(family = "fangSong", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), "cm"),
+    legend.position = "bottom"
+  ) +
+  guides(color = guide_legend(ncol = 1))  + # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = "TimesNewRoman",
+    data = label_data,
+    aes(label = CONFIG),
+    nudge_x = 2.6,             # 向右偏移
+    direction = "y",           # 避免上下重叠
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,       
+    point.padding = 0.05,
+    #force = 0.6,              # 避让强度降低，避免推太远
+    #force_pull = 0.3,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 "a"
+  )
+
+print(p_config_BECONS)
+dev.off()
+
+p_config_BECONS
+
+```
+### visualization - BECOV
+
+```{r}
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+# text repel data
+label_data <- df_cluster_data_allY_BECONS_BECOV %>%
+  group_by(CONFIG) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = "./output_manual/组间一致性水平趋势图.pdf", width = 10, height = 8)
+pdf(file = "./output/【Analysis_wk】3.充分性分析_组间覆盖度变化趋势图.pdf", width = 10, height = 8)
+
+p_config_BECOV <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECOV, group = CONFIG, color = CONFIG)) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0.50, linetype = "dashed", color = "black", alpha = 0.4) +
+  scale_x_discrete() +
+  scale_y_continuous(
+    breaks = seq(0.1, 0.8, by = 0.1),
+    limits = c(0.1, 0.8)
+    )+
+  labs(
+    x = "年份",
+    y = "组间覆盖度",
+    color = "因果路径"
+  ) +
+  theme_bw(base_family = "TimesNewRoman") +
+  theme(
+    axis.title = element_text(family = "fangSong", size = 14),
+    legend.title = element_text(family = "fangSong", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), "cm"),
+    legend.position = "bottom"
+  ) +
+  guides(color = guide_legend(ncol = 1))  + # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = "TimesNewRoman",
+    data = label_data,
+    aes(label = CONFIG),
+    nudge_x = 2.6,             # 向右偏移
+    direction = "both",        # 允许上下左右避让
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,       
+    point.padding = 0.05,
+    force = 4,                # 排斥强度（更强避让）
+    force_pull = 0.2,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 "a"
+  )
+
+
+print(p_config_BECOV)
+dev.off()
+
+p_config_BECOV
+
+```
+
+### visualization - BECONS & BECOV - patch
+```{r}
+library(showtext)
+# 设置中文字体支持
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF")
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+
+
+library(patchwork)
+
+# 输出到 PDF 文件
+pdf(file = "./output/【Analysis_wk】组间一致性与覆盖度_趋势图_patch.pdf", width = 10, height = 12)
+
+
+p_config_BECONS / p_config_BECOV +
+  plot_layout(guides = "collect") & 
+  theme(legend.position = "bottom") 
+
+
+dev.off()
+
+```
+
+
+
+### visualization - BECONS & BECOV - same axis ★
+
+```{r}
+# 加载必要包
+library(tidyverse)
+library(ggrepel)
+library(showtext)
+
+# 设置中文字体支持
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF")
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+# 假设 df_cluster_data_allY_BECONS_BECOV 已存在，包含：
+# YEAR: 年份
+# CONFIG: 因果路径
+# BECONS: 组间一致性
+# BECOV: 组间覆盖度
+
+# 1. 转换为长格式以绘制多个指标
+df_long <- df_cluster_data_allY_BECONS_BECOV %>%
+  pivot_longer(cols = c(BECONS, BECOV),
+               names_to = "Metric",
+               values_to = "Value") %>%
+  mutate(Metric = dplyr::recode(Metric,
+                                BECONS = "组间一致性",
+                                BECOV = "组间覆盖度"
+                                )
+         )
+
+# 2. 提取每个路径在每个指标最后一年用于标注
+label_data <- df_long %>%
+  group_by(CONFIG, Metric) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+# 3. 输出到 PDF 文件
+pdf(file = "./output/【Analysis_wk】组间一致性与覆盖度_趋势图_含图注与标签.pdf", width = 10, height = 10)
+
+# 4. 绘图
+p_config_BECONS_BECOV <- ggplot(df_long, aes(x = YEAR, y = Value,
+                         group = interaction(CONFIG, Metric))) +
+  geom_line(aes(color = CONFIG, linetype = Metric), size = 0.5) +
+  geom_point(aes(color = CONFIG), size = 1) +
+
+  # 添加参考线
+  geom_hline(yintercept = 0.90, linetype = "dashed", color = "black") +
+  geom_hline(yintercept = 0.50, linetype = "dashed", color = "black") +
+
+  # 添加尾部路径标签（两类指标）
+  geom_text_repel(
+    data = label_data,
+    aes(label = CONFIG, y = Value, color = CONFIG),
+    family = "TimesNewRoman",
+    nudge_x = 2.8,
+    direction = "y",
+    hjust = 0,
+    segment.color = NA,
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+
+  # 设置图例与轴标签
+  labs(
+    x = "年份",
+    y = "指标值",
+    color = "因果路径",
+    linetype = "指标类型"
+  ) +
+  scale_x_discrete() +
+  
+  # y轴网格线
+  scale_y_continuous(
+  breaks = seq(0, 1, by = 0.1),     # 每 0.1 一个刻度
+  limits = c(0, 1)#,                 # Y轴区间从 0 到 1
+  #expand = c(0, 0)                  # 不额外留白（可选）
+  )+
+
+  theme_bw(base_family = "TimesNewRoman") +
+  theme(
+    text = element_text(family = "fangSong"),
+    axis.title = element_text(family = "fangSong", size = 14),
+    legend.title = element_text(family = "fangSong", size = 12),  # 图例标题
+    legend.text = element_text(family = "fangSong", size = 10),   # 图例标签
+    legend.position = "bottom",
+    plot.margin = unit(c(1, 4, 1, 1), "cm")
+  ) +
+  guides(
+    color = guide_legend(ncol = 1),
+    linetype = guide_legend(ncol = 1)
+    #linetype = guide_legend(override.aes = list(color = "black"))
+  )
+
+# 打印图表
+print(p_config_BECONS_BECOV)
+dev.off()
+
+# 可在 RStudio 中显示
+p_config_BECONS_BECOV
+```
+
+
+
+
+
+## 组内结果 - WICON ------
+
+### xTESTx - help understand the following function  - do not run
+
+```{r eval=FALSE, include=FALSE}
+# take a look at what to extract
+
+cluster_data_Y
+```
+
+
+```{r eval=FALSE, include=FALSE}
+cluster_data_Y$output %>% names()
+
+cluster_data_Y$output$`X1*X3*X4*X5*X6*X7*X9`$WICONS
+
+cluster_data_Y$output$`X1*X3*X4*X5*X6*X7*X9`$unit_ids
+
+
+
+gsub(pattern = "\\(.*\\)", 
+                  replacement = "", 
+                  x = cluster_data_Y$output$`X1*X3*X4*X5*X6*X7*X9`$unit_ids
+                  ) %>%
+  gsub(pattern = "\\s",
+        replacement = "")
+
+```
+
+### def function to extract WICONS for each solution terms
+
+```{r}
+
+extract_config_WICONS_by_year <- function(cluster_result) {
+  # Get all configurations in the result
+  config_list <- cluster_result$output
+  result_list <- list()
+  
+  for (config_name in names(config_list)) {
+    config_output <- config_list[[config_name]]
+    
+    # Extract year from cluster_ids, e.g., "湖北 (8) "  → "2016"
+    provs <- gsub(pattern = "\\(.*\\)\\s+", 
+                  replacement = "", 
+                  x = config_output$unit_ids
+                  ) %>%
+      # 删去 空格
+      gsub(pattern = "\\s",
+           replacement = ""
+           )
+    
+    # Extract WICON values (same length as provs)
+    wicos <- config_output$WICONS
+
+    
+    # Build a data frame
+    df <- data.frame(
+      PROVS = provs,
+      CONFIG = config_name,
+      WICONS = wicos,
+      stringsAsFactors = FALSE
+    )
+    
+    result_list[[config_name]] <- df
+  }
+  
+  # Combine all configurations
+  final_df <- do.call(rbind, result_list)
+  rownames(final_df) <- NULL
+  return(final_df)
+}
+
+```
+
+
+### extract BECONS for Y & ~Y cluster data
+```{r}
+
+# Y
+df_cluster_data_Y_WICONS <- extract_config_WICONS_by_year(cluster_data_Y) %>%
+  mutate(CONFIG = paste0(CONFIG," → Y"))
+
+# print(df_cluster_data_Y_BECONS)
+
+
+# ~Y
+df_cluster_data_negY_WICONS <- extract_config_WICONS_by_year(cluster_data_negY) %>%
+  mutate(CONFIG = paste0(CONFIG," → ~Y"))
+
+# print(df_cluster_data_negY_BECONS)
+
+# Y and ~Y
+df_cluster_data_allY_WICONS <- rbind(df_cluster_data_Y_WICONS,
+                                     df_cluster_data_negY_WICONS
+                                     )
+
+#print(df_cluster_data_allY_WICONS)
+
+
+# 设定省份的固定顺序
+
+prov_order <- c(
+  "北京", "天津", "河北", "山西", "内蒙古", "辽宁", "吉林", "黑龙江",
+  "上海", "江苏", "浙江", "安徽", "福建", "江西", "山东", "河南", 
+  "湖北", "湖南", "广东", "广西", "海南",
+  "重庆", "四川", "贵州", "云南", "西藏", 
+  "陕西", "甘肃", "青海", "宁夏", "新疆"
+)
+
+# 把 PROVS 列转换factor
+
+df_cluster_data_allY_WICONS$PROVS <- factor(df_cluster_data_allY_WICONS$PROVS,
+                                            levels = prov_order
+                                            )
+
+
+
+# 按照固定省份顺序排序
+df_cluster_data_allY_WICONS <- df_cluster_data_allY_WICONS %>%
+  arrange(CONFIG, PROVS)
+
+print(df_cluster_data_allY_WICONS)
+
+```
+#### visualization - WICONS
+```{r}
+library(ggplot2)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = "./output_manual/组间一致性水平趋势图.pdf", width = 10, height = 8)
+pdf(file = "./output/【Analysis_wk】3.充分性分析_组内一致性热力图.pdf", width = 16, height = 2.8)
+
+
+p_config_WICONS <- ggplot(df_cluster_data_allY_WICONS, aes(x = PROVS, y = CONFIG, fill = WICONS)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = sprintf("%.2f", WICONS)),  # WICONS 保留2位
+            size = 3, 
+            family = "TimesNewRoman") +  # <<< 用TimesNewRoman显示数值
+  scale_fill_gradient2(
+    #low = "#4575b4", mid = "#fcfdc4", high = "#d9352a", midpoint = 0.75,
+    low = "#d9352a", mid = "#fcfdc4", high = "#4575b4", midpoint = 0.75,
+    name = "组内一致性（WICONS）"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid = element_blank(),
+    text = element_text(family = "fangSong")  # 设置全局字体为仿宋
+  ) +
+  labs(x = "省份", y = "因果路径（CONFIG）", title = "各因果路径在不同省份的组内一致性热图")
+
+print(p_config_WICONS)
+dev.off()
+
+p_config_WICONS
+
+```
+## 个案追踪 (PIMS)
+
+> Verweij S, Vis B. Three strategies to track configurations over time with Qualitative Comparative Analysis[J]. European Political Science Review, 2021, 13(1): 95-111.
+> 
+> Figure 2, using again Portugal as an example, visualizes how the five cases-in-a-country map onto different ideal types over time. This also shows how a certain ideal type’s empirical presence varies over time, relative to that of the other ideal types. The figure can be easily constructed with Excel, by taking the fuzzy-set membership scores for the five cases in each of the four ideal types and then plotting them; it displays the `fuzzy-set membership scores` in different ways.
+
+### 提取 PIMS
+```{r}
+# pims - prime implicant membership scores
+
+df_PIMS_Y <- intsol_Y_esa$pims %>%
+  rename_with(~ paste0(.x, "→Y")) %>%
+  tibble::rownames_to_column(var = "CASE")
+
+df_PIMS_negY <- intsol_negY_esa$pims %>%
+  rename_with(~ paste0(.x, "→~Y")) %>%
+  tibble::rownames_to_column(var = "CASE")
+
+df_PIMS <- dplyr::full_join(x = df_PIMS_Y, 
+                            y = df_PIMS_negY, 
+                            by = "CASE"
+                            )
+
+# 看一眼
+df_PIMS
+
+```
+
+
+
+### visualization - line
+
+#### def function for PIMS line plot
+
+```{r}
+plot_PIMS <- function(Region_Target){
+  # 加载包
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+# library(stringr)
+
+# 设定地区名称（你只需要改这行）
+region_target <- Region_Target 
+
+# 筛选该地区的所有案例（如 湖北_2016、湖北_2017）
+df_pims_region <- df_PIMS %>%
+  filter(stringr::str_detect(CASE, region_target)) %>%
+  mutate(Year = as.integer(stringr::str_extract(CASE, "\\d{4}")))  # 提取年份
+
+# 数据转换为长格式（路径做变量，方便 ggplot）
+df_pims_region_long <- df_pims_region %>%
+  pivot_longer(
+    cols = -c(CASE, Year),
+    names_to = "Pathway",
+    values_to = "Membership"
+  )
+
+# 绘图 ----
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = "./output_manual/组间一致性水平趋势图.pdf", width = 10, height = 8)
+pdf(file = paste0("./output/【Analysis_wk】3.充分性分析_路径模糊集隶属度（", 
+                  region_target,
+                  "）.pdf"), width = 10, height = 8)
+
+
+# 绘图：路径随时间变化图（每条路径一条线）----
+p_case_pims <- ggplot(df_pims_region_long, aes(x = Year, y = Membership, color = Pathway)) +
+  geom_line(size = 0.5) +
+  geom_point(size = 1) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "gray50") +
+  scale_y_continuous(limits = c(0, 1)) +
+  scale_x_continuous(breaks = sort(unique(df_pims_region_long$Year))) +
+  labs(
+    title = paste0("路径隶属度演化", "（", region_target, "）"),
+    #subtitle = "每条线代表一个路径组态的 fuzzy membership 值",
+    x = "年份",
+    y = "模糊集隶属度得分",
+    color = "因果路径"
+  ) +
+  
+  theme_bw(base_family = "TimesNewRoman") +
+  theme(
+    text = element_text(family = "fangSong"),
+    axis.title = element_text(family = "fangSong", size = 14),
+    legend.title = element_text(family = "fangSong", size = 12),  # 图例标题
+    legend.text = element_text(family = "fangSong", size = 10),   # 图例标签
+    legend.position = "bottom",
+    plot.margin = unit(c(1, 4, 1, 1), "cm")
+  ) +
+  guides(
+    color = guide_legend(ncol = 1)
+    #linetype = guide_legend(ncol = 1)
+    #linetype = guide_legend(override.aes = list(color = "black"))
+  )
+
+
+print(p_case_pims)
+dev.off()
+
+p_case_pims
+}
+
+```
+
+#### def function for PIMS line plot - take vector input
+
+```{r}
+plot_PIMS_batch <- function(region_vector) {
+  for (region in region_vector) {
+    message("plotting：", region)
+    plot_PIMS(region)
+  }
+}
+```
+
+
+
+
+#### visualization - plot
+
+```{r}
+# plot_PIMS(Region_Target = "安徽")
+# plot_PIMS(Region_Target = "江苏")
+# plot_PIMS(Region_Target = "江苏")
+# plot_PIMS(Region_Target = "江苏")
+# plot_PIMS(Region_Target = "江苏")
+
+
+regions_to_plot <- c(
+  "北京", "天津", "河北", "山西", "内蒙古", "辽宁", "吉林", "黑龙江",
+  "上海", "江苏", "浙江", "安徽", "福建", "江西", "山东", "河南", 
+  "湖北", "湖南", "广东", "广西", "海南",
+  "重庆", "四川", "贵州", "云南", "西藏", 
+  "陕西", "甘肃", "青海", "宁夏", "新疆"
+)
+
+plot_PIMS_batch(regions_to_plot)
+
+```
+
+
+
+### visualization - 雷达图 - fmsb - xxx 图太丑了
+
+
+```{r eval=FALSE, include=FALSE}
+# 加载必要包
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(fmsb)
+
+region_target <- "湖北"
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+# store to pdf (create a pdf device) ---------------
+pdf(file = paste0("./output/【Analysis_wk】3.充分性分析_路径模糊集隶属度（", 
+                  region_target,
+                  "）_雷达图.pdf"), width = 10, height = 8)
+
+ # 1. 筛选该地区的数据
+  df_region <- df_PIMS %>%
+    filter(str_detect(CASE, region_target)) %>%
+    mutate(Year = str_extract(CASE, "\\d{4}")) %>%
+    arrange(Year)
+  
+  # 2. 重整数据：每个路径为一行，每个年份为一列
+  df_radar <- df_region %>%
+    select(-CASE) %>%
+    pivot_longer(-Year, names_to = "Pathway", values_to = "Membership") %>%
+    pivot_wider(names_from = Year, values_from = Membership)
+
+  # 3. 添加 fmsb 所需的最大值 & 最小值行
+  df_radar_plot <- rbind(
+    rep(1, ncol(df_radar) - 1),  # 最大值
+    rep(0, ncol(df_radar) - 1),  # 最小值
+    df_radar[, -1]               # 实际数据（去掉 Pathway）
+  )
+  
+  # 4. 设置颜色
+  colors_border <- rainbow(nrow(df_radar))
+  colors_fill <- adjustcolor(colors_border, alpha.f = 0.2)
+
+  # 5. 绘图
+  radarchart(df_radar_plot,
+             axistype = 1,
+             pcol = colors_border,
+             pfcol = colors_fill,
+             plwd = 2,
+             plty = 1,
+             cglcol = "grey",
+             cglty = 1,
+             axislabcol = "black",
+             caxislabels = seq(0, 1, 0.2),
+             vlcex = 0.8,
+             title = paste0("路径隶属度演化", "（", region_target, "）") 
+             )
+
+  # 添加图例
+  legend("topright", legend = df_radar$Pathway, 
+         col = colors_border, lty = 1, lwd = 2, bty = "n", cex = 0.8)
+  
+dev.off()  
+
+```
+
+
+
+### visualization - 雷达图 - ggradar
+
+#### def functions for plot radar
+
+```{r}
+plot_PIMS_radar <- function(Region_Target) {
+  library(dplyr)
+  library(tidyr)
+  library(ggplot2)
+  library(stringr)
+  # install.packages("devtools")
+  # devtools::install_github("ricardo-bion/ggradar")
+  library(ggradar)
+  library(scales)
+  library(showtext)
+
+  # 中文支持
+  showtext_auto(enable = TRUE)
+  font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF")
+  font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+
+  # 地区名
+  region_target <- Region_Target
+
+  # 数据准备 ------------------------------------
+  df_pims_region <- df_PIMS %>%
+    filter(str_detect(CASE, region_target)) %>%
+    mutate(Year = as.integer(str_extract(CASE, "\\d{4}"))) %>%
+    arrange(Year)
+
+  df_pims_region_long <- df_pims_region %>%
+    pivot_longer(
+      cols = -c(CASE, Year),
+      names_to = "Pathway",
+      values_to = "Membership"
+    )
+
+  df_radar <- df_pims_region_long %>%
+    group_by(Pathway, Year) %>%
+    summarise(Membership = mean(Membership, na.rm = TRUE), .groups = "drop") %>%
+    pivot_wider(names_from = Year, values_from = Membership) %>%
+    rename(Path = Pathway)
+
+  df_radar[is.na(df_radar)] <- 0  # 可选处理缺失值
+
+  # 绘图并保存 ------------------------------------
+  p_case_pims_radar <- ggradar(df_radar,
+                               
+                               font.radar = "fangSong",
+                               
+                               # The labels of the grid
+                               values.radar = c("0", "0.5", "1"),
+                               grid.min = 0, grid.mid = 0.5, grid.max = 1,
+                               group.line.width = 0.5,
+                               group.point.size = 2,
+                               axis.label.size = 5,
+                               
+                               
+                               background.circle.colour = "white",
+                               axis.line.colour = "gray60",
+                               gridline.min.colour = "gray60",
+                               gridline.mid.colour = "gray60",
+                               gridline.max.colour = "gray60",
+                               group.colours = c("#f8766d", "#7cae00", "#00bfc4", "#c77cff"),
+                               
+                               legend.position = "bottom",
+                               legend.text.size = 10,
+                               
+                               fill = TRUE,
+                               fill.alpha = 0.075,
+                               
+                               plot.title = paste0("路径隶属度演化（", region_target, "）"))+
+
+    #theme_bw(base_family = "TimesNewRoman") +
+    theme(
+      text = element_text(family = "fangSong"),
+      axis.title = element_text(family = "fangSong", size = 14),
+      legend.title = element_text(family = "fangSong", size = 12),
+      # 图例标题
+      legend.text = element_text(family = "fangSong", size = 10),
+      # 图例标签
+      legend.position = "bottom",
+      #plot.margin = unit(c(1, 4, 1, 1), "cm")
+    ) +
+    guides(color = guide_legend(ncol = 1))
+
+  # 保存 PDF
+  ggsave(
+    filename = paste0("./output/【Analysis_wk】3.充分性分析_路径模糊集隶属度（", 
+                      region_target, 
+                      "）_雷达图.pdf"),
+    plot = p_case_pims_radar,
+    width = 10,
+    height = 10
+  )
+
+  return(p_case_pims_radar)
+}
+```
+
+
+#### def functions for plot radar - batch
+
+```{r}
+plot_PIMS_radar_batch <- function(region_vector) {
+  for (region in region_vector) {
+    message("plotting radar：", region)
+    plot_PIMS_radar(region)
+  }
+}
+```
+
+
+#### visualization - plot
+
+```{r}
+# 一个地区
+# plot_PIMS_radar("湖北")
+
+plot_PIMS_radar_batch(regions_to_plot)
+
+
+```
+
+# THE END
+
+

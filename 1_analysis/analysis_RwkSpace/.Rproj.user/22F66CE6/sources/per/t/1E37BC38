@@ -1,0 +1,28 @@
+{
+    "id": "1E37BC38",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1747569595431.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "id": "5cec1dd6dea647eb89987424fa79ebb5",
+        "name": "parsol_Y_esa",
+        "title": "parsol_Y_esa",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1747569595431,
+    "read_only": false,
+    "read_only_alternatives": []
+}

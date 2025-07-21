@@ -1,0 +1,6 @@
+"0","plot_PIMS_radar_batch <- function(region_vector) {"
+"0","  for (region in region_vector) {"
+"0","    message(""plotting radar："", region)"
+"0","    plot_PIMS_radar(region)"
+"0","  }"
+"0","}"
