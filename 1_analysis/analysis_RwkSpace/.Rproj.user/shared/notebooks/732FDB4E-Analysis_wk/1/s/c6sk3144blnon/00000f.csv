@@ -1,8 +1,0 @@
-"0","# 后面Setmethod::cluster运算时，CASE要在rownames，"
-"0","# 不然会报错："
-"0","# Error in SetMethods::cluster(data = data, results = result_label, outcome_var,  : "
-"0","# 'list' object cannot be coerced to type 'double'"
-"0",""
-"0","df.Fuzzy <- as.data.frame(df.Fuzzy)"
-"0","rownames(df.Fuzzy) <- df.Fuzzy$CASE"
-"0","df.Fuzzy.case <- df.Fuzzy %>% select(-CASE)"

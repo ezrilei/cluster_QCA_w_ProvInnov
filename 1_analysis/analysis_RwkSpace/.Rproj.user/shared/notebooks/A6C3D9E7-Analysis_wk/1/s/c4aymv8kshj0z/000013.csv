@@ -1,7 +1,0 @@
-"0","# 多大比例的案例能纳入后续分析"
-"0","percent_case_1 <- (tt_Y_esa$tt %>% filter(OUT == 1) %>% .$n %>% sum()) / (tt_Y_esa$tt %>% .$n %>% sum())"
-"0","print(paste0(percent_case_1*100, ""%的Prime Implicant，能纳入后续分析（在OUT=1的configuration中）""))"
-"1","[1]"
-"1"," ""33.9901477832512%的Prime Implicant，能纳入后续分析（在OUT=1的configuration中）"""
-"1","
-"

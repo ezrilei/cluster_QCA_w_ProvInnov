@@ -1,5 +1,0 @@
-"0","# set the folder where the RScript locates as working dir (you need Rstudio to do this)"
-"0","#setwd("
-"0","#  dirname(rstudioapi::getSourceEditorContext()$path)"
-"0","#)"
-"0",""

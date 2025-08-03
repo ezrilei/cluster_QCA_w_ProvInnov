@@ -1,0 +1,7 @@
+{
+    "installOptions": {
+        "installFromRepository": true,
+        "libraryPath": "/Users/ezri/ezridb/forR/20250120_explore_QCA/1_analysis/analysis_RwkSpace_CleanUp/renv/library/macos/R-4.4/aarch64-apple-darwin20",
+        "installDependencies": true
+    }
+}

@@ -1,0 +1,72 @@
+"0","
+# 2. 提取每个路径在每个指标最后一年用于标注
+label_data <- df_long %>%
+  group_by(CONFIG, Metric) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+# 3. 输出到 PDF 文件
+pdf(file = ""./output/【Analysis_wk】组间一致性与覆盖度_趋势图_含图注与标签.pdf"", width = 10, height = 10)
+
+# 4. 绘图
+p_config_BECONS_BECOV <- ggplot(df_long, aes(x = YEAR, y = Value,
+                         group = interaction(CONFIG, Metric))) +
+  geom_line(aes(color = CONFIG, linetype = Metric), size = 0.5) +
+  geom_point(aes(color = CONFIG), size = 1) +
+
+  # 添加参考线
+  geom_hline(yintercept = 0.90, linetype = ""dashed"", color = ""black"") +
+  geom_hline(yintercept = 0.50, linetype = ""dashed"", color = ""black"") +
+
+  # 添加尾部路径标签（两类指标）
+  geom_text_repel(
+    data = label_data,
+    aes(label = CONFIG, y = Value, color = CONFIG),
+    family = ""TimesNewRoman"",
+    nudge_x = 2.8,
+    direction = ""y"",
+    hjust = 0,
+    segment.color = NA,
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+
+  # 设置图例与轴标签
+  labs(
+    x = ""年份"",
+    y = ""指标值"",
+    color = ""因果路径"",
+    linetype = ""指标类型""
+  ) +
+  scale_x_discrete() +
+  
+  # y轴网格线
+  scale_y_continuous(
+  breaks = seq(0, 1, by = 0.1),     # 每 0.1 一个刻度
+  limits = c(0, 1)#,                 # Y轴区间从 0 到 1
+  #expand = c(0, 0)                  # 不额外留白（可选）
+  )+
+
+  theme_bw(base_family = ""TimesNewRoman"") +
+  theme(
+    text = element_text(family = ""fangSong""),
+    axis.title = element_text(family = ""fangSong"", size = 14),
+    legend.title = element_text(family = ""fangSong"", size = 12),  # 图例标题
+    legend.text = element_text(family = ""fangSong"", size = 10),   # 图例标签
+    legend.position = ""bottom"",
+    plot.margin = unit(c(1, 4, 1, 1), ""cm"")
+  ) +
+  guides(
+    color = guide_legend(ncol = 1),
+    linetype = guide_legend(ncol = 1)
+    #linetype = guide_legend(override.aes = list(color = ""black""))
+  )
+"
+"2","Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+Please use `linewidth` instead."
+"0",""
+"0","# 打印图表"
+"0","print(p_config_BECONS_BECOV)"

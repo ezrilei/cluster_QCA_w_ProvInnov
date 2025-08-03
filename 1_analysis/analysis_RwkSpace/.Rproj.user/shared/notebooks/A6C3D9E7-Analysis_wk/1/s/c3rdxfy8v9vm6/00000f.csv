@@ -1,3 +1,0 @@
-"0","df.input <- readxl::read_excel(path = ""./input/input4.xlsx"","
-"0","                               sheet = 1"
-"0","                               )"

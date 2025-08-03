@@ -1,0 +1,59 @@
+"0","
+# store to pdf (create a pdf device) ---------------
+# pdf(file = ""./output_manual/组间一致性水平趋势图.pdf"", width = 10, height = 8)
+pdf(file = ""./output/【Analysis_wk】3.充分性分析_组间一致性变化趋势图.pdf"", width = 10, height = 8)
+
+p_config_BECONS <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECONS, group = PATHWAY, color = PATHWAY)) +
+  geom_line() +
+  geom_point() +
+  # geom_hline(yintercept = 0.90, linetype = ""dashed"", color = ""black"") +
+  scale_x_discrete() +
+  #scale_y_continuous(
+  #  breaks = seq(0.0, 1.0, by = 0.1),
+  #  limits = c(0.0, 1.0),
+  #  expand = expansion(mult = c(0.01, 0.01))
+  #) +
+  labs(
+    x = ""年份"",
+    y = ""组间一致性"",
+    color = ""因果路径""
+  ) +
+  theme_bw(base_family = ""SongTi"") +
+  theme(
+    axis.title = element_text(family = ""SongTi"", size = 14),
+    legend.title = element_text(family = ""SongTi"", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), ""cm""),
+    legend.position = ""bottom""
+  ) +
+  # guides(color = guide_legend(ncol = 1))  #+ # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = ""SongTi"",
+    data = label_data,
+    aes(label = PATHWAY),
+    nudge_x = 0.5,             # 向右偏移
+    direction = ""y"",           # 避免上下重叠
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    #force = 0.6,              # 避让强度降低，避免推太远
+    #force_pull = 0.3,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 ""a""
+  )
+
+print(p_config_BECONS)
+dev.off()
+"
+"1","null device "
+"1","
+"
+"1","          1 "
+"1","
+"
+"0","p_config_BECONS"
+"0",""

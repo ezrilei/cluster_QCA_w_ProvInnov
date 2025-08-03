@@ -1,5 +1,0 @@
-"0",""
-"0","writexl::write_xlsx(x = summary_table, path = ""./output/【Analysis_4】2.必要性分析_summary_table.xlsx"")"
-"0","writexl::write_xlsx(x = yearly_table, path = ""./output/【Analysis_4】2.必要性分析_yearly_table.xlsx"")"
-"0",""
-"0","summary_table"
