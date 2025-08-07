@@ -1077,8 +1077,10 @@ library(ggrepel)
 # show CN text
 library(showtext) #https://github.com/yixuan/showtext
 showtext_auto(enable = TRUE)
-font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
-font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+# font_add("fangSong", regular = "./fonts/方正仿宋_GBK.TTF") # <<<<<<<<<<<<<<
+# font_add("TimesNewRoman", regular = "./fonts/Times New Roman.ttf")
+font_add("SongTi", regular = "./fonts/ STSongti-Regular-SC.ttf")# <<<<<<<<<<<<<<
+
 
 # store to pdf (create a pdf device) ---------------
 # pdf(file = "./output_manual/组间一致性水平趋势图.pdf", width = 10, height = 8)
@@ -1101,21 +1103,21 @@ p_BECON_AdjDis_greater_0_2_Consistencies <- ggplot(
     x = "年份", 
     y = "组间一致性", 
     title = NULL,
-    shape = "条件组合",
-    linetype = "条件组合",
-    color = "条件组合"
+    shape = "“结果 / 条件”组合",
+    linetype = "“结果 / 条件”组合",
+    color = "“结果 / 条件”组合"
   ) +
-  theme_bw(base_family = "TimesNewRoman") + # 默认字体为 Times
+  theme_bw(base_family = "SongTi") + # 默认字体为 Times
   
   theme(
-    axis.title = element_text(family = "fangSong", size = 14),   # 坐标轴 title 用仿宋
-    legend.title = element_text(family = "fangSong", size = 13), # 图例   title 用仿宋
+    axis.title = element_text(family = "SongTi", size = 14),   # 坐标轴 title 用仿宋
+    legend.title = element_text(family = "SongTi", size = 13), # 图例   title 用仿宋
     plot.margin = unit(c(1, 4, 1, 1), "cm"),  # 右边多留点空间
     legend.position = "bottom"
   ) +
   # 添加标签：在最后一年（如 2023）右侧略微偏移
   geom_text_repel(
-    family = "TimesNewRoman",
+    family = "SongTi",
     data = label_data,
     aes(label = Config),
     nudge_x = 0.6,             # 向右偏移
