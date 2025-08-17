@@ -1734,6 +1734,33 @@
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
       "Repository": "CRAN"
     },
+    "ggradar": {
+      "Package": "ggradar",
+      "Version": "0.2",
+      "Source": "GitHub",
+      "Title": "Create radar charts using ggplot2",
+      "Authors@R": "person(given = \"Ricardo\", family = \"Bion\", role = c(\"aut\", \"cre\"), email = \"ricardo.bion@airbnb.com\")",
+      "Description": "This package exports the functionality of ggplot2 to create radar charts.",
+      "License": "GPL",
+      "Imports": [
+        "forcats",
+        "ggplot2"
+      ],
+      "Suggests": [
+        "testthat (>= 2.1.0)"
+      ],
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.1.1",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ggradar",
+      "RemoteUsername": "ricardo-bion",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "f99517ae4df2903d3dbd4116af91b24009a5ac93",
+      "NeedsCompilation": "no",
+      "Author": "Ricardo Bion [aut, cre]",
+      "Maintainer": "Ricardo Bion <ricardo.bion@airbnb.com>"
+    },
     "ggrepel": {
       "Package": "ggrepel",
       "Version": "0.9.6",
