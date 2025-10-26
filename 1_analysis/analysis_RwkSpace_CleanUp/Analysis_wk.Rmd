@@ -846,7 +846,7 @@ p_negY_negX7_all # 绘图
 
 # store to pdf (create a pdf device) 
 pdf(file = "./output/【Analysis_wk】2.必要性分析_汇总一致性大于0.9_且_汇总覆盖度大于0.5.pdf", 
-    width = 24, height = 8
+    width = 12, height = 4
     )
 
 # 3 张 ggplot 图
@@ -2736,7 +2736,9 @@ plot_PIMS_patch <- function(Region_Target) {
       axis.title = element_text(family = "SongTi", size = 14),
       legend.title = element_text(family = "SongTi", size = 12),
       # 图例标题
-      legend.text = element_text(family = "SongTi", size = 10),
+      legend.text = element_text(family = "SongTi", size = 12),# <<<<<<<<<<<<<<<<
+      axis.text.x = element_text(size = 12, face = "bold", family = "SongTi"),  # x轴：年份# <<<<<<<<<<<<<<<<
+      axis.text.y = element_text(size = 12, face = "bold", family = "SongTi"),  # y轴：数值# <<<<<<<<<<<<<<<<
       # 图例标签
       legend.position = "bottom",
       plot.margin = unit(c(1, 4, 1, 1), "cm")
@@ -2759,7 +2761,7 @@ plot_PIMS_patch <- function(Region_Target) {
       # 左对齐
       segment.color = NA,
       # 不显示连接线
-      size = 3.0,
+      size = 4.0, # <<<<<<<<<<<<<<<<
       box.padding = 0.3,
       point.padding = 0.05,
       force = 4,
@@ -2807,11 +2809,11 @@ plot_PIMS_patch <- function(Region_Target) {
     legend.text.size = 10,
     
     fill = TRUE,
-    fill.alpha = 0.075,
+    fill.alpha = 0.075#,
     
-    plot.title = paste0("路径隶属度演化（", region_target, "）")
+    #plot.title = paste0("路径隶属度演化（", region_target, "）")
   ) +
-    
+    labs(title = paste0("路径隶属度演化（", region_target, "）")) +
     #theme_bw(base_family = "TimesNewRoman") +
     theme(
       text = element_text(family = "SongTi"),
@@ -2829,8 +2831,31 @@ plot_PIMS_patch <- function(Region_Target) {
   # library(patchwork)
   
   # 移除 plot.margin
-  p1 <- p_case_pims + theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
-  p2 <- p_case_pims_radar + theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+  # p1 <- p_case_pims + theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+  # p2 <- p_case_pims_radar + theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+  p1 <- p_case_pims +
+    theme(
+      plot.margin = unit(c(0, 0, 0, 0), "cm"),
+      plot.tag = element_text(
+        size = 20,
+        face = "bold",
+        family = "SongTi"
+      )
+    ) +
+    labs(tag = "A")
+  
+  p2 <- p_case_pims_radar +
+    theme(
+      plot.margin = unit(c(0, 0, 0, 0), "cm"),
+      plot.tag = element_text(
+        size = 20,
+        face = "bold",
+        family = "SongTi"
+      )
+    ) +
+    labs(tag = "B")
+  
+  
   
   # 输出到 PDF 文件
 
@@ -2843,14 +2868,27 @@ plot_PIMS_patch <- function(Region_Target) {
   print(
     (p1 | p2) +
     plot_layout(ncol = 2,
-                widths = c(1, 1), 
+                widths = c(1, 1),
                 guides = "keep") &
-    theme(legend.position = "bottom")
+      theme(legend.position = "bottom")
   )
+
   
 
+  # print(
+  #   (p1 | p2) +
+  #     plot_layout(ncol = 2, widths = c(1, 1), guides = "keep") +
+  #     plot_annotation(
+  #       tag_levels = "A",
+  #       theme = theme(
+  #         legend.position = "bottom",
+  #         plot.title = element_text(size = 16, face = "bold", family = "SongTi"),
+  #         plot.tag = element_text(size = 16, face = "bold", family = "SongTi")
+  #         )
+  #       )
+  #   )
+
   dev.off()
-  
   
   
 }
