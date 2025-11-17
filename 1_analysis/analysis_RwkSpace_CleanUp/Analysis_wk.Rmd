@@ -3567,15 +3567,19 @@ get_intsol_negY_res_Final <- function(val.incl.cut, val.n.cut, val.pri.cut){
 ```{r}
 # 定义参数组合（±0.10范围内扰动）
 params <- list(
-  list(name = "Baseline",    incl = 0.75, pri = 0.60),
-  list(name = "HighHigh",    incl = 0.85, pri = 0.70),
-  list(name = "LowLow",      incl = 0.65, pri = 0.50),
-  list(name = "InclUp",      incl = 0.85, pri = 0.60),
-  list(name = "InclDown",    incl = 0.65, pri = 0.60),
-  list(name = "PRIUp",       incl = 0.75, pri = 0.70),
-  list(name = "PRIDown",     incl = 0.75, pri = 0.50),
-  list(name = "InclUpPRIDown", incl = 0.85, pri = 0.50),
-  list(name = "InclDownPRIUp", incl = 0.65, pri = 0.70)
+  list(name = "Baseline", incl = 0.75, pri = 0.60, n = 2),
+  
+  list(name = "InclUp1",  incl = 0.80, pri = 0.60, n = 2),
+  list(name = "InclUp2",  incl = 0.85, pri = 0.60, n = 2),
+  list(name = "InclUp3",  incl = 0.90, pri = 0.60, n = 2),
+  
+  list(name = "PRIUp1",   incl = 0.75, pri = 0.65, n = 2),
+  list(name = "PRIUp2",   incl = 0.75, pri = 0.70, n = 2),
+  list(name = "PRIUp3",   incl = 0.75, pri = 0.75, n = 2),
+  
+  list(name = "nUp1",   incl = 0.75, pri = 0.60, n = 3),
+  list(name = "nUp2",   incl = 0.75, pri = 0.65, n = 4),
+  list(name = "nUp3",   incl = 0.75, pri = 0.70, n = 5)
 )
 
 lapply(params, function(param) {
@@ -3585,11 +3589,11 @@ lapply(params, function(param) {
   # 正向路径分析
   get_intsol_Y_res_Final(val.incl.cut = param$incl, 
                          val.pri.cut = param$pri, 
-                         val.n.cut = 2)
+                         val.n.cut = param$n)
   # 反向路径分析
   get_intsol_negY_res_Final(val.incl.cut = param$incl, 
                             val.pri.cut = param$pri, 
-                            val.n.cut = 2)
+                            val.n.cut = param$n)
 })
 
 
@@ -3645,25 +3649,9 @@ get_intsol_negY_res_Final(val.incl.cut = 0.75,
 ```
 
 
-```{r}
-get_intsol_Y_res_Final(val.incl.cut = 0.75,
-                       val.n.cut = 3,
-                       val.pri.cut = 0.60)
 
-get_intsol_negY_res_Final(val.incl.cut = 0.75,
-                          val.n.cut = 3,
-                          val.pri.cut = 0.60)
-```
 
-```{r}
-get_intsol_Y_res_Final(val.incl.cut = 0.75,
-                       val.n.cut = 4,
-                       val.pri.cut = 0.60)
 
-get_intsol_negY_res_Final(val.incl.cut = 0.75,
-                          val.n.cut = 4,
-                          val.pri.cut = 0.60)
-```
 
 
 
