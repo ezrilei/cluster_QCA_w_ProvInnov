@@ -2192,7 +2192,7 @@ final_plot2 # 输出到Rstudio Plots里 看一眼
 
 
 ### Truthtable all row - for test
-```{r eval=FALSE, include=FALSE}
+```{r}
 tt_test <- QCA::truthTable(data = df.Fuzzy.case, 
                         outcome = "Y", 
                         conditions = conditions, 
