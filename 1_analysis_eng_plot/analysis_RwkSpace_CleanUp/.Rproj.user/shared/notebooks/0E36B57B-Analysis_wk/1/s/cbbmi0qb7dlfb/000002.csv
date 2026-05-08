@@ -1,0 +1,30 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHRfWSA8LSBRQ0E6OnRydXRoVGFibGUoZGF0YSA9IGRmLkZ1enp5LmNhc2UsIFxuICAgICAgICAgICAgICAgICAgICAgICAgb3V0Y29tZSA9IFwiWVwiLCBcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbmRpdGlvbnMgPSBjb25kaXRpb25zLCBcbiAgICAgICAgICAgICAgICAgICAgICAgIGluY2wuY3V0ID0gMC43NSwgbi5jdXQgPSAyLCBwcmkuY3V0ID0gMC42LCBcbiAgICAgICAgICAgICAgICAgICAgICAgIHNob3cuY2FzZXMgPSBUUlVFLFxuICAgICAgICAgICAgICAgICAgICAgICAgc29ydC5ieSA9IFwiT1VUXCJcbiAgICAgICAgICAgICAgICAgICAgICAgIClcblxudHRfWVxuXG5gYGAifQ== -->
+
+```r
+tt_Y <- QCA::truthTable(data = df.Fuzzy.case, 
+                        outcome = \"Y\", 
+                        conditions = conditions, 
+                        incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                        show.cases = TRUE,
+                        sort.by = \"OUT\"
+                        )
+
+tt_Y
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+tt_Y <- QCA::truthTable(data = df.Fuzzy.case, 
+                        outcome = \"Y\", 
+                        conditions = conditions, 
+                        incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                        show.cases = TRUE,
+                        sort.by = \"OUT\"
+                        )
+
+tt_Y
+
+```"

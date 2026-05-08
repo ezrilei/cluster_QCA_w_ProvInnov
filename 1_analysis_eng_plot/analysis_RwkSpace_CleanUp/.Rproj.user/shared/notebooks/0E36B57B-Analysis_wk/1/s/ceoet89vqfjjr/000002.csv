@@ -1,0 +1,84 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxuXG4jIHNob3cgQ04gdGV4dFxubGlicmFyeShzaG93dGV4dCkgI2h0dHBzOi8vZ2l0aHViLmNvbS95aXh1YW4vc2hvd3RleHRcbnNob3d0ZXh0X2F1dG8oZW5hYmxlID0gVFJVRSlcbmZvbnRfYWRkKFwiZmFuZ1NvbmdcIiwgcmVndWxhciA9IFwiLi9mb250cy/mlrnmraPku7/lrotfR0JLLlRURlwiKSAjIDw8PDw8PDw8PDw8PDw8XG5mb250X2FkZChcIlRpbWVzTmV3Um9tYW5cIiwgcmVndWxhciA9IFwiLi9mb250cy9UaW1lcyBOZXcgUm9tYW4udHRmXCIpXG5cblxuIyBzdG9yZSB0byBwZGYgKGNyZWF0ZSBhIHBkZiBkZXZpY2UpIC0tLS0tLS0tLS0tLS0tLVxuIyBwZGYoZmlsZSA9IFwiLi9vdXRwdXRfbWFudWFsL+e7hOmXtOS4gOiHtOaAp+awtOW5s+i2i+WKv+Wbvi5wZGZcIiwgd2lkdGggPSAxMCwgaGVpZ2h0ID0gOClcbnBkZihmaWxlID0gXCIuL291dHB1dC/jgJBBbmFseXNpc193a+OAkTMu5YWF5YiG5oCn5YiG5p6QX+e7hOWGheS4gOiHtOaAp+eDreWKm+Wbvi5wZGZcIiwgd2lkdGggPSAxNiwgaGVpZ2h0ID0gMi44KVxuXG5cbnBfY29uZmlnX1dJQ09OUyA8LSBnZ3Bsb3QoZGZfY2x1c3Rlcl9kYXRhX2FsbFlfV0lDT05TLCBhZXMoeCA9IFBST1ZTLCB5ID0gQ09ORklHLCBmaWxsID0gV0lDT05TKSkgK1xuICBnZW9tX3RpbGUoY29sb3IgPSBcIndoaXRlXCIpICtcbiAgZ2VvbV90ZXh0KGFlcyhsYWJlbCA9IHNwcmludGYoXCIlLjJmXCIsIFdJQ09OUykpLCAgIyBXSUNPTlMg5L+d55WZMuS9jVxuICAgICAgICAgICAgc2l6ZSA9IDMsIFxuICAgICAgICAgICAgZmFtaWx5ID0gXCJUaW1lc05ld1JvbWFuXCIpICsgICMgPDw8IOeUqFRpbWVzTmV3Um9tYW7mmL7npLrmlbDlgLxcbiAgc2NhbGVfZmlsbF9ncmFkaWVudDIoXG4gICAgI2xvdyA9IFwiIzQ1NzViNFwiLCBtaWQgPSBcIiNmY2ZkYzRcIiwgaGlnaCA9IFwiI2Q5MzUyYVwiLCBtaWRwb2ludCA9IDAuNzUsXG4gICAgbG93ID0gXCIjZDkzNTJhXCIsIG1pZCA9IFwiI2ZjZmRjNFwiLCBoaWdoID0gXCIjNDU3NWI0XCIsIG1pZHBvaW50ID0gMC43NSxcbiAgICBuYW1lID0gXCLnu4TlhoXkuIDoh7TmgKfvvIhXSUNPTlPvvIlcIlxuICApICtcbiAgdGhlbWVfbWluaW1hbCgpICtcbiAgdGhlbWUoXG4gICAgYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA0NSwgaGp1c3QgPSAxKSxcbiAgICBwYW5lbC5ncmlkID0gZWxlbWVudF9ibGFuaygpLFxuICAgIHRleHQgPSBlbGVtZW50X3RleHQoZmFtaWx5ID0gXCJmYW5nU29uZ1wiKSAgIyDorr7nva7lhajlsYDlrZfkvZPkuLrku7/lrotcbiAgKSArXG4gIGxhYnMoeCA9IFwi55yB5Lu9XCIsIHkgPSBcIuWboOaenOi3r+W+hO+8iENPTkZJR++8iVwiLCB0aXRsZSA9IFwi5ZCE5Zug5p6c6Lev5b6E5Zyo5LiN5ZCM55yB5Lu955qE57uE5YaF5LiA6Ie05oCn54Ot5Zu+XCIpXG5cbnByaW50KHBfY29uZmlnX1dJQ09OUylcbmRldi5vZmYoKVxuXG5wX2NvbmZpZ19XSUNPTlNcblxuYGBgIn0= -->
+
+```r
+library(ggplot2)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = \"./output_manual/组间一致性水平趋势图.pdf\", width = 10, height = 8)
+pdf(file = \"./output/【Analysis_wk】3.充分性分析_组内一致性热力图.pdf\", width = 16, height = 2.8)
+
+
+p_config_WICONS <- ggplot(df_cluster_data_allY_WICONS, aes(x = PROVS, y = CONFIG, fill = WICONS)) +
+  geom_tile(color = \"white\") +
+  geom_text(aes(label = sprintf(\"%.2f\", WICONS)),  # WICONS 保留2位
+            size = 3, 
+            family = \"TimesNewRoman\") +  # <<< 用TimesNewRoman显示数值
+  scale_fill_gradient2(
+    #low = \"#4575b4\", mid = \"#fcfdc4\", high = \"#d9352a\", midpoint = 0.75,
+    low = \"#d9352a\", mid = \"#fcfdc4\", high = \"#4575b4\", midpoint = 0.75,
+    name = \"组内一致性（WICONS）\"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid = element_blank(),
+    text = element_text(family = \"fangSong\")  # 设置全局字体为仿宋
+  ) +
+  labs(x = \"省份\", y = \"因果路径（CONFIG）\", title = \"各因果路径在不同省份的组内一致性热图\")
+
+print(p_config_WICONS)
+dev.off()
+
+p_config_WICONS
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+library(ggplot2)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = \"./output_manual/组间一致性水平趋势图.pdf\", width = 10, height = 8)
+pdf(file = \"./output/【Analysis_wk】3.充分性分析_组内一致性热力图.pdf\", width = 16, height = 2.8)
+
+
+p_config_WICONS <- ggplot(df_cluster_data_allY_WICONS, aes(x = PROVS, y = CONFIG, fill = WICONS)) +
+  geom_tile(color = \"white\") +
+  geom_text(aes(label = sprintf(\"%.2f\", WICONS)),  # WICONS 保留2位
+            size = 3, 
+            family = \"TimesNewRoman\") +  # <<< 用TimesNewRoman显示数值
+  scale_fill_gradient2(
+    #low = \"#4575b4\", mid = \"#fcfdc4\", high = \"#d9352a\", midpoint = 0.75,
+    low = \"#d9352a\", mid = \"#fcfdc4\", high = \"#4575b4\", midpoint = 0.75,
+    name = \"组内一致性（WICONS）\"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid = element_blank(),
+    text = element_text(family = \"fangSong\")  # 设置全局字体为仿宋
+  ) +
+  labs(x = \"省份\", y = \"因果路径（CONFIG）\", title = \"各因果路径在不同省份的组内一致性热图\")
+
+print(p_config_WICONS)
+dev.off()
+
+p_config_WICONS
+
+```"

@@ -1,0 +1,12 @@
+"0","```r
+yearly_table
+```"
+"0","```r
+NA
+```"
+"0","```r
+summary_table_POCON_POCOV <- summary_table %>%
+  filter(Pooled_Consistency > 0.9 & Pooled_Coverage > 0.5)
+
+print(summary_table_POCON_POCOV)
+```"

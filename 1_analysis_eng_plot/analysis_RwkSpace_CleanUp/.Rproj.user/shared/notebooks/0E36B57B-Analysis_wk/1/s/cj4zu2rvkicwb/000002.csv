@@ -1,0 +1,102 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIFlcbmRmX2NsdXN0ZXJfZGF0YV9ZX1dJQ09OUyA8LSBleHRyYWN0X2NvbmZpZ19XSUNPTlNfYnlfeWVhcihjbHVzdGVyX2RhdGFfWSkgJT4lXG4gIG11dGF0ZShDT05GSUcgPSBwYXN0ZTAoQ09ORklHLFwiIOKGkiBZXCIpKVxuXG4jIHByaW50KGRmX2NsdXN0ZXJfZGF0YV9ZX0JFQ09OUylcblxuXG4jIH5ZXG5kZl9jbHVzdGVyX2RhdGFfbmVnWV9XSUNPTlMgPC0gZXh0cmFjdF9jb25maWdfV0lDT05TX2J5X3llYXIoY2x1c3Rlcl9kYXRhX25lZ1kpICU+JVxuICBtdXRhdGUoQ09ORklHID0gcGFzdGUwKENPTkZJRyxcIiDihpIgfllcIikpXG5cbiMgcHJpbnQoZGZfY2x1c3Rlcl9kYXRhX25lZ1lfQkVDT05TKVxuXG4jIFkgYW5kIH5ZXG5kZl9jbHVzdGVyX2RhdGFfYWxsWV9XSUNPTlMgPC0gcmJpbmQoZGZfY2x1c3Rlcl9kYXRhX1lfV0lDT05TLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRmX2NsdXN0ZXJfZGF0YV9uZWdZX1dJQ09OU1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcblxuI3ByaW50KGRmX2NsdXN0ZXJfZGF0YV9hbGxZX1dJQ09OUylcblxuXG4jIOiuvuWumuecgeS7veeahOWbuuWumumhuuW6j1xuXG5wcm92X29yZGVyIDwtIGMoXG4gIFwi5YyX5LqsXCIsIFwi5aSp5rSlXCIsIFwi5rKz5YyXXCIsIFwi5bGx6KW/XCIsIFwi5YaF6JKZ5Y+kXCIsIFwi6L695a6BXCIsIFwi5ZCJ5p6XXCIsIFwi6buR6b6Z5rGfXCIsXG4gIFwi5LiK5rW3XCIsIFwi5rGf6IuPXCIsIFwi5rWZ5rGfXCIsIFwi5a6J5b69XCIsIFwi56aP5bu6XCIsIFwi5rGf6KW/XCIsIFwi5bGx5LicXCIsIFwi5rKz5Y2XXCIsIFxuICBcIua5luWMl1wiLCBcIua5luWNl1wiLCBcIuW5v+S4nFwiLCBcIuW5v+ilv1wiLCBcIua1t+WNl1wiLFxuICBcIumHjeW6hlwiLCBcIuWbm+W3nVwiLCBcIui0teW3nlwiLCBcIuS6keWNl1wiLCBcIuilv+iXj1wiLCBcbiAgXCLpmZXopb9cIiwgXCLnlJjogoNcIiwgXCLpnZLmtbdcIiwgXCLlroHlpI9cIiwgXCLmlrDnloZcIlxuKVxuXG4jIOaKiiBQUk9WUyDliJfovazmjaJmYWN0b3JcblxuZGZfY2x1c3Rlcl9kYXRhX2FsbFlfV0lDT05TJFBST1ZTIDwtIGZhY3RvcihkZl9jbHVzdGVyX2RhdGFfYWxsWV9XSUNPTlMkUFJPVlMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVscyA9IHByb3Zfb3JkZXJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuXG5cblxuIyDmjInnhaflm7rlrprnnIHku73pobrluo/mjpLluo9cbmRmX2NsdXN0ZXJfZGF0YV9hbGxZX1dJQ09OUyA8LSBkZl9jbHVzdGVyX2RhdGFfYWxsWV9XSUNPTlMgJT4lXG4gIGFycmFuZ2UoQ09ORklHLCBQUk9WUylcblxucHJpbnQoZGZfY2x1c3Rlcl9kYXRhX2FsbFlfV0lDT05TKVxuXG5gYGAifQ== -->
+
+```r
+
+# Y
+df_cluster_data_Y_WICONS <- extract_config_WICONS_by_year(cluster_data_Y) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → Y\"))
+
+# print(df_cluster_data_Y_BECONS)
+
+
+# ~Y
+df_cluster_data_negY_WICONS <- extract_config_WICONS_by_year(cluster_data_negY) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → ~Y\"))
+
+# print(df_cluster_data_negY_BECONS)
+
+# Y and ~Y
+df_cluster_data_allY_WICONS <- rbind(df_cluster_data_Y_WICONS,
+                                     df_cluster_data_negY_WICONS
+                                     )
+
+#print(df_cluster_data_allY_WICONS)
+
+
+# 设定省份的固定顺序
+
+prov_order <- c(
+  \"北京\", \"天津\", \"河北\", \"山西\", \"内蒙古\", \"辽宁\", \"吉林\", \"黑龙江\",
+  \"上海\", \"江苏\", \"浙江\", \"安徽\", \"福建\", \"江西\", \"山东\", \"河南\", 
+  \"湖北\", \"湖南\", \"广东\", \"广西\", \"海南\",
+  \"重庆\", \"四川\", \"贵州\", \"云南\", \"西藏\", 
+  \"陕西\", \"甘肃\", \"青海\", \"宁夏\", \"新疆\"
+)
+
+# 把 PROVS 列转换factor
+
+df_cluster_data_allY_WICONS$PROVS <- factor(df_cluster_data_allY_WICONS$PROVS,
+                                            levels = prov_order
+                                            )
+
+
+
+# 按照固定省份顺序排序
+df_cluster_data_allY_WICONS <- df_cluster_data_allY_WICONS %>%
+  arrange(CONFIG, PROVS)
+
+print(df_cluster_data_allY_WICONS)
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+# Y
+df_cluster_data_Y_WICONS <- extract_config_WICONS_by_year(cluster_data_Y) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → Y\"))
+
+# print(df_cluster_data_Y_BECONS)
+
+
+# ~Y
+df_cluster_data_negY_WICONS <- extract_config_WICONS_by_year(cluster_data_negY) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → ~Y\"))
+
+# print(df_cluster_data_negY_BECONS)
+
+# Y and ~Y
+df_cluster_data_allY_WICONS <- rbind(df_cluster_data_Y_WICONS,
+                                     df_cluster_data_negY_WICONS
+                                     )
+
+#print(df_cluster_data_allY_WICONS)
+
+
+# 设定省份的固定顺序
+
+prov_order <- c(
+  \"北京\", \"天津\", \"河北\", \"山西\", \"内蒙古\", \"辽宁\", \"吉林\", \"黑龙江\",
+  \"上海\", \"江苏\", \"浙江\", \"安徽\", \"福建\", \"江西\", \"山东\", \"河南\", 
+  \"湖北\", \"湖南\", \"广东\", \"广西\", \"海南\",
+  \"重庆\", \"四川\", \"贵州\", \"云南\", \"西藏\", 
+  \"陕西\", \"甘肃\", \"青海\", \"宁夏\", \"新疆\"
+)
+
+# 把 PROVS 列转换factor
+
+df_cluster_data_allY_WICONS$PROVS <- factor(df_cluster_data_allY_WICONS$PROVS,
+                                            levels = prov_order
+                                            )
+
+
+
+# 按照固定省份顺序排序
+df_cluster_data_allY_WICONS <- df_cluster_data_allY_WICONS %>%
+  arrange(CONFIG, PROVS)
+
+print(df_cluster_data_allY_WICONS)
+
+```"

@@ -1,0 +1,486 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdF9QSU1TX3BhdGNoIDwtIGZ1bmN0aW9uKFJlZ2lvbl9UYXJnZXQpIHtcbiAgXG4gICMg5Yqg6L295YyFXG4gIGxpYnJhcnkoZHBseXIpXG4gIGxpYnJhcnkodGlkeXIpXG4gIGxpYnJhcnkoZ2dwbG90MilcbiAgbGlicmFyeShzdHJpbmdyKVxuICAjIGRldnRvb2xzOjppbnN0YWxsX2dpdGh1YihcInJpY2FyZG8tYmlvbi9nZ3JhZGFyXCIpXG4gIGxpYnJhcnkoZ2dyYWRhcilcbiAgbGlicmFyeShzY2FsZXMpXG4gIGxpYnJhcnkoc2hvd3RleHQpXG4gIGxpYnJhcnkocGF0Y2h3b3JrKVxuICBcbiAgIyDorr7lrprlnLDljLrlkI3np7DvvIjkvaDlj6rpnIDopoHmlLnov5nooYzvvIlcbiAgcmVnaW9uX3RhcmdldCA8LSBSZWdpb25fVGFyZ2V0XG4gIFxuICAjIOetm+mAieivpeWcsOWMuueahOaJgOacieahiOS+i++8iOWmgiDmuZbljJdfMjAxNuOAgea5luWMl18yMDE377yJXG4gIGRmX3BpbXNfcmVnaW9uIDwtIGRmX1BJTVMgJT4lXG4gICAgZmlsdGVyKHN0cmluZ3I6OnN0cl9kZXRlY3QoQ0FTRSwgcmVnaW9uX3RhcmdldCkpICU+JVxuICAgIG11dGF0ZShZRUFSID0gYXMuaW50ZWdlcihzdHJpbmdyOjpzdHJfZXh0cmFjdChDQVNFLCBcIlxcXFxkezR9XCIpKSkgICMg5o+Q5Y+W5bm05Lu9XG4gIFxuICAjIOaVsOaNrui9rOaNouS4uumVv+agvOW8j++8iOi3r+W+hOWBmuWPmOmHj++8jOaWueS+vyBnZ3Bsb3TvvIlcbiAgZGZfcGltc19yZWdpb25fbG9uZyA8LSBkZl9waW1zX3JlZ2lvbiAlPiVcbiAgICBwaXZvdF9sb25nZXIoY29scyA9IC1jKENBU0UsIFlFQVIpLFxuICAgICAgICAgICAgICAgICBuYW1lc190byA9IFwiQ09ORklHXCIsXG4gICAgICAgICAgICAgICAgIHZhbHVlc190byA9IFwiUElNU1wiKVxuICBcbiAgZGZfcGltc19yZWdpb25fbG9uZyA8LSBkZl9waW1zX3JlZ2lvbl9sb25nICU+JVxuICAgIG11dGF0ZShcbiAgICAgIFBBVEhXQVkgPSBjYXNlX3doZW4oXG4gICAgICAgIENPTkZJRyA9PSBcIlgxKlgzKlg0Klg1Klg3Klg4Klg54oaSWVwiIH4gXCLot6/lvoQxYVwiLFxuICAgICAgICBDT05GSUcgPT0gXCJYMSpYNCpYNSpYNipYNypYOCpYOeKGkllcIiB+IFwi6Lev5b6EMWJcIixcbiAgICAgICAgQ09ORklHID09IFwiWDEqWDIqWDMqWDQqWDUqflg2Klg3Klg44oaSWVwiIH4gXCLot6/lvoQyXCIsXG4gICAgICAgIENPTkZJRyA9PSBcIn5YMSp+WDMqflg0Kn5YNSp+WDcqflg4Kn5YOeKGkn5ZXCIgfiBcIui3r+W+hDNcIlxuICAgICAgKVxuICAgIClcbiAgXG4gIFxuICAjIOe7mOWbviAtLS0tXG4gIFxuICAjIHNob3cgQ04gdGV4dFxuICAjIGxpYnJhcnkoc2hvd3RleHQpICNodHRwczovL2dpdGh1Yi5jb20veWl4dWFuL3Nob3d0ZXh0XG4gIHNob3d0ZXh0X2F1dG8oZW5hYmxlID0gVFJVRSlcbiAgZm9udF9hZGQoXCJTb25nVGlcIiwgcmVndWxhciA9IFwiLi9mb250cy8gU1RTb25ndGktUmVndWxhci1TQy50dGZcIikjIDw8PDw8PDw8PDw8PDw8XG4gIFxuICAjIHRleHQgcmVwZWwgZGF0YVxuICBsYWJlbF9kYXRhIDwtIGRmX3BpbXNfcmVnaW9uX2xvbmcgJT4lXG4gICAgZ3JvdXBfYnkoUEFUSFdBWSkgJT4lXG4gICAgZmlsdGVyKFlFQVIgPT0gbWF4KFlFQVIpKSAlPiVcbiAgICB1bmdyb3VwKClcbiAgXG4gIFxuICAjIyBwbG90IGxpbmUgLS0tLS1cblxuICAjIOe7mOWbvu+8mui3r+W+hOmaj+aXtumXtOWPmOWMluWbvu+8iOavj+adoei3r+W+hOS4gOadoee6v++8iSAtLS0tXG4gIFxuICBwX2Nhc2VfcGltcyA8LVxuICAgIGdncGxvdChkZl9waW1zX3JlZ2lvbl9sb25nLCBhZXMoeCA9IFlFQVIsIHkgPSBQSU1TLCBjb2xvciA9IFBBVEhXQVkpKSArXG4gICAgZ2VvbV9saW5lKCkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgZ2VvbV9obGluZSh5aW50ZXJjZXB0ID0gMC41LFxuICAgICAgICAgICAgICAgbGluZXR5cGUgPSBcImRhc2hlZFwiLFxuICAgICAgICAgICAgICAgY29sb3IgPSBcImdyYXk1MFwiKSArXG4gICAgc2NhbGVfeV9jb250aW51b3VzKGxpbWl0cyA9IGMoMCwgMSkpICtcbiAgICBzY2FsZV94X2NvbnRpbnVvdXMoYnJlYWtzID0gc29ydCh1bmlxdWUoZGZfcGltc19yZWdpb25fbG9uZyRZRUFSKSkpICtcbiAgICBsYWJzKFxuICAgICAgdGl0bGUgPSBwYXN0ZTAoXCLot6/lvoTpmrblsZ7luqbmvJTljJZcIiwgXCLvvIhcIiwgcmVnaW9uX3RhcmdldCwgXCLvvIlcIiksXG4gICAgICAjc3VidGl0bGUgPSBcIuavj+adoee6v+S7o+ihqOS4gOS4qui3r+W+hOe7hOaAgeeahCBmdXp6eSBtZW1iZXJzaGlwIOWAvFwiLFxuICAgICAgeCA9IFwi5bm05Lu9XCIsXG4gICAgICB5ID0gXCLmqKHns4rpm4bpmrblsZ7luqblvpfliIZcIixcbiAgICAgIGNvbG9yID0gXCLlm6Dmnpzot6/lvoRcIlxuICAgICkgK1xuICAgIFxuICAgIHRoZW1lX2J3KGJhc2VfZmFtaWx5ID0gXCJTb25nVGlcIikgK1xuICAgIHRoZW1lKFxuICAgICAgdGV4dCA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiKSxcbiAgICAgIHBsb3QudGl0bGUgPSBlbGVtZW50X3RleHQoZmFtaWx5ID0gXCJTb25nVGlcIiwgc2l6ZSA9IDE4KSxcbiAgICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoZmFtaWx5ID0gXCJTb25nVGlcIiwgc2l6ZSA9IDE0KSxcbiAgICAgIGxlZ2VuZC50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiLCBzaXplID0gMTIpLFxuICAgICAgIyDlm77kvovmoIfpophcbiAgICAgIGxlZ2VuZC50ZXh0ID0gZWxlbWVudF90ZXh0KGZhbWlseSA9IFwiU29uZ1RpXCIsIHNpemUgPSAxMiksIyA8PDw8PDw8PDw8PDw8PDw8XG4gICAgICBheGlzLnRleHQueCA9IGVsZW1lbnRfdGV4dChzaXplID0gMTIsIGZhY2UgPSBcImJvbGRcIiwgZmFtaWx5ID0gXCJTb25nVGlcIiksICAjIHjovbTvvJrlubTku70jIDw8PDw8PDw8PDw8PDw8PDxcbiAgICAgIGF4aXMudGV4dC55ID0gZWxlbWVudF90ZXh0KHNpemUgPSAxMiwgZmFjZSA9IFwiYm9sZFwiLCBmYW1pbHkgPSBcIlNvbmdUaVwiKSwgICMgeei9tO+8muaVsOWAvCMgPDw8PDw8PDw8PDw8PDw8PFxuICAgICAgIyDlm77kvovmoIfnrb5cbiAgICAgIGxlZ2VuZC5wb3NpdGlvbiA9IFwiYm90dG9tXCIsXG4gICAgICBwbG90Lm1hcmdpbiA9IHVuaXQoYygxLCA0LCAxLCAxKSwgXCJjbVwiKVxuICAgICkgK1xuICAgICMgZ3VpZGVzKFxuICAgICMgICBjb2xvciA9IGd1aWRlX2xlZ2VuZChuY29sID0gMSlcbiAgICAjICAgI2xpbmV0eXBlID0gZ3VpZGVfbGVnZW5kKG5jb2wgPSAxKVxuICAgICMgICAjbGluZXR5cGUgPSBndWlkZV9sZWdlbmQob3ZlcnJpZGUuYWVzID0gbGlzdChjb2xvciA9IFwiYmxhY2tcIikpXG4gICAgIyApXG4gICAgIyDmt7vliqDmoIfnrb7vvJrlnKjmnIDlkI7kuIDlubTvvIjlpoIgMjAyM++8ieWPs+S+p+eVpeW+ruWBj+enu1xuICAgIGdlb21fdGV4dF9yZXBlbChcbiAgICAgIGZhbWlseSA9IFwiU29uZ1RpXCIsXG4gICAgICBkYXRhID0gbGFiZWxfZGF0YSxcbiAgICAgIGFlcyhsYWJlbCA9IFBBVEhXQVkpLFxuICAgICAgbnVkZ2VfeCA9IDAuNSxcbiAgICAgICMg5ZCR5Y+z5YGP56e7XG4gICAgICBkaXJlY3Rpb24gPSBcImJvdGhcIixcbiAgICAgICMg5YWB6K645LiK5LiL5bem5Y+z6YG/6K6pXG4gICAgICBoanVzdCA9IDAsXG4gICAgICAjIOW3puWvuem9kFxuICAgICAgc2VnbWVudC5jb2xvciA9IE5BLFxuICAgICAgIyDkuI3mmL7npLrov57mjqXnur9cbiAgICAgIHNpemUgPSA0LjAsICMgPDw8PDw8PDw8PDw8PDw8PFxuICAgICAgYm94LnBhZGRpbmcgPSAwLjMsXG4gICAgICBwb2ludC5wYWRkaW5nID0gMC4wNSxcbiAgICAgIGZvcmNlID0gNCxcbiAgICAgICMg5o6S5pal5by65bqm77yI5pu05by66YG/6K6p77yJXG4gICAgICBmb3JjZV9wdWxsID0gMC4yLFxuICAgICAgIyDlkLjlvJXlipvlop7lvLrvvIzpnaDov5Hnur/lsL5cbiAgICAgIG1heC5vdmVybGFwcyA9IEluZixcbiAgICAgIHNob3cubGVnZW5kID0gRkFMU0UgICAgICAgICMg5LiN55So5YW25Ye6546w5Zyo5Zu+5L6L77yMXG4gICAgICAjIOWmguaenOS4jeWRiuivieWFtuWmguS9leaYvuekuuWbvuS+i++8jOS8muWcqOWbvuS+i+WkhOavj+S4gOS4qmNvbmZpZ+WJjSDliqDpu5jorqTlm77kvovpobkgXCJhXCJcbiAgICApXG4gIFxuICAjIyBwbG90IHJhZGFyIC0tLS0tXG4gIFxuICBkZl9yYWRhciA8LSBkZl9waW1zX3JlZ2lvbl9sb25nICU+JVxuICAgIGdyb3VwX2J5KFBBVEhXQVksIFlFQVIpICU+JVxuICAgIHN1bW1hcmlzZShQSU1TID0gbWVhbihQSU1TLCBuYS5ybSA9IFRSVUUpLCAuZ3JvdXBzID0gXCJkcm9wXCIpICU+JVxuICAgIHBpdm90X3dpZGVyKG5hbWVzX2Zyb20gPSBZRUFSLCB2YWx1ZXNfZnJvbSA9IFBJTVMpXG4gIFxuICBkZl9yYWRhcltpcy5uYShkZl9yYWRhcildIDwtIDAgICMg5Y+v6YCJ5aSE55CG57y65aSx5YC8XG4gIFxuICAjIOe7mOWbvlxuICBwX2Nhc2VfcGltc19yYWRhciA8LSBnZ3JhZGFyKFxuICAgIGRmX3JhZGFyLFxuICAgIFxuICAgIGZvbnQucmFkYXIgPSBcIlNvbmdUaVwiLFxuICAgIFxuICAgICMgVGhlIGxhYmVscyBvZiB0aGUgZ3JpZFxuICAgIHZhbHVlcy5yYWRhciA9IGMoXCIwXCIsIFwiMC41XCIsIFwiMVwiKSxcbiAgICBncmlkLm1pbiA9IDAsXG4gICAgZ3JpZC5taWQgPSAwLjUsXG4gICAgZ3JpZC5tYXggPSAxLFxuICAgIGdyb3VwLmxpbmUud2lkdGggPSAwLjUsXG4gICAgZ3JvdXAucG9pbnQuc2l6ZSA9IDIsXG4gICAgYXhpcy5sYWJlbC5zaXplID0gNSxcbiAgICBcbiAgICBcbiAgICBiYWNrZ3JvdW5kLmNpcmNsZS5jb2xvdXIgPSBcIndoaXRlXCIsXG4gICAgYXhpcy5saW5lLmNvbG91ciA9IFwiZ3JheTYwXCIsXG4gICAgZ3JpZGxpbmUubWluLmNvbG91ciA9IFwiZ3JheTYwXCIsXG4gICAgZ3JpZGxpbmUubWlkLmNvbG91ciA9IFwiZ3JheTYwXCIsXG4gICAgZ3JpZGxpbmUubWF4LmNvbG91ciA9IFwiZ3JheTYwXCIsXG4gICAgZ3JvdXAuY29sb3VycyA9IGMoXCIjZjg3NjZkXCIsIFwiIzdjYWUwMFwiLCBcIiMwMGJmYzRcIiwgXCIjYzc3Y2ZmXCIpLFxuICAgIFxuICAgIGxlZ2VuZC5wb3NpdGlvbiA9IFwiYm90dG9tXCIsXG4gICAgbGVnZW5kLnRleHQuc2l6ZSA9IDEwLFxuICAgIFxuICAgIGZpbGwgPSBUUlVFLFxuICAgIGZpbGwuYWxwaGEgPSAwLjA3NSMsXG4gICAgXG4gICAgI3Bsb3QudGl0bGUgPSBwYXN0ZTAoXCLot6/lvoTpmrblsZ7luqbmvJTljJbvvIhcIiwgcmVnaW9uX3RhcmdldCwgXCLvvIlcIilcbiAgKSArXG4gICAgbGFicyh0aXRsZSA9IHBhc3RlMChcIui3r+W+hOmatuWxnuW6pua8lOWMlu+8iFwiLCByZWdpb25fdGFyZ2V0LCBcIu+8iVwiKSkgK1xuICAgICN0aGVtZV9idyhiYXNlX2ZhbWlseSA9IFwiVGltZXNOZXdSb21hblwiKSArXG4gICAgdGhlbWUoXG4gICAgICB0ZXh0ID0gZWxlbWVudF90ZXh0KGZhbWlseSA9IFwiU29uZ1RpXCIpLFxuICAgICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiLCBzaXplID0gMTQpLFxuICAgICAgbGVnZW5kLnRpdGxlID0gZWxlbWVudF90ZXh0KGZhbWlseSA9IFwiU29uZ1RpXCIsIHNpemUgPSAxMiksXG4gICAgICAjIOWbvuS+i+agh+mimFxuICAgICAgbGVnZW5kLnRleHQgPSBlbGVtZW50X3RleHQoZmFtaWx5ID0gXCJTb25nVGlcIiwgc2l6ZSA9IDEwKSxcbiAgICAgICMg5Zu+5L6L5qCH562+XG4gICAgICBsZWdlbmQucG9zaXRpb24gPSBcIm5vbmVcIiwgIyDkuI3mmL7npLogbGVnZW5kXG4gICAgICBwbG90LnRpdGxlID0gZWxlbWVudF9ibGFuaygpICMg5LiN5pi+56S6IHBsb3QgdGl0bGVcbiAgICApXG4gIFxuICAjIHBhdGNoIC0tLS0tXG4gIFxuICAjIGxpYnJhcnkocGF0Y2h3b3JrKVxuICBcbiAgIyDnp7vpmaQgcGxvdC5tYXJnaW5cbiAgIyBwMSA8LSBwX2Nhc2VfcGltcyArIHRoZW1lKHBsb3QubWFyZ2luID0gdW5pdChjKDAsIDAsIDAsIDApLCBcImNtXCIpKVxuICAjIHAyIDwtIHBfY2FzZV9waW1zX3JhZGFyICsgdGhlbWUocGxvdC5tYXJnaW4gPSB1bml0KGMoMCwgMCwgMCwgMCksIFwiY21cIikpXG4gIHAxIDwtIHBfY2FzZV9waW1zICtcbiAgICB0aGVtZShcbiAgICAgIHBsb3QubWFyZ2luID0gdW5pdChjKDAsIDAsIDAsIDApLCBcImNtXCIpLFxuICAgICAgcGxvdC50YWcgPSBlbGVtZW50X3RleHQoXG4gICAgICAgIHNpemUgPSAyMCxcbiAgICAgICAgZmFjZSA9IFwiYm9sZFwiLFxuICAgICAgICBmYW1pbHkgPSBcIlNvbmdUaVwiXG4gICAgICApXG4gICAgKSArXG4gICAgbGFicyh0YWcgPSBcIkFcIilcbiAgXG4gIHAyIDwtIHBfY2FzZV9waW1zX3JhZGFyICtcbiAgICB0aGVtZShcbiAgICAgIHBsb3QubWFyZ2luID0gdW5pdChjKDAsIDAsIDAsIDApLCBcImNtXCIpLFxuICAgICAgcGxvdC50YWcgPSBlbGVtZW50X3RleHQoXG4gICAgICAgIHNpemUgPSAyMCxcbiAgICAgICAgZmFjZSA9IFwiYm9sZFwiLFxuICAgICAgICBmYW1pbHkgPSBcIlNvbmdUaVwiXG4gICAgICApXG4gICAgKSArXG4gICAgbGFicyh0YWcgPSBcIkJcIilcbiAgXG4gIFxuICBcbiAgIyDovpPlh7rliLAgUERGIOaWh+S7tlxuXG4gIHBkZihmaWxlID0gcGFzdGUwKFwiLi9vdXRwdXQv44CQQW5hbHlzaXNfd2vjgJEzLuWFheWIhuaAp+WIhuaekF/ot6/lvoTmqKHns4rpm4bpmrblsZ7luqZfcGF0Y2jvvIhcIiwgXG4gICAgICAgICAgICAgICAgICAgIHJlZ2lvbl90YXJnZXQsIFxuICAgICAgICAgICAgICAgICAgICBcIu+8iS5wZGZcIiksXG4gICAgICB3aWR0aCA9IDE0LjUsXG4gICAgICBoZWlnaHQgPSA3KVxuICBcbiAgcHJpbnQoXG4gICAgKHAxIHwgcDIpICtcbiAgICBwbG90X2xheW91dChuY29sID0gMixcbiAgICAgICAgICAgICAgICB3aWR0aHMgPSBjKDEsIDEpLFxuICAgICAgICAgICAgICAgIGd1aWRlcyA9IFwia2VlcFwiKSAmXG4gICAgICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSBcImJvdHRvbVwiKVxuICApXG5cbiAgXG5cbiAgIyBwcmludChcbiAgIyAgIChwMSB8IHAyKSArXG4gICMgICAgIHBsb3RfbGF5b3V0KG5jb2wgPSAyLCB3aWR0aHMgPSBjKDEsIDEpLCBndWlkZXMgPSBcImtlZXBcIikgK1xuICAjICAgICBwbG90X2Fubm90YXRpb24oXG4gICMgICAgICAgdGFnX2xldmVscyA9IFwiQVwiLFxuICAjICAgICAgIHRoZW1lID0gdGhlbWUoXG4gICMgICAgICAgICBsZWdlbmQucG9zaXRpb24gPSBcImJvdHRvbVwiLFxuICAjICAgICAgICAgcGxvdC50aXRsZSA9IGVsZW1lbnRfdGV4dChzaXplID0gMTYsIGZhY2UgPSBcImJvbGRcIiwgZmFtaWx5ID0gXCJTb25nVGlcIiksXG4gICMgICAgICAgICBwbG90LnRhZyA9IGVsZW1lbnRfdGV4dChzaXplID0gMTYsIGZhY2UgPSBcImJvbGRcIiwgZmFtaWx5ID0gXCJTb25nVGlcIilcbiAgIyAgICAgICAgIClcbiAgIyAgICAgICApXG4gICMgICApXG5cbiAgZGV2Lm9mZigpXG4gIFxuICBcbn1cblxuXG5gYGAifQ== -->
+
+```r
+plot_PIMS_patch <- function(Region_Target) {
+  
+  # 加载包
+  library(dplyr)
+  library(tidyr)
+  library(ggplot2)
+  library(stringr)
+  # devtools::install_github(\"ricardo-bion/ggradar\")
+  library(ggradar)
+  library(scales)
+  library(showtext)
+  library(patchwork)
+  
+  # 设定地区名称（你只需要改这行）
+  region_target <- Region_Target
+  
+  # 筛选该地区的所有案例（如 湖北_2016、湖北_2017）
+  df_pims_region <- df_PIMS %>%
+    filter(stringr::str_detect(CASE, region_target)) %>%
+    mutate(YEAR = as.integer(stringr::str_extract(CASE, \"\\d{4}\")))  # 提取年份
+  
+  # 数据转换为长格式（路径做变量，方便 ggplot）
+  df_pims_region_long <- df_pims_region %>%
+    pivot_longer(cols = -c(CASE, YEAR),
+                 names_to = \"CONFIG\",
+                 values_to = \"PIMS\")
+  
+  df_pims_region_long <- df_pims_region_long %>%
+    mutate(
+      PATHWAY = case_when(
+        CONFIG == \"X1*X3*X4*X5*X7*X8*X9→Y\" ~ \"路径1a\",
+        CONFIG == \"X1*X4*X5*X6*X7*X8*X9→Y\" ~ \"路径1b\",
+        CONFIG == \"X1*X2*X3*X4*X5*~X6*X7*X8→Y\" ~ \"路径2\",
+        CONFIG == \"~X1*~X3*~X4*~X5*~X7*~X8*~X9→~Y\" ~ \"路径3\"
+      )
+    )
+  
+  
+  # 绘图 ----
+  
+  # show CN text
+  # library(showtext) #https://github.com/yixuan/showtext
+  showtext_auto(enable = TRUE)
+  font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+  
+  # text repel data
+  label_data <- df_pims_region_long %>%
+    group_by(PATHWAY) %>%
+    filter(YEAR == max(YEAR)) %>%
+    ungroup()
+  
+  
+  ## plot line -----
+
+  # 绘图：路径随时间变化图（每条路径一条线） ----
+  
+  p_case_pims <-
+    ggplot(df_pims_region_long, aes(x = YEAR, y = PIMS, color = PATHWAY)) +
+    geom_line() +
+    geom_point() +
+    geom_hline(yintercept = 0.5,
+               linetype = \"dashed\",
+               color = \"gray50\") +
+    scale_y_continuous(limits = c(0, 1)) +
+    scale_x_continuous(breaks = sort(unique(df_pims_region_long$YEAR))) +
+    labs(
+      title = paste0(\"路径隶属度演化\", \"（\", region_target, \"）\"),
+      #subtitle = \"每条线代表一个路径组态的 fuzzy membership 值\",
+      x = \"年份\",
+      y = \"模糊集隶属度得分\",
+      color = \"因果路径\"
+    ) +
+    
+    theme_bw(base_family = \"SongTi\") +
+    theme(
+      text = element_text(family = \"SongTi\"),
+      plot.title = element_text(family = \"SongTi\", size = 18),
+      axis.title = element_text(family = \"SongTi\", size = 14),
+      legend.title = element_text(family = \"SongTi\", size = 12),
+      # 图例标题
+      legend.text = element_text(family = \"SongTi\", size = 12),# <<<<<<<<<<<<<<<<
+      axis.text.x = element_text(size = 12, face = \"bold\", family = \"SongTi\"),  # x轴：年份# <<<<<<<<<<<<<<<<
+      axis.text.y = element_text(size = 12, face = \"bold\", family = \"SongTi\"),  # y轴：数值# <<<<<<<<<<<<<<<<
+      # 图例标签
+      legend.position = \"bottom\",
+      plot.margin = unit(c(1, 4, 1, 1), \"cm\")
+    ) +
+    # guides(
+    #   color = guide_legend(ncol = 1)
+    #   #linetype = guide_legend(ncol = 1)
+    #   #linetype = guide_legend(override.aes = list(color = \"black\"))
+    # )
+    # 添加标签：在最后一年（如 2023）右侧略微偏移
+    geom_text_repel(
+      family = \"SongTi\",
+      data = label_data,
+      aes(label = PATHWAY),
+      nudge_x = 0.5,
+      # 向右偏移
+      direction = \"both\",
+      # 允许上下左右避让
+      hjust = 0,
+      # 左对齐
+      segment.color = NA,
+      # 不显示连接线
+      size = 4.0, # <<<<<<<<<<<<<<<<
+      box.padding = 0.3,
+      point.padding = 0.05,
+      force = 4,
+      # 排斥强度（更强避让）
+      force_pull = 0.2,
+      # 吸引力增强，靠近线尾
+      max.overlaps = Inf,
+      show.legend = FALSE        # 不用其出现在图例，
+      # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 \"a\"
+    )
+  
+  ## plot radar -----
+  
+  df_radar <- df_pims_region_long %>%
+    group_by(PATHWAY, YEAR) %>%
+    summarise(PIMS = mean(PIMS, na.rm = TRUE), .groups = \"drop\") %>%
+    pivot_wider(names_from = YEAR, values_from = PIMS)
+  
+  df_radar[is.na(df_radar)] <- 0  # 可选处理缺失值
+  
+  # 绘图
+  p_case_pims_radar <- ggradar(
+    df_radar,
+    
+    font.radar = \"SongTi\",
+    
+    # The labels of the grid
+    values.radar = c(\"0\", \"0.5\", \"1\"),
+    grid.min = 0,
+    grid.mid = 0.5,
+    grid.max = 1,
+    group.line.width = 0.5,
+    group.point.size = 2,
+    axis.label.size = 5,
+    
+    
+    background.circle.colour = \"white\",
+    axis.line.colour = \"gray60\",
+    gridline.min.colour = \"gray60\",
+    gridline.mid.colour = \"gray60\",
+    gridline.max.colour = \"gray60\",
+    group.colours = c(\"#f8766d\", \"#7cae00\", \"#00bfc4\", \"#c77cff\"),
+    
+    legend.position = \"bottom\",
+    legend.text.size = 10,
+    
+    fill = TRUE,
+    fill.alpha = 0.075#,
+    
+    #plot.title = paste0(\"路径隶属度演化（\", region_target, \"）\")
+  ) +
+    labs(title = paste0(\"路径隶属度演化（\", region_target, \"）\")) +
+    #theme_bw(base_family = \"TimesNewRoman\") +
+    theme(
+      text = element_text(family = \"SongTi\"),
+      axis.title = element_text(family = \"SongTi\", size = 14),
+      legend.title = element_text(family = \"SongTi\", size = 12),
+      # 图例标题
+      legend.text = element_text(family = \"SongTi\", size = 10),
+      # 图例标签
+      legend.position = \"none\", # 不显示 legend
+      plot.title = element_blank() # 不显示 plot title
+    )
+  
+  # patch -----
+  
+  # library(patchwork)
+  
+  # 移除 plot.margin
+  # p1 <- p_case_pims + theme(plot.margin = unit(c(0, 0, 0, 0), \"cm\"))
+  # p2 <- p_case_pims_radar + theme(plot.margin = unit(c(0, 0, 0, 0), \"cm\"))
+  p1 <- p_case_pims +
+    theme(
+      plot.margin = unit(c(0, 0, 0, 0), \"cm\"),
+      plot.tag = element_text(
+        size = 20,
+        face = \"bold\",
+        family = \"SongTi\"
+      )
+    ) +
+    labs(tag = \"A\")
+  
+  p2 <- p_case_pims_radar +
+    theme(
+      plot.margin = unit(c(0, 0, 0, 0), \"cm\"),
+      plot.tag = element_text(
+        size = 20,
+        face = \"bold\",
+        family = \"SongTi\"
+      )
+    ) +
+    labs(tag = \"B\")
+  
+  
+  
+  # 输出到 PDF 文件
+
+  pdf(file = paste0(\"./output/【Analysis_wk】3.充分性分析_路径模糊集隶属度_patch（\", 
+                    region_target, 
+                    \"）.pdf\"),
+      width = 14.5,
+      height = 7)
+  
+  print(
+    (p1 | p2) +
+    plot_layout(ncol = 2,
+                widths = c(1, 1),
+                guides = \"keep\") &
+      theme(legend.position = \"bottom\")
+  )
+
+  
+
+  # print(
+  #   (p1 | p2) +
+  #     plot_layout(ncol = 2, widths = c(1, 1), guides = \"keep\") +
+  #     plot_annotation(
+  #       tag_levels = \"A\",
+  #       theme = theme(
+  #         legend.position = \"bottom\",
+  #         plot.title = element_text(size = 16, face = \"bold\", family = \"SongTi\"),
+  #         plot.tag = element_text(size = 16, face = \"bold\", family = \"SongTi\")
+  #         )
+  #       )
+  #   )
+
+  dev.off()
+  
+  
+}
+
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+plot_PIMS_patch <- function(Region_Target) {
+  
+  # 加载包
+  library(dplyr)
+  library(tidyr)
+  library(ggplot2)
+  library(stringr)
+  # devtools::install_github(\"ricardo-bion/ggradar\")
+  library(ggradar)
+  library(scales)
+  library(showtext)
+  library(patchwork)
+  
+  # 设定地区名称（你只需要改这行）
+  region_target <- Region_Target
+  
+  # 筛选该地区的所有案例（如 湖北_2016、湖北_2017）
+  df_pims_region <- df_PIMS %>%
+    filter(stringr::str_detect(CASE, region_target)) %>%
+    mutate(YEAR = as.integer(stringr::str_extract(CASE, \"\\d{4}\")))  # 提取年份
+  
+  # 数据转换为长格式（路径做变量，方便 ggplot）
+  df_pims_region_long <- df_pims_region %>%
+    pivot_longer(cols = -c(CASE, YEAR),
+                 names_to = \"CONFIG\",
+                 values_to = \"PIMS\")
+  
+  df_pims_region_long <- df_pims_region_long %>%
+    mutate(
+      PATHWAY = case_when(
+        CONFIG == \"X1*X3*X4*X5*X7*X8*X9→Y\" ~ \"路径1a\",
+        CONFIG == \"X1*X4*X5*X6*X7*X8*X9→Y\" ~ \"路径1b\",
+        CONFIG == \"X1*X2*X3*X4*X5*~X6*X7*X8→Y\" ~ \"路径2\",
+        CONFIG == \"~X1*~X3*~X4*~X5*~X7*~X8*~X9→~Y\" ~ \"路径3\"
+      )
+    )
+  
+  
+  # 绘图 ----
+  
+  # show CN text
+  # library(showtext) #https://github.com/yixuan/showtext
+  showtext_auto(enable = TRUE)
+  font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+  
+  # text repel data
+  label_data <- df_pims_region_long %>%
+    group_by(PATHWAY) %>%
+    filter(YEAR == max(YEAR)) %>%
+    ungroup()
+  
+  
+  ## plot line -----
+
+  # 绘图：路径随时间变化图（每条路径一条线） ----
+  
+  p_case_pims <-
+    ggplot(df_pims_region_long, aes(x = YEAR, y = PIMS, color = PATHWAY)) +
+    geom_line() +
+    geom_point() +
+    geom_hline(yintercept = 0.5,
+               linetype = \"dashed\",
+               color = \"gray50\") +
+    scale_y_continuous(limits = c(0, 1)) +
+    scale_x_continuous(breaks = sort(unique(df_pims_region_long$YEAR))) +
+    labs(
+      title = paste0(\"路径隶属度演化\", \"（\", region_target, \"）\"),
+      #subtitle = \"每条线代表一个路径组态的 fuzzy membership 值\",
+      x = \"年份\",
+      y = \"模糊集隶属度得分\",
+      color = \"因果路径\"
+    ) +
+    
+    theme_bw(base_family = \"SongTi\") +
+    theme(
+      text = element_text(family = \"SongTi\"),
+      plot.title = element_text(family = \"SongTi\", size = 18),
+      axis.title = element_text(family = \"SongTi\", size = 14),
+      legend.title = element_text(family = \"SongTi\", size = 12),
+      # 图例标题
+      legend.text = element_text(family = \"SongTi\", size = 12),# <<<<<<<<<<<<<<<<
+      axis.text.x = element_text(size = 12, face = \"bold\", family = \"SongTi\"),  # x轴：年份# <<<<<<<<<<<<<<<<
+      axis.text.y = element_text(size = 12, face = \"bold\", family = \"SongTi\"),  # y轴：数值# <<<<<<<<<<<<<<<<
+      # 图例标签
+      legend.position = \"bottom\",
+      plot.margin = unit(c(1, 4, 1, 1), \"cm\")
+    ) +
+    # guides(
+    #   color = guide_legend(ncol = 1)
+    #   #linetype = guide_legend(ncol = 1)
+    #   #linetype = guide_legend(override.aes = list(color = \"black\"))
+    # )
+    # 添加标签：在最后一年（如 2023）右侧略微偏移
+    geom_text_repel(
+      family = \"SongTi\",
+      data = label_data,
+      aes(label = PATHWAY),
+      nudge_x = 0.5,
+      # 向右偏移
+      direction = \"both\",
+      # 允许上下左右避让
+      hjust = 0,
+      # 左对齐
+      segment.color = NA,
+      # 不显示连接线
+      size = 4.0, # <<<<<<<<<<<<<<<<
+      box.padding = 0.3,
+      point.padding = 0.05,
+      force = 4,
+      # 排斥强度（更强避让）
+      force_pull = 0.2,
+      # 吸引力增强，靠近线尾
+      max.overlaps = Inf,
+      show.legend = FALSE        # 不用其出现在图例，
+      # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 \"a\"
+    )
+  
+  ## plot radar -----
+  
+  df_radar <- df_pims_region_long %>%
+    group_by(PATHWAY, YEAR) %>%
+    summarise(PIMS = mean(PIMS, na.rm = TRUE), .groups = \"drop\") %>%
+    pivot_wider(names_from = YEAR, values_from = PIMS)
+  
+  df_radar[is.na(df_radar)] <- 0  # 可选处理缺失值
+  
+  # 绘图
+  p_case_pims_radar <- ggradar(
+    df_radar,
+    
+    font.radar = \"SongTi\",
+    
+    # The labels of the grid
+    values.radar = c(\"0\", \"0.5\", \"1\"),
+    grid.min = 0,
+    grid.mid = 0.5,
+    grid.max = 1,
+    group.line.width = 0.5,
+    group.point.size = 2,
+    axis.label.size = 5,
+    
+    
+    background.circle.colour = \"white\",
+    axis.line.colour = \"gray60\",
+    gridline.min.colour = \"gray60\",
+    gridline.mid.colour = \"gray60\",
+    gridline.max.colour = \"gray60\",
+    group.colours = c(\"#f8766d\", \"#7cae00\", \"#00bfc4\", \"#c77cff\"),
+    
+    legend.position = \"bottom\",
+    legend.text.size = 10,
+    
+    fill = TRUE,
+    fill.alpha = 0.075#,
+    
+    #plot.title = paste0(\"路径隶属度演化（\", region_target, \"）\")
+  ) +
+    labs(title = paste0(\"路径隶属度演化（\", region_target, \"）\")) +
+    #theme_bw(base_family = \"TimesNewRoman\") +
+    theme(
+      text = element_text(family = \"SongTi\"),
+      axis.title = element_text(family = \"SongTi\", size = 14),
+      legend.title = element_text(family = \"SongTi\", size = 12),
+      # 图例标题
+      legend.text = element_text(family = \"SongTi\", size = 10),
+      # 图例标签
+      legend.position = \"none\", # 不显示 legend
+      plot.title = element_blank() # 不显示 plot title
+    )
+  
+  # patch -----
+  
+  # library(patchwork)
+  
+  # 移除 plot.margin
+  # p1 <- p_case_pims + theme(plot.margin = unit(c(0, 0, 0, 0), \"cm\"))
+  # p2 <- p_case_pims_radar + theme(plot.margin = unit(c(0, 0, 0, 0), \"cm\"))
+  p1 <- p_case_pims +
+    theme(
+      plot.margin = unit(c(0, 0, 0, 0), \"cm\"),
+      plot.tag = element_text(
+        size = 20,
+        face = \"bold\",
+        family = \"SongTi\"
+      )
+    ) +
+    labs(tag = \"A\")
+  
+  p2 <- p_case_pims_radar +
+    theme(
+      plot.margin = unit(c(0, 0, 0, 0), \"cm\"),
+      plot.tag = element_text(
+        size = 20,
+        face = \"bold\",
+        family = \"SongTi\"
+      )
+    ) +
+    labs(tag = \"B\")
+  
+  
+  
+  # 输出到 PDF 文件
+
+  pdf(file = paste0(\"./output/【Analysis_wk】3.充分性分析_路径模糊集隶属度_patch（\", 
+                    region_target, 
+                    \"）.pdf\"),
+      width = 14.5,
+      height = 7)
+  
+  print(
+    (p1 | p2) +
+    plot_layout(ncol = 2,
+                widths = c(1, 1),
+                guides = \"keep\") &
+      theme(legend.position = \"bottom\")
+  )
+
+  
+
+  # print(
+  #   (p1 | p2) +
+  #     plot_layout(ncol = 2, widths = c(1, 1), guides = \"keep\") +
+  #     plot_annotation(
+  #       tag_levels = \"A\",
+  #       theme = theme(
+  #         legend.position = \"bottom\",
+  #         plot.title = element_text(size = 16, face = \"bold\", family = \"SongTi\"),
+  #         plot.tag = element_text(size = 16, face = \"bold\", family = \"SongTi\")
+  #         )
+  #       )
+  #   )
+
+  dev.off()
+  
+  
+}
+
+
+```"

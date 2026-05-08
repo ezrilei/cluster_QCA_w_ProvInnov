@@ -1,0 +1,30 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2x1c3Rlcl9kYXRhX25lZ1kgPC0gU2V0TWV0aG9kczo6Y2x1c3RlcihkYXRhID0gZGYuRnV6enkuY2FzZSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVzdWx0cyA9IGludHNvbF9uZWdZX2VzYSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb3V0Y29tZT1cIllcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5pdF9pZCA9IFwiSURcIiwgY2x1c3Rlcl9pZCA9IFwiWUVBUlwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzb2wgPSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB3aWNvbnMgPSBUUlVFXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcblxuY2x1c3Rlcl9kYXRhX25lZ1lcblxuYGBgIn0= -->
+
+```r
+cluster_data_negY <- SetMethods::cluster(data = df.Fuzzy.case,
+                                         results = intsol_negY_esa,
+                                         outcome=\"Y\",
+                                         unit_id = \"ID\", cluster_id = \"YEAR\",
+                                         sol = 1,
+                                         wicons = TRUE
+                                         )
+
+cluster_data_negY
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+cluster_data_negY <- SetMethods::cluster(data = df.Fuzzy.case,
+                                         results = intsol_negY_esa,
+                                         outcome=\"Y\",
+                                         unit_id = \"ID\", cluster_id = \"YEAR\",
+                                         sol = 1,
+                                         wicons = TRUE
+                                         )
+
+cluster_data_negY
+
+```"

@@ -1,0 +1,24 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2V0X2ludHNvbF9ZX3Jlc19GaW5hbCh2YWwuaW5jbC5jdXQgPSAwLjc1LFxuICAgICAgICAgICAgICAgICAgICAgICB2YWwubi5jdXQgPSAxLFxuICAgICAgICAgICAgICAgICAgICAgICB2YWwucHJpLmN1dCA9IDAuNjApXG5cbmdldF9pbnRzb2xfbmVnWV9yZXNfRmluYWwodmFsLmluY2wuY3V0ID0gMC43NSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsLm4uY3V0ID0gMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsLnByaS5jdXQgPSAwLjYwKVxuYGBgIn0= -->
+
+```r
+get_intsol_Y_res_Final(val.incl.cut = 0.75,
+                       val.n.cut = 1,
+                       val.pri.cut = 0.60)
+
+get_intsol_negY_res_Final(val.incl.cut = 0.75,
+                          val.n.cut = 1,
+                          val.pri.cut = 0.60)
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+get_intsol_Y_res_Final(val.incl.cut = 0.75,
+                       val.n.cut = 1,
+                       val.pri.cut = 0.60)
+
+get_intsol_negY_res_Final(val.incl.cut = 0.75,
+                          val.n.cut = 1,
+                          val.pri.cut = 0.60)
+```"

@@ -1,0 +1,158 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIHNob3cgQ04gdGV4dFxubGlicmFyeShzaG93dGV4dCkgI2h0dHBzOi8vZ2l0aHViLmNvbS95aXh1YW4vc2hvd3RleHRcbnNob3d0ZXh0X2F1dG8oZW5hYmxlID0gVFJVRSlcbmZvbnRfYWRkKFwiZmFuZ1NvbmdcIiwgcmVndWxhciA9IFwiLi9mb250cy/mlrnmraPku7/lrotfR0JLLlRURlwiKSAjIDw8PDw8PDw8PDw8PDw8XG5mb250X2FkZChcIlRpbWVzTmV3Um9tYW5cIiwgcmVndWxhciA9IFwiLi9mb250cy9UaW1lcyBOZXcgUm9tYW4udHRmXCIpXG5cbiMg5o+Q5Y+WIFBSSSDliJfvvIjljrvpmaQgTkHvvIktLS0tXG5wcmlfdmFsdWVzIDwtIG5hLm9taXQodHRfdGVzdF9UcnV0aFRhYmxlJFBSSSlcblxuIyDlj6/op4bljJYgUFJJIOeahOWIhuW4gyArIOWvhuW6puabsue6vyArIOiHqueEtuaWreeCueWPguiAg+e6v1xuZ2dwbG90KGRhdGEgPSBkYXRhLmZyYW1lKFBSSSA9IHByaV92YWx1ZXMpLCBhZXMoeCA9IFBSSSkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYWVzKHkgPSBhZnRlcl9zdGF0KGRlbnNpdHkpKSxcbiAgICAgICAgICAgICAgICAgYmlucyA9IDMwLFxuICAgICAgICAgICAgICAgICBmaWxsID0gXCIjNjliM2EyXCIsXG4gICAgICAgICAgICAgICAgIGFscGhhID0gMC43LFxuICAgICAgICAgICAgICAgICBjb2xvciA9IFwid2hpdGVcIikgK1xuICBnZW9tX2RlbnNpdHkoY29sb3IgPSBcIiMxZjc4YjRcIiwgc2l6ZSA9IDEuMiwgYWRqdXN0ID0gMSkgK1xuICBnZW9tX3ZsaW5lKHhpbnRlcmNlcHQgPSAwLjYsIFxuICAgICAgICAgICAgIGxpbmV0eXBlID0gXCJkYXNoZWRcIiwgXG4gICAgICAgICAgICAgY29sb3IgPSBcInJlZFwiLCBcbiAgICAgICAgICAgICBsaW5ld2lkdGggPSAxKSArXG4gIGxhYnMoXG4gICAgdGl0bGUgPSBcIlBSSSDlgLzliIbluIPlj4roh6rnhLbmlq3ngrnlj6/op4bljJZcIixcbiAgICB4ID0gXCJQUknvvIhQcm9wb3J0aW9uYWwgUmVkdWN0aW9uIGluIEluY29uc2lzdGVuY3nvvIlcIixcbiAgICB5ID0gXCLlr4bluqZcIlxuICApICtcbiAgdGhlbWVfbWluaW1hbChiYXNlX3NpemUgPSAxMylcblxuIyDmj5Dlj5YgaW5jbCDliJfvvIjljrvpmaQgTkHvvIktLS0tXG5pbmNsX3ZhbHVlcyA8LSBuYS5vbWl0KHR0X3Rlc3RfVHJ1dGhUYWJsZSRpbmNsKVxuXG4jIOWPr+inhuWMliBpbmNsIOeahOWIhuW4gyArIOWvhuW6puabsue6vyArIOiHqueEtuaWreeCueWPguiAg+e6v1xuZ2dwbG90KGRhdGEgPSBkYXRhLmZyYW1lKGluY2wgPSBpbmNsX3ZhbHVlcyksIGFlcyh4ID0gaW5jbCkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYWVzKHkgPSBhZnRlcl9zdGF0KGRlbnNpdHkpKSxcbiAgICAgICAgICAgICAgICAgYmlucyA9IDMwLFxuICAgICAgICAgICAgICAgICBmaWxsID0gXCIjNjliM2EyXCIsXG4gICAgICAgICAgICAgICAgIGFscGhhID0gMC43LFxuICAgICAgICAgICAgICAgICBjb2xvciA9IFwid2hpdGVcIikgK1xuICBnZW9tX2RlbnNpdHkoY29sb3IgPSBcIiMxZjc4YjRcIiwgc2l6ZSA9IDEuMiwgYWRqdXN0ID0gMSkgK1xuICBnZW9tX3ZsaW5lKHhpbnRlcmNlcHQgPSAwLjc1LCBcbiAgICAgICAgICAgICBsaW5ldHlwZSA9IFwiZGFzaGVkXCIsIFxuICAgICAgICAgICAgIGNvbG9yID0gXCJyZWRcIiwgXG4gICAgICAgICAgICAgbGluZXdpZHRoID0gMSkgK1xuICBsYWJzKFxuICAgIHRpdGxlID0gXCJpbmNs5YC85YiG5biD5Y+K6Ieq54S25pat54K55Y+v6KeG5YyWXCIsXG4gICAgeCA9IFwiaW5jbFwiLFxuICAgIHkgPSBcIuWvhuW6plwiXG4gICkgK1xuICB0aGVtZV9taW5pbWFsKGJhc2Vfc2l6ZSA9IDEzKVxuXG4jIOaPkOWPliBuIOWIl++8iOWOu+mZpCBOQe+8iS0tLS1cbm5fdmFsdWVzIDwtIG5hLm9taXQodHRfdGVzdF9UcnV0aFRhYmxlJG4pXG5cbiMg5Y+v6KeG5YyWIGluY2wg55qE5YiG5biDICsg5a+G5bqm5puy57q/ICsg6Ieq54S25pat54K55Y+C6ICD57q/XG5nZ3Bsb3QoZGF0YSA9IGRhdGEuZnJhbWUobiA9IG5fdmFsdWVzKSwgYWVzKHggPSBuKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShhZXMoeSA9IGFmdGVyX3N0YXQoZGVuc2l0eSkpLFxuICAgICAgICAgICAgICAgICBiaW5zID0gMzAsXG4gICAgICAgICAgICAgICAgIGZpbGwgPSBcIiM2OWIzYTJcIixcbiAgICAgICAgICAgICAgICAgYWxwaGEgPSAwLjcsXG4gICAgICAgICAgICAgICAgIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIGdlb21fZGVuc2l0eShjb2xvciA9IFwiIzFmNzhiNFwiLCBzaXplID0gMS4yLCBhZGp1c3QgPSAxKSArXG4gIGdlb21fdmxpbmUoeGludGVyY2VwdCA9IDIsIFxuICAgICAgICAgICAgIGxpbmV0eXBlID0gXCJkYXNoZWRcIiwgXG4gICAgICAgICAgICAgY29sb3IgPSBcInJlZFwiLCBcbiAgICAgICAgICAgICBsaW5ld2lkdGggPSAxKSArXG4gIGxhYnMoXG4gICAgdGl0bGUgPSBcIm7lgLzliIbluIPlj4roh6rnhLbmlq3ngrnlj6/op4bljJZcIixcbiAgICB4ID0gXCJuXCIsXG4gICAgeSA9IFwi5a+G5bqmXCJcbiAgKSArXG4gIHRoZW1lX21pbmltYWwoYmFzZV9zaXplID0gMTMpXG5cblxuYGBgIn0= -->
+
+```r
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+
+# 提取 PRI 列（去除 NA）----
+pri_values <- na.omit(tt_test_TruthTable$PRI)
+
+# 可视化 PRI 的分布 + 密度曲线 + 自然断点参考线
+ggplot(data = data.frame(PRI = pri_values), aes(x = PRI)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = \"#69b3a2\",
+                 alpha = 0.7,
+                 color = \"white\") +
+  geom_density(color = \"#1f78b4\", size = 1.2, adjust = 1) +
+  geom_vline(xintercept = 0.6, 
+             linetype = \"dashed\", 
+             color = \"red\", 
+             linewidth = 1) +
+  labs(
+    title = \"PRI 值分布及自然断点可视化\",
+    x = \"PRI（Proportional Reduction in Inconsistency）\",
+    y = \"密度\"
+  ) +
+  theme_minimal(base_size = 13)
+
+# 提取 incl 列（去除 NA）----
+incl_values <- na.omit(tt_test_TruthTable$incl)
+
+# 可视化 incl 的分布 + 密度曲线 + 自然断点参考线
+ggplot(data = data.frame(incl = incl_values), aes(x = incl)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = \"#69b3a2\",
+                 alpha = 0.7,
+                 color = \"white\") +
+  geom_density(color = \"#1f78b4\", size = 1.2, adjust = 1) +
+  geom_vline(xintercept = 0.75, 
+             linetype = \"dashed\", 
+             color = \"red\", 
+             linewidth = 1) +
+  labs(
+    title = \"incl值分布及自然断点可视化\",
+    x = \"incl\",
+    y = \"密度\"
+  ) +
+  theme_minimal(base_size = 13)
+
+# 提取 n 列（去除 NA）----
+n_values <- na.omit(tt_test_TruthTable$n)
+
+# 可视化 incl 的分布 + 密度曲线 + 自然断点参考线
+ggplot(data = data.frame(n = n_values), aes(x = n)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = \"#69b3a2\",
+                 alpha = 0.7,
+                 color = \"white\") +
+  geom_density(color = \"#1f78b4\", size = 1.2, adjust = 1) +
+  geom_vline(xintercept = 2, 
+             linetype = \"dashed\", 
+             color = \"red\", 
+             linewidth = 1) +
+  labs(
+    title = \"n值分布及自然断点可视化\",
+    x = \"n\",
+    y = \"密度\"
+  ) +
+  theme_minimal(base_size = 13)
+
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+
+# 提取 PRI 列（去除 NA）----
+pri_values <- na.omit(tt_test_TruthTable$PRI)
+
+# 可视化 PRI 的分布 + 密度曲线 + 自然断点参考线
+ggplot(data = data.frame(PRI = pri_values), aes(x = PRI)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = \"#69b3a2\",
+                 alpha = 0.7,
+                 color = \"white\") +
+  geom_density(color = \"#1f78b4\", size = 1.2, adjust = 1) +
+  geom_vline(xintercept = 0.6, 
+             linetype = \"dashed\", 
+             color = \"red\", 
+             linewidth = 1) +
+  labs(
+    title = \"PRI 值分布及自然断点可视化\",
+    x = \"PRI（Proportional Reduction in Inconsistency）\",
+    y = \"密度\"
+  ) +
+  theme_minimal(base_size = 13)
+
+# 提取 incl 列（去除 NA）----
+incl_values <- na.omit(tt_test_TruthTable$incl)
+
+# 可视化 incl 的分布 + 密度曲线 + 自然断点参考线
+ggplot(data = data.frame(incl = incl_values), aes(x = incl)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = \"#69b3a2\",
+                 alpha = 0.7,
+                 color = \"white\") +
+  geom_density(color = \"#1f78b4\", size = 1.2, adjust = 1) +
+  geom_vline(xintercept = 0.75, 
+             linetype = \"dashed\", 
+             color = \"red\", 
+             linewidth = 1) +
+  labs(
+    title = \"incl值分布及自然断点可视化\",
+    x = \"incl\",
+    y = \"密度\"
+  ) +
+  theme_minimal(base_size = 13)
+
+# 提取 n 列（去除 NA）----
+n_values <- na.omit(tt_test_TruthTable$n)
+
+# 可视化 incl 的分布 + 密度曲线 + 自然断点参考线
+ggplot(data = data.frame(n = n_values), aes(x = n)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = \"#69b3a2\",
+                 alpha = 0.7,
+                 color = \"white\") +
+  geom_density(color = \"#1f78b4\", size = 1.2, adjust = 1) +
+  geom_vline(xintercept = 2, 
+             linetype = \"dashed\", 
+             color = \"red\", 
+             linewidth = 1) +
+  labs(
+    title = \"n值分布及自然断点可视化\",
+    x = \"n\",
+    y = \"密度\"
+  ) +
+  theme_minimal(base_size = 13)
+
+
+```"

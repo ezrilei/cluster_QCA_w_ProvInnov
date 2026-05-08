@@ -1,0 +1,150 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDnu5jlm75cbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZ2dyZXBlbClcblxuIyBzaG93IENOIHRleHRcbmxpYnJhcnkoc2hvd3RleHQpICNodHRwczovL2dpdGh1Yi5jb20veWl4dWFuL3Nob3d0ZXh0XG5zaG93dGV4dF9hdXRvKGVuYWJsZSA9IFRSVUUpXG4jIGZvbnRfYWRkKFwiZmFuZ1NvbmdcIiwgcmVndWxhciA9IFwiLi9mb250cy/mlrnmraPku7/lrotfR0JLLlRURlwiKSAjIDw8PDw8PDw8PDw8PDw8XG4jIGZvbnRfYWRkKFwiVGltZXNOZXdSb21hblwiLCByZWd1bGFyID0gXCIuL2ZvbnRzL1RpbWVzIE5ldyBSb21hbi50dGZcIilcbmZvbnRfYWRkKFwiU29uZ1RpXCIsIHJlZ3VsYXIgPSBcIi4vZm9udHMvIFNUU29uZ3RpLVJlZ3VsYXItU0MudHRmXCIpIyA8PDw8PDw8PDw8PDw8PFxuXG4jIHRleHQgcmVwZWwgZGF0YVxubGFiZWxfZGF0YSA8LSBkZl9jbHVzdGVyX2RhdGFfYWxsWV9CRUNPTlNfQkVDT1YgJT4lXG4gIGdyb3VwX2J5KFBBVEhXQVkpICU+JVxuICBmaWx0ZXIoWUVBUiA9PSBtYXgoWUVBUikpICU+JVxuICB1bmdyb3VwKClcblxuXG4jIHN0b3JlIHRvIHBkZiAoY3JlYXRlIGEgcGRmIGRldmljZSkgLS0tLS0tLS0tLS0tLS0tXG4jIHBkZihmaWxlID0gXCIuL291dHB1dF9tYW51YWwv57uE6Ze05LiA6Ie05oCn5rC05bmz6LaL5Yq/5Zu+LnBkZlwiLCB3aWR0aCA9IDEwLCBoZWlnaHQgPSA4KVxucGRmKGZpbGUgPSBcIi4vb3V0cHV0L+OAkEFuYWx5c2lzX3dr44CRMy7lhYXliIbmgKfliIbmnpBf57uE6Ze06KaG55uW5bqm5Y+Y5YyW6LaL5Yq/5Zu+LnBkZlwiLCB3aWR0aCA9IDEwLCBoZWlnaHQgPSA4KVxuXG5wX2NvbmZpZ19CRUNPViA8LSBnZ3Bsb3QoZGZfY2x1c3Rlcl9kYXRhX2FsbFlfQkVDT05TX0JFQ09WLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgYWVzKHggPSBZRUFSLCB5ID0gQkVDT1YsIGdyb3VwID0gUEFUSFdBWSwgY29sb3IgPSBQQVRIV0FZKSkgK1xuICBnZW9tX2xpbmUoKSArXG4gIGdlb21fcG9pbnQoKSArXG4gIGdlb21faGxpbmUoeWludGVyY2VwdCA9IDAuNTAsIGxpbmV0eXBlID0gXCJkYXNoZWRcIiwgY29sb3IgPSBcImJsYWNrXCIsIGFscGhhID0gMC40KSArXG4gIHNjYWxlX3hfZGlzY3JldGUoKSArXG4gIHNjYWxlX3lfY29udGludW91cyhcbiAgICBicmVha3MgPSBzZXEoMC4xLCAwLjgsIGJ5ID0gMC4xKSxcbiAgICBsaW1pdHMgPSBjKDAuMSwgMC44KVxuICAgICkrXG4gIGxhYnMoXG4gICAgeCA9IFwi5bm05Lu9XCIsXG4gICAgeSA9IFwi57uE6Ze06KaG55uW5bqmXCIsXG4gICAgY29sb3IgPSBcIuWboOaenOi3r+W+hFwiXG4gICkgK1xuICB0aGVtZV9idyhiYXNlX2ZhbWlseSA9IFwiU29uZ1RpXCIpICtcbiAgdGhlbWUoXG4gICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiLCBzaXplID0gMTQpLFxuICAgIGxlZ2VuZC50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiLCBzaXplID0gMTMpLFxuICAgIHBsb3QubWFyZ2luID0gdW5pdChjKDEsIDQsIDEsIDEpLCBcImNtXCIpLFxuICAgIGxlZ2VuZC5wb3NpdGlvbiA9IFwiYm90dG9tXCJcbiAgKSArXG4gICNndWlkZXMoY29sb3IgPSBndWlkZV9sZWdlbmQobmNvbCA9IDEpKSAgIysgIyA8PDw8PDw8PCDmr4/liJcgMSDpobnvvIznq5bmjpJcbiAgIyDmt7vliqDmoIfnrb7vvJrlnKjmnIDlkI7kuIDlubTvvIjlpoIgMjAyM++8ieWPs+S+p+eVpeW+ruWBj+enu1xuICBnZW9tX3RleHRfcmVwZWwoXG4gICAgZmFtaWx5ID0gXCJTb25nVGlcIixcbiAgICBkYXRhID0gbGFiZWxfZGF0YSxcbiAgICBhZXMobGFiZWwgPSBQQVRIV0FZKSxcbiAgICBudWRnZV94ID0gMC41LCAgICAgICAgICAgICAjIOWQkeWPs+WBj+enu1xuICAgIGRpcmVjdGlvbiA9IFwiYm90aFwiLCAgICAgICAgIyDlhYHorrjkuIrkuIvlt6blj7Ppgb/orqlcbiAgICBoanVzdCA9IDAsICAgICAgICAgICAgICAgICAjIOW3puWvuem9kFxuICAgIHNlZ21lbnQuY29sb3IgPSBOQSwgICAgICAgICMg5LiN5pi+56S66L+e5o6l57q/XG4gICAgc2l6ZSA9IDMuMCxcbiAgICBib3gucGFkZGluZyA9IDAuMyxcbiAgICBwb2ludC5wYWRkaW5nID0gMC4wNSxcbiAgICBmb3JjZSA9IDQsICAgICAgICAgICAgICAgICMg5o6S5pal5by65bqm77yI5pu05by66YG/6K6p77yJXG4gICAgZm9yY2VfcHVsbCA9IDAuMiwgICAgICAgICAjIOWQuOW8leWKm+WinuW8uu+8jOmdoOi/kee6v+WwvlxuICAgIG1heC5vdmVybGFwcyA9IEluZixcbiAgICBzaG93LmxlZ2VuZCA9IEZBTFNFICAgICAgICAjIOS4jeeUqOWFtuWHuueOsOWcqOWbvuS+i++8jFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICMg5aaC5p6c5LiN5ZGK6K+J5YW25aaC5L2V5pi+56S65Zu+5L6L77yM5Lya5Zyo5Zu+5L6L5aSE5q+P5LiA5LiqY29uZmln5YmNIOWKoOm7mOiupOWbvuS+i+mhuSBcImFcIlxuICApXG5cblxucHJpbnQocF9jb25maWdfQkVDT1YpXG5kZXYub2ZmKClcblxucF9jb25maWdfQkVDT1ZcblxuYGBgIn0= -->
+
+```r
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+# font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+# font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+
+# text repel data
+label_data <- df_cluster_data_allY_BECONS_BECOV %>%
+  group_by(PATHWAY) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = \"./output_manual/组间一致性水平趋势图.pdf\", width = 10, height = 8)
+pdf(file = \"./output/【Analysis_wk】3.充分性分析_组间覆盖度变化趋势图.pdf\", width = 10, height = 8)
+
+p_config_BECOV <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECOV, group = PATHWAY, color = PATHWAY)) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0.50, linetype = \"dashed\", color = \"black\", alpha = 0.4) +
+  scale_x_discrete() +
+  scale_y_continuous(
+    breaks = seq(0.1, 0.8, by = 0.1),
+    limits = c(0.1, 0.8)
+    )+
+  labs(
+    x = \"年份\",
+    y = \"组间覆盖度\",
+    color = \"因果路径\"
+  ) +
+  theme_bw(base_family = \"SongTi\") +
+  theme(
+    axis.title = element_text(family = \"SongTi\", size = 14),
+    legend.title = element_text(family = \"SongTi\", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), \"cm\"),
+    legend.position = \"bottom\"
+  ) +
+  #guides(color = guide_legend(ncol = 1))  #+ # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = \"SongTi\",
+    data = label_data,
+    aes(label = PATHWAY),
+    nudge_x = 0.5,             # 向右偏移
+    direction = \"both\",        # 允许上下左右避让
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    force = 4,                # 排斥强度（更强避让）
+    force_pull = 0.2,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 \"a\"
+  )
+
+
+print(p_config_BECOV)
+dev.off()
+
+p_config_BECOV
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+# font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+# font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+
+# text repel data
+label_data <- df_cluster_data_allY_BECONS_BECOV %>%
+  group_by(PATHWAY) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = \"./output_manual/组间一致性水平趋势图.pdf\", width = 10, height = 8)
+pdf(file = \"./output/【Analysis_wk】3.充分性分析_组间覆盖度变化趋势图.pdf\", width = 10, height = 8)
+
+p_config_BECOV <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECOV, group = PATHWAY, color = PATHWAY)) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0.50, linetype = \"dashed\", color = \"black\", alpha = 0.4) +
+  scale_x_discrete() +
+  scale_y_continuous(
+    breaks = seq(0.1, 0.8, by = 0.1),
+    limits = c(0.1, 0.8)
+    )+
+  labs(
+    x = \"年份\",
+    y = \"组间覆盖度\",
+    color = \"因果路径\"
+  ) +
+  theme_bw(base_family = \"SongTi\") +
+  theme(
+    axis.title = element_text(family = \"SongTi\", size = 14),
+    legend.title = element_text(family = \"SongTi\", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), \"cm\"),
+    legend.position = \"bottom\"
+  ) +
+  #guides(color = guide_legend(ncol = 1))  #+ # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = \"SongTi\",
+    data = label_data,
+    aes(label = PATHWAY),
+    nudge_x = 0.5,             # 向右偏移
+    direction = \"both\",        # 允许上下左右避让
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    force = 4,                # 排斥强度（更强避让）
+    force_pull = 0.2,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 \"a\"
+  )
+
+
+print(p_config_BECOV)
+dev.off()
+
+p_config_BECOV
+
+```"

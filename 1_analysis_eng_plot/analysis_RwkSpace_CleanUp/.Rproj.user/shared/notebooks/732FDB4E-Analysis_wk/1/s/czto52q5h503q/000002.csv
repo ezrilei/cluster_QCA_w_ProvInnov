@@ -1,0 +1,18 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDlpJrlpKfmr5TkvovnmoRQcmltZSBJbXBsaWNhbnTog73nurPlhaXlkI7nu63liIbmnpAgLSBmdW4gdG8ga25vd1xucGVyY2VudF9jYXNlXzEgPC0gKHR0X1lfZXNhJHR0ICU+JSBmaWx0ZXIoT1VUID09IDEpICU+JSAuJG4gJT4lIHN1bSgpKSAvICh0dF9ZX2VzYSR0dCAlPiUgLiRuICU+JSBzdW0oKSlcbnByaW50KHBhc3RlMChwZXJjZW50X2Nhc2VfMSoxMDAsIFwiJeeahFByaW1lIEltcGxpY2FudO+8jOiDvee6s+WFpeWQjue7reWIhuaekO+8iOWcqE9VVD0x55qEY29uZmlndXJhdGlvbuS4re+8iVwiKSlcblxuYGBgIn0= -->
+
+```r
+# 多大比例的Prime Implicant能纳入后续分析 - fun to know
+percent_case_1 <- (tt_Y_esa$tt %>% filter(OUT == 1) %>% .$n %>% sum()) / (tt_Y_esa$tt %>% .$n %>% sum())
+print(paste0(percent_case_1*100, \"%的Prime Implicant，能纳入后续分析（在OUT=1的configuration中）\"))
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# 多大比例的Prime Implicant能纳入后续分析 - fun to know
+percent_case_1 <- (tt_Y_esa$tt %>% filter(OUT == 1) %>% .$n %>% sum()) / (tt_Y_esa$tt %>% .$n %>% sum())
+print(paste0(percent_case_1*100, \"%的Prime Implicant，能纳入后续分析（在OUT=1的configuration中）\"))
+
+```"

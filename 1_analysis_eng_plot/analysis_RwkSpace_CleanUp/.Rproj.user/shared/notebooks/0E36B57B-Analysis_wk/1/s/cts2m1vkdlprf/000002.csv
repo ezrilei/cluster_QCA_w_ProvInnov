@@ -1,0 +1,34 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbnJlZ2lvbnNfdG9fcGxvdCA8LSBjKFxuICBcIuWMl+S6rFwiLCBcIuWkqea0pVwiLCBcIuays+WMl1wiLCBcIuWxseilv1wiLCBcIuWGheiSmeWPpFwiLCBcIui+veWugVwiLCBcIuWQieael1wiLCBcIum7kem+meaxn1wiLFxuICBcIuS4iua1t1wiLCBcIuaxn+iLj1wiLCBcIua1meaxn1wiLCBcIuWuieW+vVwiLCBcIuemj+W7ulwiLCBcIuaxn+ilv1wiLCBcIuWxseS4nFwiLCBcIuays+WNl1wiLCBcbiAgXCLmuZbljJdcIiwgXCLmuZbljZdcIiwgXCLlub/kuJxcIiwgXCLlub/opb9cIiwgXCLmtbfljZdcIixcbiAgXCLph43luoZcIiwgXCLlm5vlt51cIiwgXCLotLXlt55cIiwgXCLkupHljZdcIiwgXCLopb/ol49cIiwgXG4gIFwi6ZmV6KW/XCIsIFwi55SY6IKDXCIsIFwi6Z2S5rW3XCIsIFwi5a6B5aSPXCIsIFwi5paw55aGXCJcbilcblxucGxvdF9QSU1TX3BhdGNoX2JhdGNoKHJlZ2lvbnNfdG9fcGxvdClcblxuYGBgIn0= -->
+
+```r
+
+
+regions_to_plot <- c(
+  \"北京\", \"天津\", \"河北\", \"山西\", \"内蒙古\", \"辽宁\", \"吉林\", \"黑龙江\",
+  \"上海\", \"江苏\", \"浙江\", \"安徽\", \"福建\", \"江西\", \"山东\", \"河南\", 
+  \"湖北\", \"湖南\", \"广东\", \"广西\", \"海南\",
+  \"重庆\", \"四川\", \"贵州\", \"云南\", \"西藏\", 
+  \"陕西\", \"甘肃\", \"青海\", \"宁夏\", \"新疆\"
+)
+
+plot_PIMS_patch_batch(regions_to_plot)
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+
+regions_to_plot <- c(
+  \"北京\", \"天津\", \"河北\", \"山西\", \"内蒙古\", \"辽宁\", \"吉林\", \"黑龙江\",
+  \"上海\", \"江苏\", \"浙江\", \"安徽\", \"福建\", \"江西\", \"山东\", \"河南\", 
+  \"湖北\", \"湖南\", \"广东\", \"广西\", \"海南\",
+  \"重庆\", \"四川\", \"贵州\", \"云南\", \"西藏\", 
+  \"陕西\", \"甘肃\", \"青海\", \"宁夏\", \"新疆\"
+)
+
+plot_PIMS_patch_batch(regions_to_plot)
+
+```"

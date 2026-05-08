@@ -1,0 +1,22 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHRfbmVnWV9lc2EgPC0gU2V0TWV0aG9kczo6ZXNhKG9sZHR0ID0gdHRfbmVnWSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuZWNfY29uZCA9IGNvbmZpZy5TVUlOX2NvbmQubmVnWSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW50ZW5hYmxlX0xSID0gY29uZmlnLkNTQS5uZWdZXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxudHRfbmVnWV9lc2FcblxuYGBgIn0= -->
+
+```r
+tt_negY_esa <- SetMethods::esa(oldtt = tt_negY,
+                               nec_cond = config.SUIN_cond.negY, 
+                               untenable_LR = config.CSA.negY
+                               )
+tt_negY_esa
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+tt_negY_esa <- SetMethods::esa(oldtt = tt_negY,
+                               nec_cond = config.SUIN_cond.negY, 
+                               untenable_LR = config.CSA.negY
+                               )
+tt_negY_esa
+
+```"

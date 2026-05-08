@@ -1,0 +1,108 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIOS7jmludHNvbF9ZX2VzYeaPkOWPlue7k+aenFxuaW50c29sX1lfcmVzX092ZXJhbGwgPC0gaW50c29sX1lfZXNhJElDJHNvbC5pbmNsLmNvdlxuXG5pbnRzb2xfWV9yZXNfU29sdXRpb25UZXJtIDwtICBpbnRzb2xfWV9lc2EkSUMkaW5jbC5jb3ZcbnJvd25hbWVzKGludHNvbF9ZX3Jlc19PdmVyYWxsKSA8LSBcIk92ZXJhbGxcIlxuXG4jIOa3u+WKoCBjb25maWcg5YiXXG5pbnRzb2xfWV9yZXNfT3ZlcmFsbCRjb25maWcgPC0gXCJPdmVyYWxsXCJcbmludHNvbF9ZX3Jlc19Tb2x1dGlvblRlcm0kY29uZmlnIDwtIHJvd25hbWVzKGludHNvbF9ZX3Jlc19Tb2x1dGlvblRlcm0pXG5cbiMg6KGl6b2Q57y65aSx5YiX77yIY292VSDlkowgY2FzZXPvvInliLAgT3ZlcmFsbCDooahcbmludHNvbF9ZX3Jlc19PdmVyYWxsJGNvdlUgPC0gTkFcbmludHNvbF9ZX3Jlc19PdmVyYWxsJGNhc2VzIDwtIE5BXG5cblxuXG4jIOehruS/neS4pOW8oOihqOWIl+mhuuW6j+S4gOiHtO+8jOW5tuaKimNvbmZpZ+WIl+aOkuWIsOacgOW3pui+uVxuaW50c29sX1lfcmVzX092ZXJhbGwgPC0gaW50c29sX1lfcmVzX092ZXJhbGxbLCBjKFwiY29uZmlnXCIsIFwiaW5jbFNcIiwgXCJQUklcIiwgXCJjb3ZTXCIsIFwiY292VVwiLCBcImNhc2VzXCIpXVxuaW50c29sX1lfcmVzX1NvbHV0aW9uVGVybSA8LSBpbnRzb2xfWV9yZXNfU29sdXRpb25UZXJtWywgYyhcImNvbmZpZ1wiLCBcImluY2xTXCIsIFwiUFJJXCIsIFwiY292U1wiLCBcImNvdlVcIiwgXCJjYXNlc1wiKV1cblxuIyDlkIjlubbkuKTlvKDooahcbmludHNvbF9ZX3Jlc19Db21iaW5lZCA8LSByYmluZChpbnRzb2xfWV9yZXNfU29sdXRpb25UZXJtLCBpbnRzb2xfWV9yZXNfT3ZlcmFsbClcblxuIyDnp7vpmaTooYzlkI1cbnJvd25hbWVzKGludHNvbF9ZX3Jlc19Db21iaW5lZCkgPC0gTlVMTFxuXG4jIOafpeeci+WQiOW5tuWQjueahOe7k+aenFxuIyBwcmludChpbnRzb2xfWV9yZXNfQ29tYmluZWQpXG5cblxuIyDlkIjlubYgaW50c29sX1lfcmVzX0NvbWJpbmVkIOWSjCBkZi5zb2wuYWRqLmRpc3RhbmNlXG5pbnRzb2xfWV9yZXNfRmluYWwgPC0gaW50c29sX1lfcmVzX0NvbWJpbmVkICU+JVxuICBsZWZ0X2pvaW4oZGYuc29sLmFkai5kaXN0YW5jZSwgYnkgPSBcImNvbmZpZ1wiKVxuXG5cbiMg6LCD5pW05YiX6aG65bqP77ya5bCGIGNhc2VzIOaUvuWIsOacgOWQjlxuaW50c29sX1lfcmVzX0ZpbmFsIDwtIGludHNvbF9ZX3Jlc19GaW5hbCAlPiVcbiAgc2VsZWN0KC1jYXNlcywgZXZlcnl0aGluZygpLCBjYXNlcylcblxuXG53cml0ZXhsOjp3cml0ZV94bHN4KHggPSBpbnRzb2xfWV9yZXNfRmluYWwsXG4gICAgICAgICAgICAgICAgICAgIHBhdGggPSBcIi4vb3V0cHV0L+OAkEFuYWx5c2lzX3dr44CRMy7lhYXliIbmnaHku7bliIbmnpBf57uT5p6cX1kueGxzeFwiXG4gICAgICAgICAgICAgICAgICAgIClcblxuXG5wcmludChpbnRzb2xfWV9yZXNfRmluYWwpXG5cblxuYGBgIn0= -->
+
+```r
+
+# 从intsol_Y_esa提取结果
+intsol_Y_res_Overall <- intsol_Y_esa$IC$sol.incl.cov
+
+intsol_Y_res_SolutionTerm <-  intsol_Y_esa$IC$incl.cov
+rownames(intsol_Y_res_Overall) <- \"Overall\"
+
+# 添加 config 列
+intsol_Y_res_Overall$config <- \"Overall\"
+intsol_Y_res_SolutionTerm$config <- rownames(intsol_Y_res_SolutionTerm)
+
+# 补齐缺失列（covU 和 cases）到 Overall 表
+intsol_Y_res_Overall$covU <- NA
+intsol_Y_res_Overall$cases <- NA
+
+
+
+# 确保两张表列顺序一致，并把config列排到最左边
+intsol_Y_res_Overall <- intsol_Y_res_Overall[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+intsol_Y_res_SolutionTerm <- intsol_Y_res_SolutionTerm[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+
+# 合并两张表
+intsol_Y_res_Combined <- rbind(intsol_Y_res_SolutionTerm, intsol_Y_res_Overall)
+
+# 移除行名
+rownames(intsol_Y_res_Combined) <- NULL
+
+# 查看合并后的结果
+# print(intsol_Y_res_Combined)
+
+
+# 合并 intsol_Y_res_Combined 和 df.sol.adj.distance
+intsol_Y_res_Final <- intsol_Y_res_Combined %>%
+  left_join(df.sol.adj.distance, by = \"config\")
+
+
+# 调整列顺序：将 cases 放到最后
+intsol_Y_res_Final <- intsol_Y_res_Final %>%
+  select(-cases, everything(), cases)
+
+
+writexl::write_xlsx(x = intsol_Y_res_Final,
+                    path = \"./output/【Analysis_wk】3.充分条件分析_结果_Y.xlsx\"
+                    )
+
+
+print(intsol_Y_res_Final)
+
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+# 从intsol_Y_esa提取结果
+intsol_Y_res_Overall <- intsol_Y_esa$IC$sol.incl.cov
+
+intsol_Y_res_SolutionTerm <-  intsol_Y_esa$IC$incl.cov
+rownames(intsol_Y_res_Overall) <- \"Overall\"
+
+# 添加 config 列
+intsol_Y_res_Overall$config <- \"Overall\"
+intsol_Y_res_SolutionTerm$config <- rownames(intsol_Y_res_SolutionTerm)
+
+# 补齐缺失列（covU 和 cases）到 Overall 表
+intsol_Y_res_Overall$covU <- NA
+intsol_Y_res_Overall$cases <- NA
+
+
+
+# 确保两张表列顺序一致，并把config列排到最左边
+intsol_Y_res_Overall <- intsol_Y_res_Overall[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+intsol_Y_res_SolutionTerm <- intsol_Y_res_SolutionTerm[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+
+# 合并两张表
+intsol_Y_res_Combined <- rbind(intsol_Y_res_SolutionTerm, intsol_Y_res_Overall)
+
+# 移除行名
+rownames(intsol_Y_res_Combined) <- NULL
+
+# 查看合并后的结果
+# print(intsol_Y_res_Combined)
+
+
+# 合并 intsol_Y_res_Combined 和 df.sol.adj.distance
+intsol_Y_res_Final <- intsol_Y_res_Combined %>%
+  left_join(df.sol.adj.distance, by = \"config\")
+
+
+# 调整列顺序：将 cases 放到最后
+intsol_Y_res_Final <- intsol_Y_res_Final %>%
+  select(-cases, everything(), cases)
+
+
+writexl::write_xlsx(x = intsol_Y_res_Final,
+                    path = \"./output/【Analysis_wk】3.充分条件分析_结果_Y.xlsx\"
+                    )
+
+
+print(intsol_Y_res_Final)
+
+
+```"

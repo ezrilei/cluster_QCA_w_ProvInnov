@@ -1,0 +1,540 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIHZhbC5pbmNsLmN1dCA8LSAwLjc1XG4jIHZhbC5uLmN1dCA8LSAyXG4jIHZhbC5wcmkuY3V0IDwtIDAuNlxuXG5nZXRfaW50c29sX1lfcmVzX0ZpbmFsIDwtIGZ1bmN0aW9uKHZhbC5pbmNsLmN1dCwgdmFsLm4uY3V0LCB2YWwucHJpLmN1dCl7XG4gICAgdHRfWSA8LSBRQ0E6OnRydXRoVGFibGUoZGF0YSA9IGRmLkZ1enp5LmNhc2UsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICBvdXRjb21lID0gXCJZXCIsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICBjb25kaXRpb25zID0gY29uZGl0aW9ucywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgIGluY2wuY3V0ID0gdmFsLmluY2wuY3V0LCBuLmN1dCA9IHZhbC5uLmN1dCwgcHJpLmN1dCA9IHZhbC5wcmkuY3V0LCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgc2hvdy5jYXNlcyA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgIHNvcnQuYnkgPSBcIk9VVFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgIClcbiAgXG4gIHR0X1lcbiAgXG4gIFxuICBcbiAgIyMjIOWvu+aJvuW/heimgeeahOe7hOWQiCAtIE5lY2Vzc2FyeSBEaXNqdW5jdGlvbnMgb2YgU1VJTiBDb25kaXRpb25zXG4gIFxuICBcbiAgXG4gIFxuICBzcF9ZIDwtIFFDQTo6c3VwZXJTdWJzZXQoZGF0YSA9IGRmLkZ1enp5LmNhc2UsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBvdXRjb21lID0gXCJZXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBjb25kaXRpb25zID0gY29uZGl0aW9ucyAlPiUgcGFzdGUoY29sbGFwc2UgPSBcIixcIiksICAjIFwiWDEsWDIsWDMsWDQsWDUsWDYuLi5cIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5jbC5jdXQgPSAwLjkwLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgY292LmN1dCA9IDAuNSwgIzwtLS0tLVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgcm9uLmN1dCA9IDAuNSAjPC0tLS0tXG4gICAgICAgICAgICAgICAgICAgICAgICAgICApXG4gIHNwX1lcbiAgXG4gIGNvbmZpZy5TVUlOX2NvbmQgPC0gc3BfWSRjb21zICU+JSBjb2xuYW1lcygpXG4gIGNvbmZpZy5TVUlOX2NvbmRcbiAgXG4gIFxuICBcbiAgIyMjIGZpbmQgQ1NBIC0gY29udHJhZGljdG9yeSBzaW1wbGlmeWluZyBhc3N1bXB0aW9uc1xuICBcbiAgXG4gICMgZ2V0IHJvdyBDU0EgLS0tLVxuICByb3cuQ1NBIDwtIFFDQTo6ZmluZFJvd3Mob2JqID0gdHRfWSwgdHlwZSA9IDIpICAjIGNvbnRyYWRpY3Rvcnkgc2ltcGxpZnlpbmcgYXNzdW1wdGlvbnNcbiAgcm93LkNTQVxuICBcbiAgIyBnZXQgY29uZmlnIENTQSAtLS0tXG4gIFxuICAjIOS4gOiHtOaAp+W8guW4uOeahOahiOS+iyBEZXZpYW50IGNhc2VzIGZvciBjb25zaXN0ZW5jeSAoRENDKVxuICBcbiAgdHRfWV9kY2MgPC0gIFFDQTo6dHJ1dGhUYWJsZShkYXRhID0gZGYuRnV6enkuY2FzZSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvdXRjb21lID0gXCJZXCIsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbmRpdGlvbnMgPSBjb25kaXRpb25zICU+JSBwYXN0ZShjb2xsYXBzZSA9IFwiLFwiKSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5jbC5jdXQgPSAwLjc1LCBuLmN1dCA9IDIsIHByaS5jdXQgPSAwLjYsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNob3cuY2FzZXMgPSBUUlVFLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIHNvcnQuYnkgPSBcIk9VVFwiLCAjIOS4jeiDvXNvcnQgYnkgT1VUIOWboOS4uuWQjumdonNsaWNl5piv5oyJ6KGM5Y+36L+b6KGM55qEXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29tcGxldGUgPSBUUlVFLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkY2MgPSBUUlVFKVxuICBcbiAgXG4gICMgZ2V0IHVudGVuYWJsZV9MUiBjb25maWcgZnJvbSB0cnV0aFRhYmxlIFxuICB0dF9ZX0NTQSA8LSB0dF9ZX2RjYyR0dCAlPiUgXG4gICAgc2xpY2Uocm93LkNTQSkgJT4lIFxuICAgIHNlbGVjdChjb25kaXRpb25zKSAjIHNlbGVjdChYMSxYMixYMywuLi4uLi4pXG4gIFxuICB0dF9ZX0NTQVxuICBcbiAgIyBkZWYgZnVuY3Rpb25cbiAgY29udmVydF90b19jb25maWcgPC0gZnVuY3Rpb24ocm93KSB7XG4gICAgbmFtZXMgPC0gY29sbmFtZXModHRfWV9DU0EpICAjIOiOt+WPluWIl+WQjSAjICBcIlgxXCIgXCJYMlwiIFwiWDNcIiBcIlg0XCIgXCJYNVwiIFwiWDZcIiBcIlg3XCIgXCJYOFwiIFwiWDlcIlxuICAgIHRlcm1zIDwtIGlmZWxzZShyb3cgPT0gMSwgbmFtZXMsIHBhc3RlMChcIn5cIiwgbmFtZXMpKSAgIyAxOiDnm7TmjqXliJflkI0sIDA6IOWKoOS4iiB+XG4gICAgcGFzdGUodGVybXMsIGNvbGxhcHNlID0gXCIqXCIpICAjIOeUqCBcIipcIiDov57mjqXmiYDmnInlj5jph49cbiAgfVxuICBcbiAgIyBlbmQgZGVmIGZ1bmN0aW9uLS0tLVxuICBcbiAgXG4gICMg5a+55pWw5o2u5qGG55qE5q+P5LiA6KGM6L+b6KGM6L2s5o2i77yM5bm25a2Y5YWl5ZCR6YePXG4gIFxuICAjIFgxIFgyIFgzIFg0IFg1IFg2IFg3IFg4IFg5XG4gICMgMTE2ICAwICAwICAxICAxICAxICAwICAwICAxICAxXG4gICMg4oaTXG4gICMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxMTZcbiAgIyBcIn5YMSp+WDIqWDMqWDQqWDUqflg2Kn5YNypYOCpYOVwiXG4gIFxuICAjIOW6lOeUqOWHveaVsOWIsCB0dF9ZX0NTQSDmr4/kuIDooYxcbiAgXG4gIGNvbmZpZy5DU0EgPC0gYXBwbHkodHRfWV9DU0EsIDEsIGNvbnZlcnRfdG9fY29uZmlnKVxuICBjb25maWcuQ1NBXG4gIFxuICBcbiAgXG4gICMjIyBUcnV0aFRhYmxlIC0gZXNhIC0gcm0gdW50ZW5hYmxlXG4gIFxuICBcbiAgdHRfWV9lc2EgPC0gU2V0TWV0aG9kczo6ZXNhKG9sZHR0ID0gdHRfWSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuZWNfY29uZCA9IGNvbmZpZy5TVUlOX2NvbmQsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW50ZW5hYmxlX0xSID0gY29uZmlnLkNTQVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuICB0dF9ZX2VzYVxuICBcbiAgXG4gIFxuICBcbiAgIyMjIOWkjeadguinoyBDb21wbGV4IFNvbHV0aW9uIC0tLS1cbiAgXG4gIFxuICBjb21wc29sX1lfZXNhIDwtIFFDQTo6bWluaW1pemUoaW5wdXQgPSB0dF9ZX2VzYSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXRhaWxzID0gVFJVRSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByb3cuZG9tID0gVFJVRSAjIHRvIGF2b2lkIG1vZGVsIGFtYmlndWl0eVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuICBcbiAgY29tcHNvbF9ZX2VzYVxuICBcbiAgXG4gIFxuICBcbiAgXG4gICMjIyDnroDljZXop6MgUGFyc2ltb25pb3VzIFNvbHV0aW9uIC0tLS1cbiAgXG4gIFxuICBwYXJzb2xfWV9lc2EgPC0gUUNBOjptaW5pbWl6ZShpbnB1dCA9IHR0X1lfZXNhLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5jbHVkZSA9IFwiP1wiLCAjIGluY2x1ZGUgTFJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGV0YWlscyA9IFRSVUUsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByb3cuZG9tID0gVFJVRSAjIHRvIGF2b2lkIG1vZGVsIGFtYmlndWl0eSAtIGVsc2UgdXAgdG8gMTgrIE1vZGVsIGluIHRoZSByZXN1bHRcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuICBcbiAgcGFyc29sX1lfZXNhXG4gIFxuICBcbiAgIyMjIOS4remXtOinoyBJbnRlcm1lZGlhdGUgU29sdXRpb24gLS0tLVxuICBcbiAgXG4gIFxuICBpbnRzb2xfWV9lc2EgPC0gUUNBOjptaW5pbWl6ZShpbnB1dCA9IHR0X1lfZXNhLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGV0YWlscyA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJvdy5kb20gPSBUUlVFICMgdG8gYXZvaWQgbW9kZWwgYW1iaWd1aXR5XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcbiAgXG4gIGludHNvbF9ZX2VzYVxuICBcbiAgXG4gIFxuICBcbiAgIyMjIOe7hOmXtOS4gOiHtOaAp+iwg+aVtOi3neemu+OAgee7hOWGheS4gOiHtOaAp+iwg+aVtOi3neemu1xuICBcbiAgIyMjIyBzb2wgPSAx77yIaW50c29sIOS5n+WPquacieS4gOS4qm1vZGVs77yJXG4gIFxuICAjIyMjIyBjYWN1bGF0ZSBjbHVzdGVyXG4gIFxuICBjbHVzdGVyX2RhdGFfWSA8LSBTZXRNZXRob2RzOjpjbHVzdGVyKGRhdGEgPSBkZi5GdXp6eS5jYXNlLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZXN1bHRzID0gaW50c29sX1lfZXNhLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvdXRjb21lPVwiWVwiLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1bml0X2lkID0gXCJJRFwiLCBjbHVzdGVyX2lkID0gXCJZRUFSXCIsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNvbCA9IDEsICMgPC0tLS0gMSBzdCBzb2x1dGlvbiAoTTEpXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgd2ljb25zID0gVFJVRVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcbiAgXG4gIGNsdXN0ZXJfZGF0YV9ZXG4gIFxuICBcbiAgIyMjIyMgY2FjdWxhdGUgc29sdXRpb24gYWRqdXN0ZWQgZGlzdGFuY2VcbiAgXG4gIFxuICBcbiAgU29sdXRpb25UZXJtX25hbWVzIDwtIG5hbWVzKGNsdXN0ZXJfZGF0YV9ZJG91dHB1dClcbiAgXG4gICMgZGlzdGFuY2UgYmV0d2VlbiBwb29sZWQgKEJldHdlZW4gQ29uc2lzdGVuY3kgRGlzdGFuY2UsIEJFQ09OIGRpc3RhbmNlKVxuICBCRUNPTlNfZGlzdGFuY2UgPC0gc2FwcGx5KFNvbHV0aW9uVGVybV9uYW1lcyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmdW5jdGlvbihzb2xUZXJtKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbHVzdGVyX2RhdGFfWSRvdXRwdXRbW3NvbFRlcm1dXSRkQlBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICApXG4gIFxuICAjIGRpc3RhbmNlIHdpdGhpbiBwb29sZWQgKFdpdGhpbiBDb25zaXN0ZW5jeSBEaXN0YW5jZSwgV0lDT04gZGlzdGFuY2UpXG4gIFdJQ09OU19kaXN0YW5jZSA8LSBzYXBwbHkoU29sdXRpb25UZXJtX25hbWVzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZ1bmN0aW9uKHNvbFRlcm0pIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsdXN0ZXJfZGF0YV9ZJG91dHB1dFtbc29sVGVybV1dJGRXUFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcbiAgXG4gICMgYENhc3RybyBSIEcsIEFyacOxbyBNIEEuIEEgZ2VuZXJhbCBhcHByb2FjaCB0byBwYW5lbCBkYXRhIHNldC10aGVvcmV0aWMgcmVzZWFyY2hbSl0uIEpvdXJuYWwgb2YgQWR2YW5jZXMgaW4gTWFuYWdlbWVudCBTY2llbmNlcyAmIEluZm9ybWF0aW9uIFN5c3RlbXMsIDIwMTYsIDI6IDYzLTc2LmBcbiAgIyAkJFxuICAjIFxcdGV4dHtCRUNPTlMgYWRqdXN0ZWQgZGlzdGFuY2V9ID0gXFxmcmFje1xcdGV4dHtCRUNPTlMgZGlzdGFuY2V9fXtcXHNxcnR7XFxmcmFje259e25eMiArIDNuICsgMn19fVxuICAjIFxcdGV4dHtXSUNPTlMgYWRqdXN0ZWQgZGlzdGFuY2V9ID0gXFxmcmFje1xcdGV4dHtXSUNPTlMgZGlzdGFuY2V9fXtcXHNxcnR7XFxmcmFje259e25eMiArIDNuICsgMn19fVxuICAjICQkXG4gICMgIG4gaXMgZXF1YWwgdG8gdGhlIG51bWJlciBvZiBlbGVtZW50cyBpbiB0aGUgdmVjdG9yXG4gIFxuICAjIG4udC52ZWMgPC0gZGYuRnV6enkkWUVBUiAlPiUgdW5pcXVlKCkgJT4lIGxlbmd0aCgpXG4gICMgbi5OLnZlYyA8LSBkZi5GdXp6eSRJRCAlPiUgdW5pcXVlKCkgJT4lIGxlbmd0aCgpXG4gIFxuICAjIGNhbGN1bGF0ZSBCRUNPTlNfYWRqdXN0ZWRfZGlzdGFuY2VcbiAgQkVDT05TX2FkanVzdGVkX2Rpc3RhbmNlID0gQkVDT05TX2Rpc3RhbmNlL3NxcnQobi50LnZlYyAvIChuLnQudmVjXjIgKyAzICogbi50LnZlYyArIDIpKVxuICBcbiAgIyBjYWx1Y3VsYXRlIFdJQ09OU19hZGp1c3RlZF9kaXN0YW5jZVxuICBXSUNPTlNfYWRqdXN0ZWRfZGlzdGFuY2UgPSBXSUNPTlNfZGlzdGFuY2Uvc3FydChuLk4udmVjIC8gKG4uTi52ZWNeMiArIDMgKiBuLk4udmVjICsgMikpXG4gIFxuICBkZi5zb2wuYWRqLmRpc3RhbmNlIDwtIHRpYmJsZShjb25maWcgPSBTb2x1dGlvblRlcm1fbmFtZXMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEJFQ09OU19hZGp1c3RlZF9kaXN0YW5jZSA9IEJFQ09OU19hZGp1c3RlZF9kaXN0YW5jZSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgV0lDT05TX2FkanVzdGVkX2Rpc3RhbmNlID0gV0lDT05TX2FkanVzdGVkX2Rpc3RhbmNlXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcbiAgZGYuc29sLmFkai5kaXN0YW5jZVxuICBcbiAgXG4gICMjIyDmlbTnkIbnu5PmnpxcbiAgXG4gIFxuICBcbiAgIyDku45pbnRzb2xfWV9lc2Hmj5Dlj5bnu5PmnpxcbiAgaW50c29sX1lfcmVzX092ZXJhbGwgPC0gaW50c29sX1lfZXNhJElDJHNvbC5pbmNsLmNvdlxuICBcbiAgaW50c29sX1lfcmVzX1NvbHV0aW9uVGVybSA8LSAgaW50c29sX1lfZXNhJElDJGluY2wuY292XG4gIHJvd25hbWVzKGludHNvbF9ZX3Jlc19PdmVyYWxsKSA8LSBcIk92ZXJhbGxcIlxuICBcbiAgIyDmt7vliqAgY29uZmlnIOWIl1xuICBpbnRzb2xfWV9yZXNfT3ZlcmFsbCRjb25maWcgPC0gXCJPdmVyYWxsXCJcbiAgaW50c29sX1lfcmVzX1NvbHV0aW9uVGVybSRjb25maWcgPC0gcm93bmFtZXMoaW50c29sX1lfcmVzX1NvbHV0aW9uVGVybSlcbiAgXG4gICMg6KGl6b2Q57y65aSx5YiX77yIY292VSDlkowgY2FzZXPvvInliLAgT3ZlcmFsbCDooahcbiAgaW50c29sX1lfcmVzX092ZXJhbGwkY292VSA8LSBOQVxuICBpbnRzb2xfWV9yZXNfT3ZlcmFsbCRjYXNlcyA8LSBOQVxuICBcbiAgXG4gIFxuICAjIOehruS/neS4pOW8oOihqOWIl+mhuuW6j+S4gOiHtO+8jOW5tuaKimNvbmZpZ+WIl+aOkuWIsOacgOW3pui+uVxuICBpbnRzb2xfWV9yZXNfT3ZlcmFsbCA8LSBpbnRzb2xfWV9yZXNfT3ZlcmFsbFssIGMoXCJjb25maWdcIiwgXCJpbmNsU1wiLCBcIlBSSVwiLCBcImNvdlNcIiwgXCJjb3ZVXCIsIFwiY2FzZXNcIildXG4gIGludHNvbF9ZX3Jlc19Tb2x1dGlvblRlcm0gPC0gaW50c29sX1lfcmVzX1NvbHV0aW9uVGVybVssIGMoXCJjb25maWdcIiwgXCJpbmNsU1wiLCBcIlBSSVwiLCBcImNvdlNcIiwgXCJjb3ZVXCIsIFwiY2FzZXNcIildXG4gIFxuICAjIOWQiOW5tuS4pOW8oOihqFxuICBpbnRzb2xfWV9yZXNfQ29tYmluZWQgPC0gcmJpbmQoaW50c29sX1lfcmVzX1NvbHV0aW9uVGVybSwgaW50c29sX1lfcmVzX092ZXJhbGwpXG4gIFxuICAjIOenu+mZpOihjOWQjVxuICByb3duYW1lcyhpbnRzb2xfWV9yZXNfQ29tYmluZWQpIDwtIE5VTExcbiAgXG4gICMg5p+l55yL5ZCI5bm25ZCO55qE57uT5p6cXG4gICMgcHJpbnQoaW50c29sX1lfcmVzX0NvbWJpbmVkKVxuICBcbiAgXG4gICMg5ZCI5bm2IGludHNvbF9ZX3Jlc19Db21iaW5lZCDlkowgZGYuc29sLmFkai5kaXN0YW5jZVxuICBpbnRzb2xfWV9yZXNfRmluYWwgPC0gaW50c29sX1lfcmVzX0NvbWJpbmVkICU+JVxuICAgIGxlZnRfam9pbihkZi5zb2wuYWRqLmRpc3RhbmNlLCBieSA9IFwiY29uZmlnXCIpXG4gIFxuICBcbiAgIyDosIPmlbTliJfpobrluo/vvJrlsIYgY2FzZXMg5pS+5Yiw5pyA5ZCOXG4gIGludHNvbF9ZX3Jlc19GaW5hbCA8LSBpbnRzb2xfWV9yZXNfRmluYWwgJT4lXG4gICAgc2VsZWN0KC1jYXNlcywgZXZlcnl0aGluZygpLCBjYXNlcylcbiAgXG4gIFxuICB3cml0ZXhsOjp3cml0ZV94bHN4KHggPSBpbnRzb2xfWV9yZXNfRmluYWwsXG4gICAgICAgICAgICAgICAgICAgICAgcGF0aCA9IHBhc3RlMChcIi4vb3V0cHV0L3JvYnVzdG5lc3Mv44CQQW5hbHlzaXNfd2vjgJEzLuWFheWIhuadoeS7tuWIhuaekF/nu5PmnpxfWVwiLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiX2luY2wuY3V0ID0gXCIsIHZhbC5pbmNsLmN1dCwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIl9uLmN1dCA9IFwiLCB2YWwubi5jdXQsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJfcHJpLmN1dCA9XCIsIHZhbC5wcmkuY3V0LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCIueGxzeFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICApXG4gICAgICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICApXG4gIFxuICBcbiAgI3ByaW50KGludHNvbF9ZX3Jlc19GaW5hbClcbiAgXG4gIFxufSAjIGVuZCBkZWYgZnVuY2l0b24gZ2V0X2ludHNvbF9ZX3Jlc19GaW5hbFxuXG5cblxuXG5gYGAifQ== -->
+
+```r
+
+# val.incl.cut <- 0.75
+# val.n.cut <- 2
+# val.pri.cut <- 0.6
+
+get_intsol_Y_res_Final <- function(val.incl.cut, val.n.cut, val.pri.cut){
+    tt_Y <- QCA::truthTable(data = df.Fuzzy.case, 
+                          outcome = \"Y\", 
+                          conditions = conditions, 
+                          incl.cut = val.incl.cut, n.cut = val.n.cut, pri.cut = val.pri.cut, 
+                          show.cases = TRUE,
+                          sort.by = \"OUT\"
+                          )
+  
+  tt_Y
+  
+  
+  
+  ### 寻找必要的组合 - Necessary Disjunctions of SUIN Conditions
+  
+  
+  
+  
+  sp_Y <- QCA::superSubset(data = df.Fuzzy.case,
+                           outcome = \"Y\",
+                           conditions = conditions %>% paste(collapse = \",\"),  # \"X1,X2,X3,X4,X5,X6...\"
+                           incl.cut = 0.90,
+                           cov.cut = 0.5, #<-----
+                           ron.cut = 0.5 #<-----
+                           )
+  sp_Y
+  
+  config.SUIN_cond <- sp_Y$coms %>% colnames()
+  config.SUIN_cond
+  
+  
+  
+  ### find CSA - contradictory simplifying assumptions
+  
+  
+  # get row CSA ----
+  row.CSA <- QCA::findRows(obj = tt_Y, type = 2)  # contradictory simplifying assumptions
+  row.CSA
+  
+  # get config CSA ----
+  
+  # 一致性异常的案例 Deviant cases for consistency (DCC)
+  
+  tt_Y_dcc <-  QCA::truthTable(data = df.Fuzzy.case,
+                               outcome = \"Y\", 
+                               conditions = conditions %>% paste(collapse = \",\"), 
+                               incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                               show.cases = TRUE, 
+                               # sort.by = \"OUT\", # 不能sort by OUT 因为后面slice是按行号进行的
+                               complete = TRUE, 
+                               dcc = TRUE)
+  
+  
+  # get untenable_LR config from truthTable 
+  tt_Y_CSA <- tt_Y_dcc$tt %>% 
+    slice(row.CSA) %>% 
+    select(conditions) # select(X1,X2,X3,......)
+  
+  tt_Y_CSA
+  
+  # def function
+  convert_to_config <- function(row) {
+    names <- colnames(tt_Y_CSA)  # 获取列名 #  \"X1\" \"X2\" \"X3\" \"X4\" \"X5\" \"X6\" \"X7\" \"X8\" \"X9\"
+    terms <- ifelse(row == 1, names, paste0(\"~\", names))  # 1: 直接列名, 0: 加上 ~
+    paste(terms, collapse = \"*\")  # 用 \"*\" 连接所有变量
+  }
+  
+  # end def function----
+  
+  
+  # 对数据框的每一行进行转换，并存入向量
+  
+  # X1 X2 X3 X4 X5 X6 X7 X8 X9
+  # 116  0  0  1  1  1  0  0  1  1
+  # ↓
+  #                              116
+  # \"~X1*~X2*X3*X4*X5*~X6*~X7*X8*X9\"
+  
+  # 应用函数到 tt_Y_CSA 每一行
+  
+  config.CSA <- apply(tt_Y_CSA, 1, convert_to_config)
+  config.CSA
+  
+  
+  
+  ### TruthTable - esa - rm untenable
+  
+  
+  tt_Y_esa <- SetMethods::esa(oldtt = tt_Y, 
+                              nec_cond = config.SUIN_cond, 
+                              untenable_LR = config.CSA
+                              )
+  tt_Y_esa
+  
+  
+  
+  
+  ### 复杂解 Complex Solution ----
+  
+  
+  compsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                                 details = TRUE, 
+                                 row.dom = TRUE # to avoid model ambiguity
+                                 )
+  
+  compsol_Y_esa
+  
+  
+  
+  
+  
+  ### 简单解 Parsimonious Solution ----
+  
+  
+  parsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                                include = \"?\", # include LR
+                                details = TRUE, 
+                                row.dom = TRUE # to avoid model ambiguity - else up to 18+ Model in the result
+                                )
+  
+  parsol_Y_esa
+  
+  
+  ### 中间解 Intermediate Solution ----
+  
+  
+  
+  intsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                                details = TRUE,
+                                row.dom = TRUE # to avoid model ambiguity
+                                )
+  
+  intsol_Y_esa
+  
+  
+  
+  
+  ### 组间一致性调整距离、组内一致性调整距离
+  
+  #### sol = 1（intsol 也只有一个model）
+  
+  ##### caculate cluster
+  
+  cluster_data_Y <- SetMethods::cluster(data = df.Fuzzy.case, 
+                                        results = intsol_Y_esa, 
+                                        outcome=\"Y\", 
+                                        unit_id = \"ID\", cluster_id = \"YEAR\", 
+                                        sol = 1, # <---- 1 st solution (M1)
+                                        wicons = TRUE
+                                        )
+  
+  cluster_data_Y
+  
+  
+  ##### caculate solution adjusted distance
+  
+  
+  
+  SolutionTerm_names <- names(cluster_data_Y$output)
+  
+  # distance between pooled (Between Consistency Distance, BECON distance)
+  BECONS_distance <- sapply(SolutionTerm_names,
+                            function(solTerm) {
+                              cluster_data_Y$output[[solTerm]]$dBP
+                              }
+                            )
+  
+  # distance within pooled (Within Consistency Distance, WICON distance)
+  WICONS_distance <- sapply(SolutionTerm_names,
+                            function(solTerm) {
+                              cluster_data_Y$output[[solTerm]]$dWP
+                              }
+                            )
+  
+  # `Castro R G, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2: 63-76.`
+  # $$
+  # \text{BECONS adjusted distance} = \frac{\text{BECONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+  # \text{WICONS adjusted distance} = \frac{\text{WICONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+  # $$
+  #  n is equal to the number of elements in the vector
+  
+  # n.t.vec <- df.Fuzzy$YEAR %>% unique() %>% length()
+  # n.N.vec <- df.Fuzzy$ID %>% unique() %>% length()
+  
+  # calculate BECONS_adjusted_distance
+  BECONS_adjusted_distance = BECONS_distance/sqrt(n.t.vec / (n.t.vec^2 + 3 * n.t.vec + 2))
+  
+  # caluculate WICONS_adjusted_distance
+  WICONS_adjusted_distance = WICONS_distance/sqrt(n.N.vec / (n.N.vec^2 + 3 * n.N.vec + 2))
+  
+  df.sol.adj.distance <- tibble(config = SolutionTerm_names,
+                                BECONS_adjusted_distance = BECONS_adjusted_distance,
+                                WICONS_adjusted_distance = WICONS_adjusted_distance
+                                )
+  df.sol.adj.distance
+  
+  
+  ### 整理结果
+  
+  
+  
+  # 从intsol_Y_esa提取结果
+  intsol_Y_res_Overall <- intsol_Y_esa$IC$sol.incl.cov
+  
+  intsol_Y_res_SolutionTerm <-  intsol_Y_esa$IC$incl.cov
+  rownames(intsol_Y_res_Overall) <- \"Overall\"
+  
+  # 添加 config 列
+  intsol_Y_res_Overall$config <- \"Overall\"
+  intsol_Y_res_SolutionTerm$config <- rownames(intsol_Y_res_SolutionTerm)
+  
+  # 补齐缺失列（covU 和 cases）到 Overall 表
+  intsol_Y_res_Overall$covU <- NA
+  intsol_Y_res_Overall$cases <- NA
+  
+  
+  
+  # 确保两张表列顺序一致，并把config列排到最左边
+  intsol_Y_res_Overall <- intsol_Y_res_Overall[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+  intsol_Y_res_SolutionTerm <- intsol_Y_res_SolutionTerm[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+  
+  # 合并两张表
+  intsol_Y_res_Combined <- rbind(intsol_Y_res_SolutionTerm, intsol_Y_res_Overall)
+  
+  # 移除行名
+  rownames(intsol_Y_res_Combined) <- NULL
+  
+  # 查看合并后的结果
+  # print(intsol_Y_res_Combined)
+  
+  
+  # 合并 intsol_Y_res_Combined 和 df.sol.adj.distance
+  intsol_Y_res_Final <- intsol_Y_res_Combined %>%
+    left_join(df.sol.adj.distance, by = \"config\")
+  
+  
+  # 调整列顺序：将 cases 放到最后
+  intsol_Y_res_Final <- intsol_Y_res_Final %>%
+    select(-cases, everything(), cases)
+  
+  
+  writexl::write_xlsx(x = intsol_Y_res_Final,
+                      path = paste0(\"./output/robustness/【Analysis_wk】3.充分条件分析_结果_Y\", 
+                                    \"_incl.cut = \", val.incl.cut, 
+                                    \"_n.cut = \", val.n.cut, 
+                                    \"_pri.cut =\", val.pri.cut,
+                                    \".xlsx\"
+                                    )
+                        
+                      )
+  
+  
+  #print(intsol_Y_res_Final)
+  
+  
+} # end def funciton get_intsol_Y_res_Final
+
+
+
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+# val.incl.cut <- 0.75
+# val.n.cut <- 2
+# val.pri.cut <- 0.6
+
+get_intsol_Y_res_Final <- function(val.incl.cut, val.n.cut, val.pri.cut){
+    tt_Y <- QCA::truthTable(data = df.Fuzzy.case, 
+                          outcome = \"Y\", 
+                          conditions = conditions, 
+                          incl.cut = val.incl.cut, n.cut = val.n.cut, pri.cut = val.pri.cut, 
+                          show.cases = TRUE,
+                          sort.by = \"OUT\"
+                          )
+  
+  tt_Y
+  
+  
+  
+  ### 寻找必要的组合 - Necessary Disjunctions of SUIN Conditions
+  
+  
+  
+  
+  sp_Y <- QCA::superSubset(data = df.Fuzzy.case,
+                           outcome = \"Y\",
+                           conditions = conditions %>% paste(collapse = \",\"),  # \"X1,X2,X3,X4,X5,X6...\"
+                           incl.cut = 0.90,
+                           cov.cut = 0.5, #<-----
+                           ron.cut = 0.5 #<-----
+                           )
+  sp_Y
+  
+  config.SUIN_cond <- sp_Y$coms %>% colnames()
+  config.SUIN_cond
+  
+  
+  
+  ### find CSA - contradictory simplifying assumptions
+  
+  
+  # get row CSA ----
+  row.CSA <- QCA::findRows(obj = tt_Y, type = 2)  # contradictory simplifying assumptions
+  row.CSA
+  
+  # get config CSA ----
+  
+  # 一致性异常的案例 Deviant cases for consistency (DCC)
+  
+  tt_Y_dcc <-  QCA::truthTable(data = df.Fuzzy.case,
+                               outcome = \"Y\", 
+                               conditions = conditions %>% paste(collapse = \",\"), 
+                               incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                               show.cases = TRUE, 
+                               # sort.by = \"OUT\", # 不能sort by OUT 因为后面slice是按行号进行的
+                               complete = TRUE, 
+                               dcc = TRUE)
+  
+  
+  # get untenable_LR config from truthTable 
+  tt_Y_CSA <- tt_Y_dcc$tt %>% 
+    slice(row.CSA) %>% 
+    select(conditions) # select(X1,X2,X3,......)
+  
+  tt_Y_CSA
+  
+  # def function
+  convert_to_config <- function(row) {
+    names <- colnames(tt_Y_CSA)  # 获取列名 #  \"X1\" \"X2\" \"X3\" \"X4\" \"X5\" \"X6\" \"X7\" \"X8\" \"X9\"
+    terms <- ifelse(row == 1, names, paste0(\"~\", names))  # 1: 直接列名, 0: 加上 ~
+    paste(terms, collapse = \"*\")  # 用 \"*\" 连接所有变量
+  }
+  
+  # end def function----
+  
+  
+  # 对数据框的每一行进行转换，并存入向量
+  
+  # X1 X2 X3 X4 X5 X6 X7 X8 X9
+  # 116  0  0  1  1  1  0  0  1  1
+  # ↓
+  #                              116
+  # \"~X1*~X2*X3*X4*X5*~X6*~X7*X8*X9\"
+  
+  # 应用函数到 tt_Y_CSA 每一行
+  
+  config.CSA <- apply(tt_Y_CSA, 1, convert_to_config)
+  config.CSA
+  
+  
+  
+  ### TruthTable - esa - rm untenable
+  
+  
+  tt_Y_esa <- SetMethods::esa(oldtt = tt_Y, 
+                              nec_cond = config.SUIN_cond, 
+                              untenable_LR = config.CSA
+                              )
+  tt_Y_esa
+  
+  
+  
+  
+  ### 复杂解 Complex Solution ----
+  
+  
+  compsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                                 details = TRUE, 
+                                 row.dom = TRUE # to avoid model ambiguity
+                                 )
+  
+  compsol_Y_esa
+  
+  
+  
+  
+  
+  ### 简单解 Parsimonious Solution ----
+  
+  
+  parsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                                include = \"?\", # include LR
+                                details = TRUE, 
+                                row.dom = TRUE # to avoid model ambiguity - else up to 18+ Model in the result
+                                )
+  
+  parsol_Y_esa
+  
+  
+  ### 中间解 Intermediate Solution ----
+  
+  
+  
+  intsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                                details = TRUE,
+                                row.dom = TRUE # to avoid model ambiguity
+                                )
+  
+  intsol_Y_esa
+  
+  
+  
+  
+  ### 组间一致性调整距离、组内一致性调整距离
+  
+  #### sol = 1（intsol 也只有一个model）
+  
+  ##### caculate cluster
+  
+  cluster_data_Y <- SetMethods::cluster(data = df.Fuzzy.case, 
+                                        results = intsol_Y_esa, 
+                                        outcome=\"Y\", 
+                                        unit_id = \"ID\", cluster_id = \"YEAR\", 
+                                        sol = 1, # <---- 1 st solution (M1)
+                                        wicons = TRUE
+                                        )
+  
+  cluster_data_Y
+  
+  
+  ##### caculate solution adjusted distance
+  
+  
+  
+  SolutionTerm_names <- names(cluster_data_Y$output)
+  
+  # distance between pooled (Between Consistency Distance, BECON distance)
+  BECONS_distance <- sapply(SolutionTerm_names,
+                            function(solTerm) {
+                              cluster_data_Y$output[[solTerm]]$dBP
+                              }
+                            )
+  
+  # distance within pooled (Within Consistency Distance, WICON distance)
+  WICONS_distance <- sapply(SolutionTerm_names,
+                            function(solTerm) {
+                              cluster_data_Y$output[[solTerm]]$dWP
+                              }
+                            )
+  
+  # `Castro R G, Ariño M A. A general approach to panel data set-theoretic research[J]. Journal of Advances in Management Sciences & Information Systems, 2016, 2: 63-76.`
+  # $$
+  # \text{BECONS adjusted distance} = \frac{\text{BECONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+  # \text{WICONS adjusted distance} = \frac{\text{WICONS distance}}{\sqrt{\frac{n}{n^2 + 3n + 2}}}
+  # $$
+  #  n is equal to the number of elements in the vector
+  
+  # n.t.vec <- df.Fuzzy$YEAR %>% unique() %>% length()
+  # n.N.vec <- df.Fuzzy$ID %>% unique() %>% length()
+  
+  # calculate BECONS_adjusted_distance
+  BECONS_adjusted_distance = BECONS_distance/sqrt(n.t.vec / (n.t.vec^2 + 3 * n.t.vec + 2))
+  
+  # caluculate WICONS_adjusted_distance
+  WICONS_adjusted_distance = WICONS_distance/sqrt(n.N.vec / (n.N.vec^2 + 3 * n.N.vec + 2))
+  
+  df.sol.adj.distance <- tibble(config = SolutionTerm_names,
+                                BECONS_adjusted_distance = BECONS_adjusted_distance,
+                                WICONS_adjusted_distance = WICONS_adjusted_distance
+                                )
+  df.sol.adj.distance
+  
+  
+  ### 整理结果
+  
+  
+  
+  # 从intsol_Y_esa提取结果
+  intsol_Y_res_Overall <- intsol_Y_esa$IC$sol.incl.cov
+  
+  intsol_Y_res_SolutionTerm <-  intsol_Y_esa$IC$incl.cov
+  rownames(intsol_Y_res_Overall) <- \"Overall\"
+  
+  # 添加 config 列
+  intsol_Y_res_Overall$config <- \"Overall\"
+  intsol_Y_res_SolutionTerm$config <- rownames(intsol_Y_res_SolutionTerm)
+  
+  # 补齐缺失列（covU 和 cases）到 Overall 表
+  intsol_Y_res_Overall$covU <- NA
+  intsol_Y_res_Overall$cases <- NA
+  
+  
+  
+  # 确保两张表列顺序一致，并把config列排到最左边
+  intsol_Y_res_Overall <- intsol_Y_res_Overall[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+  intsol_Y_res_SolutionTerm <- intsol_Y_res_SolutionTerm[, c(\"config\", \"inclS\", \"PRI\", \"covS\", \"covU\", \"cases\")]
+  
+  # 合并两张表
+  intsol_Y_res_Combined <- rbind(intsol_Y_res_SolutionTerm, intsol_Y_res_Overall)
+  
+  # 移除行名
+  rownames(intsol_Y_res_Combined) <- NULL
+  
+  # 查看合并后的结果
+  # print(intsol_Y_res_Combined)
+  
+  
+  # 合并 intsol_Y_res_Combined 和 df.sol.adj.distance
+  intsol_Y_res_Final <- intsol_Y_res_Combined %>%
+    left_join(df.sol.adj.distance, by = \"config\")
+  
+  
+  # 调整列顺序：将 cases 放到最后
+  intsol_Y_res_Final <- intsol_Y_res_Final %>%
+    select(-cases, everything(), cases)
+  
+  
+  writexl::write_xlsx(x = intsol_Y_res_Final,
+                      path = paste0(\"./output/robustness/【Analysis_wk】3.充分条件分析_结果_Y\", 
+                                    \"_incl.cut = \", val.incl.cut, 
+                                    \"_n.cut = \", val.n.cut, 
+                                    \"_pri.cut =\", val.pri.cut,
+                                    \".xlsx\"
+                                    )
+                        
+                      )
+  
+  
+  #print(intsol_Y_res_Final)
+  
+  
+} # end def funciton get_intsol_Y_res_Final
+
+
+
+
+```"

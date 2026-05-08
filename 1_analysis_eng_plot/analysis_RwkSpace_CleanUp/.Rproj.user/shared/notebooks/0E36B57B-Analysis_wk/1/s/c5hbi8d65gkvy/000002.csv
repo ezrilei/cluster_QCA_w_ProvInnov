@@ -1,0 +1,208 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDliqDovb3lv4XopoHljIVcbmxpYnJhcnkodGlkeXZlcnNlKVxubGlicmFyeShnZ3JlcGVsKVxubGlicmFyeShzaG93dGV4dClcblxuIyDorr7nva7kuK3mloflrZfkvZPmlK/mjIFcbnNob3d0ZXh0X2F1dG8oZW5hYmxlID0gVFJVRSlcbmZvbnRfYWRkKFwiZmFuZ1NvbmdcIiwgcmVndWxhciA9IFwiLi9mb250cy/mlrnmraPku7/lrotfR0JLLlRURlwiKVxuZm9udF9hZGQoXCJUaW1lc05ld1JvbWFuXCIsIHJlZ3VsYXIgPSBcIi4vZm9udHMvVGltZXMgTmV3IFJvbWFuLnR0ZlwiKVxuXG4jIOWBh+iuviBkZl9jbHVzdGVyX2RhdGFfYWxsWV9CRUNPTlNfQkVDT1Yg5bey5a2Y5Zyo77yM5YyF5ZCr77yaXG4jIFlFQVI6IOW5tOS7vVxuIyBDT05GSUc6IOWboOaenOi3r+W+hFxuIyBCRUNPTlM6IOe7hOmXtOS4gOiHtOaAp1xuIyBCRUNPVjog57uE6Ze06KaG55uW5bqmXG5cbiMgMS4g6L2s5o2i5Li66ZW/5qC85byP5Lul57uY5Yi25aSa5Liq5oyH5qCHXG5kZl9sb25nIDwtIGRmX2NsdXN0ZXJfZGF0YV9hbGxZX0JFQ09OU19CRUNPViAlPiVcbiAgcGl2b3RfbG9uZ2VyKGNvbHMgPSBjKEJFQ09OUywgQkVDT1YpLFxuICAgICAgICAgICAgICAgbmFtZXNfdG8gPSBcIk1ldHJpY1wiLFxuICAgICAgICAgICAgICAgdmFsdWVzX3RvID0gXCJWYWx1ZVwiKSAlPiVcbiAgbXV0YXRlKE1ldHJpYyA9IGRwbHlyOjpyZWNvZGUoTWV0cmljLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCRUNPTlMgPSBcIue7hOmXtOS4gOiHtOaAp1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCRUNPViA9IFwi57uE6Ze06KaG55uW5bqmXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuICAgICAgICAgKVxuXG4jIDIuIOaPkOWPluavj+S4qui3r+W+hOWcqOavj+S4quaMh+agh+acgOWQjuS4gOW5tOeUqOS6juagh+azqFxubGFiZWxfZGF0YSA8LSBkZl9sb25nICU+JVxuICBncm91cF9ieShDT05GSUcsIE1ldHJpYykgJT4lXG4gIGZpbHRlcihZRUFSID09IG1heChZRUFSKSkgJT4lXG4gIHVuZ3JvdXAoKVxuXG4jIDMuIOi+k+WHuuWIsCBQREYg5paH5Lu2XG5wZGYoZmlsZSA9IFwiLi9vdXRwdXQv44CQQW5hbHlzaXNfd2vjgJHnu4Tpl7TkuIDoh7TmgKfkuI7opobnm5bluqZf6LaL5Yq/5Zu+X+WQq+WbvuazqOS4juagh+etvi5wZGZcIiwgd2lkdGggPSAxMCwgaGVpZ2h0ID0gMTApXG5cbiMgNC4g57uY5Zu+XG5wX2NvbmZpZ19CRUNPTlNfQkVDT1YgPC0gZ2dwbG90KGRmX2xvbmcsIGFlcyh4ID0gWUVBUiwgeSA9IFZhbHVlLFxuICAgICAgICAgICAgICAgICAgICAgICAgIGdyb3VwID0gaW50ZXJhY3Rpb24oQ09ORklHLCBNZXRyaWMpKSkgK1xuICBnZW9tX2xpbmUoYWVzKGNvbG9yID0gQ09ORklHLCBsaW5ldHlwZSA9IE1ldHJpYyksIHNpemUgPSAwLjUpICtcbiAgZ2VvbV9wb2ludChhZXMoY29sb3IgPSBDT05GSUcpLCBzaXplID0gMSkgK1xuXG4gICMg5re75Yqg5Y+C6ICD57q/XG4gIGdlb21faGxpbmUoeWludGVyY2VwdCA9IDAuOTAsIGxpbmV0eXBlID0gXCJkYXNoZWRcIiwgY29sb3IgPSBcImJsYWNrXCIpICtcbiAgZ2VvbV9obGluZSh5aW50ZXJjZXB0ID0gMC41MCwgbGluZXR5cGUgPSBcImRhc2hlZFwiLCBjb2xvciA9IFwiYmxhY2tcIikgK1xuXG4gICMg5re75Yqg5bC+6YOo6Lev5b6E5qCH562+77yI5Lik57G75oyH5qCH77yJXG4gIGdlb21fdGV4dF9yZXBlbChcbiAgICBkYXRhID0gbGFiZWxfZGF0YSxcbiAgICBhZXMobGFiZWwgPSBDT05GSUcsIHkgPSBWYWx1ZSwgY29sb3IgPSBDT05GSUcpLFxuICAgIGZhbWlseSA9IFwiVGltZXNOZXdSb21hblwiLFxuICAgIG51ZGdlX3ggPSAyLjgsXG4gICAgZGlyZWN0aW9uID0gXCJ5XCIsXG4gICAgaGp1c3QgPSAwLFxuICAgIHNlZ21lbnQuY29sb3IgPSBOQSxcbiAgICBzaXplID0gMy4wLFxuICAgIGJveC5wYWRkaW5nID0gMC4zLFxuICAgIHBvaW50LnBhZGRpbmcgPSAwLjA1LFxuICAgIG1heC5vdmVybGFwcyA9IEluZixcbiAgICBzaG93LmxlZ2VuZCA9IEZBTFNFXG4gICkgK1xuXG4gICMg6K6+572u5Zu+5L6L5LiO6L205qCH562+XG4gIGxhYnMoXG4gICAgeCA9IFwi5bm05Lu9XCIsXG4gICAgeSA9IFwi5oyH5qCH5YC8XCIsXG4gICAgY29sb3IgPSBcIuWboOaenOi3r+W+hFwiLFxuICAgIGxpbmV0eXBlID0gXCLmjIfmoIfnsbvlnotcIlxuICApICtcbiAgc2NhbGVfeF9kaXNjcmV0ZSgpICtcbiAgXG4gICMgeei9tOe9keagvOe6v1xuICBzY2FsZV95X2NvbnRpbnVvdXMoXG4gIGJyZWFrcyA9IHNlcSgwLCAxLCBieSA9IDAuMSksICAgICAjIOavjyAwLjEg5LiA5Liq5Yi75bqmXG4gIGxpbWl0cyA9IGMoMCwgMSkjLCAgICAgICAgICAgICAgICAgIyBZ6L205Yy66Ze05LuOIDAg5YiwIDFcbiAgI2V4cGFuZCA9IGMoMCwgMCkgICAgICAgICAgICAgICAgICAjIOS4jemineWklueVmeeZve+8iOWPr+mAie+8iVxuICApK1xuXG4gIHRoZW1lX2J3KGJhc2VfZmFtaWx5ID0gXCJUaW1lc05ld1JvbWFuXCIpICtcbiAgdGhlbWUoXG4gICAgdGV4dCA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcImZhbmdTb25nXCIpLFxuICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoZmFtaWx5ID0gXCJmYW5nU29uZ1wiLCBzaXplID0gMTQpLFxuICAgIGxlZ2VuZC50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcImZhbmdTb25nXCIsIHNpemUgPSAxMiksICAjIOWbvuS+i+agh+mimFxuICAgIGxlZ2VuZC50ZXh0ID0gZWxlbWVudF90ZXh0KGZhbWlseSA9IFwiZmFuZ1NvbmdcIiwgc2l6ZSA9IDEwKSwgICAjIOWbvuS+i+agh+etvlxuICAgIGxlZ2VuZC5wb3NpdGlvbiA9IFwiYm90dG9tXCIsXG4gICAgcGxvdC5tYXJnaW4gPSB1bml0KGMoMSwgNCwgMSwgMSksIFwiY21cIilcbiAgKSArXG4gIGd1aWRlcyhcbiAgICBjb2xvciA9IGd1aWRlX2xlZ2VuZChuY29sID0gMSksXG4gICAgbGluZXR5cGUgPSBndWlkZV9sZWdlbmQobmNvbCA9IDEpXG4gICAgI2xpbmV0eXBlID0gZ3VpZGVfbGVnZW5kKG92ZXJyaWRlLmFlcyA9IGxpc3QoY29sb3IgPSBcImJsYWNrXCIpKVxuICApXG5cbiMg5omT5Y2w5Zu+6KGoXG5wcmludChwX2NvbmZpZ19CRUNPTlNfQkVDT1YpXG5kZXYub2ZmKClcblxuIyDlj6/lnKggUlN0dWRpbyDkuK3mmL7npLpcbnBfY29uZmlnX0JFQ09OU19CRUNPVlxuYGBgIn0= -->
+
+```r
+# 加载必要包
+library(tidyverse)
+library(ggrepel)
+library(showtext)
+
+# 设置中文字体支持
+showtext_auto(enable = TRUE)
+font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\")
+font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+
+# 假设 df_cluster_data_allY_BECONS_BECOV 已存在，包含：
+# YEAR: 年份
+# CONFIG: 因果路径
+# BECONS: 组间一致性
+# BECOV: 组间覆盖度
+
+# 1. 转换为长格式以绘制多个指标
+df_long <- df_cluster_data_allY_BECONS_BECOV %>%
+  pivot_longer(cols = c(BECONS, BECOV),
+               names_to = \"Metric\",
+               values_to = \"Value\") %>%
+  mutate(Metric = dplyr::recode(Metric,
+                                BECONS = \"组间一致性\",
+                                BECOV = \"组间覆盖度\"
+                                )
+         )
+
+# 2. 提取每个路径在每个指标最后一年用于标注
+label_data <- df_long %>%
+  group_by(CONFIG, Metric) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+# 3. 输出到 PDF 文件
+pdf(file = \"./output/【Analysis_wk】组间一致性与覆盖度_趋势图_含图注与标签.pdf\", width = 10, height = 10)
+
+# 4. 绘图
+p_config_BECONS_BECOV <- ggplot(df_long, aes(x = YEAR, y = Value,
+                         group = interaction(CONFIG, Metric))) +
+  geom_line(aes(color = CONFIG, linetype = Metric), size = 0.5) +
+  geom_point(aes(color = CONFIG), size = 1) +
+
+  # 添加参考线
+  geom_hline(yintercept = 0.90, linetype = \"dashed\", color = \"black\") +
+  geom_hline(yintercept = 0.50, linetype = \"dashed\", color = \"black\") +
+
+  # 添加尾部路径标签（两类指标）
+  geom_text_repel(
+    data = label_data,
+    aes(label = CONFIG, y = Value, color = CONFIG),
+    family = \"TimesNewRoman\",
+    nudge_x = 2.8,
+    direction = \"y\",
+    hjust = 0,
+    segment.color = NA,
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+
+  # 设置图例与轴标签
+  labs(
+    x = \"年份\",
+    y = \"指标值\",
+    color = \"因果路径\",
+    linetype = \"指标类型\"
+  ) +
+  scale_x_discrete() +
+  
+  # y轴网格线
+  scale_y_continuous(
+  breaks = seq(0, 1, by = 0.1),     # 每 0.1 一个刻度
+  limits = c(0, 1)#,                 # Y轴区间从 0 到 1
+  #expand = c(0, 0)                  # 不额外留白（可选）
+  )+
+
+  theme_bw(base_family = \"TimesNewRoman\") +
+  theme(
+    text = element_text(family = \"fangSong\"),
+    axis.title = element_text(family = \"fangSong\", size = 14),
+    legend.title = element_text(family = \"fangSong\", size = 12),  # 图例标题
+    legend.text = element_text(family = \"fangSong\", size = 10),   # 图例标签
+    legend.position = \"bottom\",
+    plot.margin = unit(c(1, 4, 1, 1), \"cm\")
+  ) +
+  guides(
+    color = guide_legend(ncol = 1),
+    linetype = guide_legend(ncol = 1)
+    #linetype = guide_legend(override.aes = list(color = \"black\"))
+  )
+
+# 打印图表
+print(p_config_BECONS_BECOV)
+dev.off()
+
+# 可在 RStudio 中显示
+p_config_BECONS_BECOV
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# 加载必要包
+library(tidyverse)
+library(ggrepel)
+library(showtext)
+
+# 设置中文字体支持
+showtext_auto(enable = TRUE)
+font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\")
+font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+
+# 假设 df_cluster_data_allY_BECONS_BECOV 已存在，包含：
+# YEAR: 年份
+# CONFIG: 因果路径
+# BECONS: 组间一致性
+# BECOV: 组间覆盖度
+
+# 1. 转换为长格式以绘制多个指标
+df_long <- df_cluster_data_allY_BECONS_BECOV %>%
+  pivot_longer(cols = c(BECONS, BECOV),
+               names_to = \"Metric\",
+               values_to = \"Value\") %>%
+  mutate(Metric = dplyr::recode(Metric,
+                                BECONS = \"组间一致性\",
+                                BECOV = \"组间覆盖度\"
+                                )
+         )
+
+# 2. 提取每个路径在每个指标最后一年用于标注
+label_data <- df_long %>%
+  group_by(CONFIG, Metric) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+# 3. 输出到 PDF 文件
+pdf(file = \"./output/【Analysis_wk】组间一致性与覆盖度_趋势图_含图注与标签.pdf\", width = 10, height = 10)
+
+# 4. 绘图
+p_config_BECONS_BECOV <- ggplot(df_long, aes(x = YEAR, y = Value,
+                         group = interaction(CONFIG, Metric))) +
+  geom_line(aes(color = CONFIG, linetype = Metric), size = 0.5) +
+  geom_point(aes(color = CONFIG), size = 1) +
+
+  # 添加参考线
+  geom_hline(yintercept = 0.90, linetype = \"dashed\", color = \"black\") +
+  geom_hline(yintercept = 0.50, linetype = \"dashed\", color = \"black\") +
+
+  # 添加尾部路径标签（两类指标）
+  geom_text_repel(
+    data = label_data,
+    aes(label = CONFIG, y = Value, color = CONFIG),
+    family = \"TimesNewRoman\",
+    nudge_x = 2.8,
+    direction = \"y\",
+    hjust = 0,
+    segment.color = NA,
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+
+  # 设置图例与轴标签
+  labs(
+    x = \"年份\",
+    y = \"指标值\",
+    color = \"因果路径\",
+    linetype = \"指标类型\"
+  ) +
+  scale_x_discrete() +
+  
+  # y轴网格线
+  scale_y_continuous(
+  breaks = seq(0, 1, by = 0.1),     # 每 0.1 一个刻度
+  limits = c(0, 1)#,                 # Y轴区间从 0 到 1
+  #expand = c(0, 0)                  # 不额外留白（可选）
+  )+
+
+  theme_bw(base_family = \"TimesNewRoman\") +
+  theme(
+    text = element_text(family = \"fangSong\"),
+    axis.title = element_text(family = \"fangSong\", size = 14),
+    legend.title = element_text(family = \"fangSong\", size = 12),  # 图例标题
+    legend.text = element_text(family = \"fangSong\", size = 10),   # 图例标签
+    legend.position = \"bottom\",
+    plot.margin = unit(c(1, 4, 1, 1), \"cm\")
+  ) +
+  guides(
+    color = guide_legend(ncol = 1),
+    linetype = guide_legend(ncol = 1)
+    #linetype = guide_legend(override.aes = list(color = \"black\"))
+  )
+
+# 打印图表
+print(p_config_BECONS_BECOV)
+dev.off()
+
+# 可在 RStudio 中显示
+p_config_BECONS_BECOV
+```"

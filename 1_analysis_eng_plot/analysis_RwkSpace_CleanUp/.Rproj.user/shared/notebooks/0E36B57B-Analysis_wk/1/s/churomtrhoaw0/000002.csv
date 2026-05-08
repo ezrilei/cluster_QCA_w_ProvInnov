@@ -1,0 +1,24 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5pbnRzb2xfWV9lc2EgPC0gUUNBOjptaW5pbWl6ZShpbnB1dCA9IHR0X1lfZXNhLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRldGFpbHMgPSBUUlVFLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcm93LmRvbSA9IFRSVUUgIyB0byBhdm9pZCBtb2RlbCBhbWJpZ3VpdHlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcblxuaW50c29sX1lfZXNhXG5gYGAifQ== -->
+
+```r
+
+intsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                              details = TRUE,
+                              row.dom = TRUE # to avoid model ambiguity
+                              )
+
+intsol_Y_esa
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+intsol_Y_esa <- QCA::minimize(input = tt_Y_esa, 
+                              details = TRUE,
+                              row.dom = TRUE # to avoid model ambiguity
+                              )
+
+intsol_Y_esa
+```"

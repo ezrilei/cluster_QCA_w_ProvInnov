@@ -1,0 +1,13 @@
+"0","```r
+
+writexl::write_xlsx(x = summary_table_POCON_POCOV,
+                    path = \"output/【Analysis_wk】2.必要性分析_summary_table_汇总一致性大于0.9且汇总覆盖度大于0.5.xlsx\")
+```"
+"0","```r
+# 找 组间一致性调整距离大于0.2的条件组合
+
+summary_table_BECON_AdjDis_greater_0_2 <- summary_table %>%
+  filter(BECONS_adjusted_distance > 0.2)
+
+print(summary_table_BECON_AdjDis_greater_0_2)
+```"

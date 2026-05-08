@@ -1,0 +1,70 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIFlcbmRmX2NsdXN0ZXJfZGF0YV9ZX0JFQ09OU19CRUNPViA8LSBleHRyYWN0X2NvbmZpZ19CRUNPTlNfYnlfeWVhcihjbHVzdGVyX2RhdGFfWSkgJT4lXG4gIG11dGF0ZShDT05GSUcgPSBwYXN0ZTAoQ09ORklHLFwiIOKGkiBZXCIpKVxuXG4jIHByaW50KGRmX2NsdXN0ZXJfZGF0YV9ZX0JFQ09OUylcblxuXG4jIH5ZXG5kZl9jbHVzdGVyX2RhdGFfbmVnWV9CRUNPTlNfQkVDT1YgPC0gZXh0cmFjdF9jb25maWdfQkVDT05TX2J5X3llYXIoY2x1c3Rlcl9kYXRhX25lZ1kpICU+JVxuICBtdXRhdGUoQ09ORklHID0gcGFzdGUwKENPTkZJRyxcIiDihpIgfllcIikpXG5cbiMgcHJpbnQoZGZfY2x1c3Rlcl9kYXRhX25lZ1lfQkVDT05TKVxuXG4jIFkgYW5kIH5ZXG5kZl9jbHVzdGVyX2RhdGFfYWxsWV9CRUNPTlNfQkVDT1YgPC0gcmJpbmQoZGZfY2x1c3Rlcl9kYXRhX1lfQkVDT05TX0JFQ09WLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRmX2NsdXN0ZXJfZGF0YV9uZWdZX0JFQ09OU19CRUNPVlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIClcblxuZGZfY2x1c3Rlcl9kYXRhX2FsbFlfQkVDT05TX0JFQ09WIDwtIGRmX2NsdXN0ZXJfZGF0YV9hbGxZX0JFQ09OU19CRUNPViAlPiVcbiAgbXV0YXRlKFxuICAgIFBBVEhXQVkgPSBjYXNlX3doZW4oXG4gICAgICBDT05GSUcgPT0gXCJYMSpYMypYNCpYNSpYNypYOCpYOSDihpIgWVwiIH4gXCLot6/lvoQxYVwiLFxuICAgICAgQ09ORklHID09IFwiWDEqWDQqWDUqWDYqWDcqWDgqWDkg4oaSIFlcIiB+IFwi6Lev5b6EMWJcIixcbiAgICAgIENPTkZJRyA9PSBcIlgxKlgyKlgzKlg0Klg1Kn5YNipYNypYOCDihpIgWVwiIH4gXCLot6/lvoQyXCIsXG4gICAgICBDT05GSUcgPT0gXCJ+WDEqflgzKn5YNCp+WDUqflg3Kn5YOCp+WDkg4oaSIH5ZXCIgfiBcIui3r+W+hDNcIlxuICAgIClcbiAgKVxuXG5wcmludChkZl9jbHVzdGVyX2RhdGFfYWxsWV9CRUNPTlNfQkVDT1YpXG5gYGAifQ== -->
+
+```r
+
+# Y
+df_cluster_data_Y_BECONS_BECOV <- extract_config_BECONS_by_year(cluster_data_Y) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → Y\"))
+
+# print(df_cluster_data_Y_BECONS)
+
+
+# ~Y
+df_cluster_data_negY_BECONS_BECOV <- extract_config_BECONS_by_year(cluster_data_negY) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → ~Y\"))
+
+# print(df_cluster_data_negY_BECONS)
+
+# Y and ~Y
+df_cluster_data_allY_BECONS_BECOV <- rbind(df_cluster_data_Y_BECONS_BECOV,
+                                     df_cluster_data_negY_BECONS_BECOV
+                                     )
+
+df_cluster_data_allY_BECONS_BECOV <- df_cluster_data_allY_BECONS_BECOV %>%
+  mutate(
+    PATHWAY = case_when(
+      CONFIG == \"X1*X3*X4*X5*X7*X8*X9 → Y\" ~ \"路径1a\",
+      CONFIG == \"X1*X4*X5*X6*X7*X8*X9 → Y\" ~ \"路径1b\",
+      CONFIG == \"X1*X2*X3*X4*X5*~X6*X7*X8 → Y\" ~ \"路径2\",
+      CONFIG == \"~X1*~X3*~X4*~X5*~X7*~X8*~X9 → ~Y\" ~ \"路径3\"
+    )
+  )
+
+print(df_cluster_data_allY_BECONS_BECOV)
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+# Y
+df_cluster_data_Y_BECONS_BECOV <- extract_config_BECONS_by_year(cluster_data_Y) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → Y\"))
+
+# print(df_cluster_data_Y_BECONS)
+
+
+# ~Y
+df_cluster_data_negY_BECONS_BECOV <- extract_config_BECONS_by_year(cluster_data_negY) %>%
+  mutate(CONFIG = paste0(CONFIG,\" → ~Y\"))
+
+# print(df_cluster_data_negY_BECONS)
+
+# Y and ~Y
+df_cluster_data_allY_BECONS_BECOV <- rbind(df_cluster_data_Y_BECONS_BECOV,
+                                     df_cluster_data_negY_BECONS_BECOV
+                                     )
+
+df_cluster_data_allY_BECONS_BECOV <- df_cluster_data_allY_BECONS_BECOV %>%
+  mutate(
+    PATHWAY = case_when(
+      CONFIG == \"X1*X3*X4*X5*X7*X8*X9 → Y\" ~ \"路径1a\",
+      CONFIG == \"X1*X4*X5*X6*X7*X8*X9 → Y\" ~ \"路径1b\",
+      CONFIG == \"X1*X2*X3*X4*X5*~X6*X7*X8 → Y\" ~ \"路径2\",
+      CONFIG == \"~X1*~X3*~X4*~X5*~X7*~X8*~X9 → ~Y\" ~ \"路径3\"
+    )
+  )
+
+print(df_cluster_data_allY_BECONS_BECOV)
+```"

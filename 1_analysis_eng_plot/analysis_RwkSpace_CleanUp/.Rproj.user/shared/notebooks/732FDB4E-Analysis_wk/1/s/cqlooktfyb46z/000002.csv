@@ -1,0 +1,56 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzaG93dGV4dClcbiMg6K6+572u5Lit5paH5a2X5L2T5pSv5oyBXG5zaG93dGV4dF9hdXRvKGVuYWJsZSA9IFRSVUUpXG4jIGZvbnRfYWRkKFwiZmFuZ1NvbmdcIiwgcmVndWxhciA9IFwiLi9mb250cy/mlrnmraPku7/lrotfR0JLLlRURlwiKVxuIyBmb250X2FkZChcIlRpbWVzTmV3Um9tYW5cIiwgcmVndWxhciA9IFwiLi9mb250cy9UaW1lcyBOZXcgUm9tYW4udHRmXCIpXG5mb250X2FkZChcIlNvbmdUaVwiLCByZWd1bGFyID0gXCIuL2ZvbnRzLyBTVFNvbmd0aS1SZWd1bGFyLVNDLnR0ZlwiKSMgPDw8PDw8PDw8PDw8PDxcblxuXG5cbmxpYnJhcnkocGF0Y2h3b3JrKVxuXG4jIOi+k+WHuuWIsCBQREYg5paH5Lu2XG4jIHBkZihmaWxlID0gXCIuL291dHB1dC/jgJBBbmFseXNpc193a+OAkee7hOmXtOS4gOiHtOaAp+S4juimhuebluW6pl/otovlir/lm75fcGF0Y2gyLnBkZlwiLCB3aWR0aCA9IDEwLCBoZWlnaHQgPSAxMilcbiBwZGYoZmlsZSA9IFwiLi9vdXRwdXQv44CQQW5hbHlzaXNfd2vjgJHnu4Tpl7TkuIDoh7TmgKfkuI7opobnm5bluqZf6LaL5Yq/5Zu+X3BhdGNoMy5wZGZcIiwgd2lkdGggPSAxMCwgaGVpZ2h0ID0gOClcblxucF9jb25maWdfQkVDT05TIC8gcF9jb25maWdfQkVDT1YgK1xuICBwbG90X2xheW91dChndWlkZXMgPSBcImNvbGxlY3RcIixcbiAgICAgICAgICAgICAgaGVpZ2h0cyA9IGMoMSwyKSkgJiBcbiAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJib3R0b21cIikgXG5cblxuZGV2Lm9mZigpXG5cbmBgYCJ9 -->
+
+```r
+library(showtext)
+# 设置中文字体支持
+showtext_auto(enable = TRUE)
+# font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\")
+# font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+
+
+
+library(patchwork)
+
+# 输出到 PDF 文件
+# pdf(file = \"./output/【Analysis_wk】组间一致性与覆盖度_趋势图_patch2.pdf\", width = 10, height = 12)
+ pdf(file = \"./output/【Analysis_wk】组间一致性与覆盖度_趋势图_patch3.pdf\", width = 10, height = 8)
+
+p_config_BECONS / p_config_BECOV +
+  plot_layout(guides = \"collect\",
+              heights = c(1,2)) & 
+  theme(legend.position = \"bottom\") 
+
+
+dev.off()
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+library(showtext)
+# 设置中文字体支持
+showtext_auto(enable = TRUE)
+# font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\")
+# font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+
+
+
+library(patchwork)
+
+# 输出到 PDF 文件
+# pdf(file = \"./output/【Analysis_wk】组间一致性与覆盖度_趋势图_patch2.pdf\", width = 10, height = 12)
+ pdf(file = \"./output/【Analysis_wk】组间一致性与覆盖度_趋势图_patch3.pdf\", width = 10, height = 8)
+
+p_config_BECONS / p_config_BECOV +
+  plot_layout(guides = \"collect\",
+              heights = c(1,2)) & 
+  theme(legend.position = \"bottom\") 
+
+
+dev.off()
+
+```"

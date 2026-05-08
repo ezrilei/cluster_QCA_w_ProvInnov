@@ -1,0 +1,218 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3B0aW9ucyhzY2lwZW4gPSA5OTkpXG5gYGAifQ== -->
+
+```r
+options(scipen = 999)
+```
+
+<!-- rnb-source-end -->
+"
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxub3B0aW9ucyhzY2lwZW4gPSA5OTkpXG5gYGBcbmBgYCJ9 -->
+
+```r
+```r
+options(scipen = 999)
+```
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+```r
+options(scipen = 999)
+```
+```"
+"0","```r
+options(max.print = 10000)
+```"
+"0","```r
+df.input <- readxl::read_excel(path = \"./input/MOI_GovInnov_2016_2023_DataSet.xlsx\",
+                               sheet = 1
+                               )
+```"
+"0","```r
+outcome <- \"Y\"
+conditions <- c( \"X1\", \"X2\", \"X3\", \"X4\", \"X5\", \"X6\", \"X7\", \"X8\", \"X9\") 
+```"
+"0","```r
+df.Fuzzy <- df.input
+
+for (var in names(thresholds)) {
+  df.Fuzzy[[var]] <- df.input[[var]] %>%
+    QCA::calibrate(type = \"fuzzy\", 
+                   thresholds = thresholds[[var]], 
+                   logistic = TRUE)
+}
+
+```"
+"0","```r
+# 不能直接写等于，因为可能有float point error
+for (var in names(thresholds)) {
+  df.Fuzzy[[var]][abs(df.Fuzzy[[var]] - 0.5) < 1e-8] <- 0.501
+}
+```"
+"0","```r
+writexl::write_xlsx(x = df.Fuzzy,
+                    path = \"./output/【Analysis_wk】1.校准_df.Fuzzy.xlsx\"
+)
+
+print(df.Fuzzy)
+```"
+"0","```r
+# 后面Setmethod::cluster运算时，CASE要在rownames，
+# 不然会报错：
+# Error in SetMethods::cluster(data = data, results = result_label, outcome_var,  : 
+# 'list' object cannot be coerced to type 'double'
+
+df.Fuzzy <- as.data.frame(df.Fuzzy)
+rownames(df.Fuzzy) <- df.Fuzzy$CASE
+df.Fuzzy.case <- df.Fuzzy %>% select(-CASE)
+```"
+"0","```r
+
+cluster_necessity_analysis <- function(data, outcome_vars, conditions, unit_id, cluster_id) {
+  
+  # 初始化汇总表（指定列名，防止 add_row 报错）
+  summary_table <- tibble(
+    outcome_var = character(),
+    Result_Type = character(),
+    Pooled_Consistency = numeric(),
+    Between_to_Pooled = numeric(), 
+    Within_to_Pooled = numeric(),  
+    Pooled_Coverage = numeric()
+  )
+  
+  
+  # 初始化年度表（基础列名，年份列后续动态添加）
+  yearly_table <- tibble(
+    outcome_var = character(),
+    Result_Type = character(),
+    指标 = character(),
+    x = character()
+  )  
+  
+  
+  # 遍历每一个结果变量（例如 Y 和 ~Y）
+  for (outcome_var in outcome_vars) {
+    
+    # 遍历每一个条件变量（例如 X1、X2、X3...）
+    for (condition in conditions) {
+      
+      # 条件变量的正反两种形式
+      for (inclusion_type in c(\"\", \"~\")) {
+        
+        result_label <- paste(inclusion_type, condition, sep = \"\")
+        
+        # 运行 cluster 分析
+        output <- SetMethods::cluster(
+          data = data,
+          results = result_label,
+          outcome = outcome_var,
+          unit_id = unit_id,
+          cluster_id = cluster_id,
+          necessity = TRUE
+        )
+        
+        # 提取主指标
+        pooled_consistency <- output$POCOS
+        between_to_pooled <- output$dBP
+        within_to_pooled <- output$dWP
+        pooled_coverage <- output$Coverages$pooled
+        
+        # 添加到汇总表
+        summary_table <- summary_table %>%
+          tibble::add_row(
+            outcome_var = outcome_var,
+            Result_Type = result_label,
+            Pooled_Consistency = pooled_consistency,
+            Between_to_Pooled = between_to_pooled,
+            Within_to_Pooled = within_to_pooled,
+            Pooled_Coverage = pooled_coverage
+          )
+        
+        # 年度数据处理
+        years <- output$cluster_ids %>% 
+          gsub(pattern = \"\\(.*\\)\", replacement = \"\") %>%
+          gsub(pattern = \"\\s+\", replacement = \"\")
+        BECON <- output$BECOS
+        BECOV <- output$Coverages$between
+        
+        # 构建年度表（两行）
+        df_yearly <- data.frame(
+          outcome_var = rep(outcome_var, 2),
+          Result_Type = rep(result_label, 2),
+          指标 = c(\"组间一致性\", \"组间覆盖度\"),
+          x = c(\"Consistencies\", \"Coverages\"),
+          stringsAsFactors = FALSE
+        )
+        
+        for (i in seq_along(years)) {
+          df_yearly[[years[i]]] <- c(
+            round(BECON[i], 3),
+            round(BECOV[i], 3)
+          )
+        }
+        
+        # 合并到年度总表
+        yearly_table <- bind_rows(yearly_table, df_yearly)
+      }
+    }
+  }
+  
+  # summary_table保留3位小数
+  summary_table <- summary_table %>%
+    mutate(across(where(is.numeric), ~round(., 3)))
+  
+  # 返回最终结果
+  return(list(
+    summary_table = summary_table,
+    yearly_table = yearly_table
+  ))
+}
+```"
+"0","```r
+
+res_nec <- cluster_necessity_analysis(
+  data = df.Fuzzy,
+  outcome_vars = c(\"Y\", \"~Y\"),
+  conditions = c(\"X1\", \"X2\", \"X3\", \"X4\", \"X5\", \"X6\", \"X7\", \"X8\", \"X9\"),
+  unit_id = \"ID\",
+  cluster_id = \"YEAR\"
+)
+
+summary_table <- res_nec$summary_table
+yearly_table  <- res_nec$yearly_table
+
+
+```"
+"0","```r
+n.t.vec <- df.Fuzzy$YEAR %>% unique() %>% length()
+n.N.vec <- df.Fuzzy$ID %>% unique() %>% length()
+
+summary_table <- summary_table %>% 
+  rename(BECONS_distance = \"Between_to_Pooled\") %>%
+  rename(WICONS_distance = \"Within_to_Pooled\") %>%  
+  # calculate BECONS_adjusted_distance
+  mutate(BECONS_adjusted_distance = BECONS_distance/sqrt(n.t.vec / (n.t.vec^2 + 3 * n.t.vec + 2))) %>%
+  
+  # caluculate WICONS_adjusted_distance
+  mutate(WICONS_adjusted_distance = WICONS_distance/sqrt(n.N.vec / (n.N.vec^2 + 3 * n.N.vec + 2))) %>%
+  
+  # rm BECONS_distance、WICONS_distance
+  select(-c(BECONS_distance, WICONS_distance)) %>%
+  
+  # 保留3位小数
+  mutate(across(where(is.numeric), ~ round(., 3)))
+  
+# summary_table
+
+
+```"
+"0","```r
+
+writexl::write_xlsx(x = summary_table, path = \"./output/【Analysis_wk】2.必要性分析_summary_table.xlsx\")
+writexl::write_xlsx(x = yearly_table, path = \"./output/【Analysis_wk】2.必要性分析_yearly_table.xlsx\")
+
+summary_table
+```"

@@ -1,0 +1,29 @@
+{
+    "id": "1A306878",
+    "path": "~/ezridb/forR/20250714_MPA_QCA/1_analysis_eng_plot/analysis_RwkSpace_CleanUp/Analysis_wk.Rmd",
+    "project_path": "Analysis_wk.Rmd",
+    "type": "r_markdown",
+    "hash": "2523203635",
+    "contents": "",
+    "dirty": true,
+    "created": 1778211511856.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "4070,19",
+        "scrollLine": "4039",
+        "docOutlineVisible": "1",
+        "docOutlineSize": "310"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1778264219,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1778264219051,
+    "read_only": false,
+    "read_only_alternatives": []
+}

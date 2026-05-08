@@ -1,0 +1,36 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zcF9uZWdZIDwtIFFDQTo6c3VwZXJTdWJzZXQoZGF0YSA9IGRmLkZ1enp5LmNhc2UsXG4gICAgICAgICAgICAgICAgICAgICAgICAgb3V0Y29tZSA9IFwifllcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICBjb25kaXRpb25zID0gY29uZGl0aW9ucyAlPiUgcGFzdGUoY29sbGFwc2UgPSBcIixcIiksICAjIFwiWDEsWDIsWDMsWDQsWDUsWDYuLi5cIlxuICAgICAgICAgICAgICAgICAgICAgICAgIGluY2wuY3V0ID0gMC45MCxcbiAgICAgICAgICAgICAgICAgICAgICAgICBjb3YuY3V0ID0gMC41LCAjPC0tLS0tXG4gICAgICAgICAgICAgICAgICAgICAgICAgcm9uLmN1dCA9IDAuNSAjPC0tLS0tXG4gICAgICAgICAgICAgICAgICAgICAgICAgKVxuc3BfbmVnWVxuXG5jb25maWcuU1VJTl9jb25kLm5lZ1kgPC0gc3BfbmVnWSRjb21zICU+JSBjb2xuYW1lcygpXG5jb25maWcuU1VJTl9jb25kLm5lZ1lcblxuYGBgIn0= -->
+
+```r
+
+sp_negY <- QCA::superSubset(data = df.Fuzzy.case,
+                         outcome = \"~Y\",
+                         conditions = conditions %>% paste(collapse = \",\"),  # \"X1,X2,X3,X4,X5,X6...\"
+                         incl.cut = 0.90,
+                         cov.cut = 0.5, #<-----
+                         ron.cut = 0.5 #<-----
+                         )
+sp_negY
+
+config.SUIN_cond.negY <- sp_negY$coms %>% colnames()
+config.SUIN_cond.negY
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+sp_negY <- QCA::superSubset(data = df.Fuzzy.case,
+                         outcome = \"~Y\",
+                         conditions = conditions %>% paste(collapse = \",\"),  # \"X1,X2,X3,X4,X5,X6...\"
+                         incl.cut = 0.90,
+                         cov.cut = 0.5, #<-----
+                         ron.cut = 0.5 #<-----
+                         )
+sp_negY
+
+config.SUIN_cond.negY <- sp_negY$coms %>% colnames()
+config.SUIN_cond.negY
+
+```"

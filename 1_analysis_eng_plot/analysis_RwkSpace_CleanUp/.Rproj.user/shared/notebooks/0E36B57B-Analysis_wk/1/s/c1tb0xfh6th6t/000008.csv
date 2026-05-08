@@ -1,0 +1,28 @@
+"0","```r
+
+writexl::write_xlsx(x = matched_cases,
+                    path = \"./output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况_分年度_其中组间一致性大于0.9_且_组间覆盖度大于0.5的情况.xlsx\")
+
+```"
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG53cml0ZXhsOjp3cml0ZV94bHN4KHggPSBtYXRjaGVkX2Nhc2VzLFxuICAgICAgICAgICAgICAgICAgICBwYXRoID0gXFwuL291dHB1dC/jgJBBbmFseXNpc193a+OAkTIu5b+F6KaB5p2h5Lu25YiG5p6QX+e7hOmXtOS4gOiHtOaAp+iwg+aVtOi3neemu+Wkp+S6jjAuMueahOWboOaenOe7hOWQiOaDheWGtV/liIblubTluqZf5YW25Lit57uE6Ze05LiA6Ie05oCn5aSn5LqOMC45X+S4lF/nu4Tpl7Topobnm5bluqblpKfkuo4wLjXnmoTmg4XlhrUueGxzeFxcKVxuXG5gYGBcbmBgYCJ9 -->
+
+```r
+```r
+
+writexl::write_xlsx(x = matched_cases,
+                    path = \./output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况_分年度_其中组间一致性大于0.9_且_组间覆盖度大于0.5的情况.xlsx\)
+
+```
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+```r
+
+writexl::write_xlsx(x = matched_cases,
+                    path = \./output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况_分年度_其中组间一致性大于0.9_且_组间覆盖度大于0.5的情况.xlsx\)
+
+```
+```"

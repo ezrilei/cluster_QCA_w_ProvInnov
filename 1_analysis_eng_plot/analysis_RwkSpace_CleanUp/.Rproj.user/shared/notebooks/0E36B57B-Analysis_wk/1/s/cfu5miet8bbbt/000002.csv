@@ -1,0 +1,18 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGlyX3BhdGhfcm9idXN0IDwtIFwiLi9vdXRwdXQvcm9idXN0bmVzc1wiXG5pZiAoIWRpci5leGlzdHMoZGlyX3BhdGhfcm9idXN0KSkge1xuICBkaXIuY3JlYXRlKGRpcl9wYXRoX3JvYnVzdCwgcmVjdXJzaXZlID0gVFJVRSlcbn1cbmBgYCJ9 -->
+
+```r
+dir_path_robust <- \"./output/robustness\"
+if (!dir.exists(dir_path_robust)) {
+  dir.create(dir_path_robust, recursive = TRUE)
+}
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+dir_path_robust <- \"./output/robustness\"
+if (!dir.exists(dir_path_robust)) {
+  dir.create(dir_path_robust, recursive = TRUE)
+}
+```"

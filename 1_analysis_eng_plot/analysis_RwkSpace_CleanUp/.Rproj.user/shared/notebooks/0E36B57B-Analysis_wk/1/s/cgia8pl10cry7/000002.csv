@@ -1,0 +1,74 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDlrprkuYnlj4LmlbDnu4TlkIjvvIjCsTAuMTDojIPlm7TlhoXmibDliqjvvIlcbnBhcmFtcyA8LSBsaXN0KFxuICBsaXN0KG5hbWUgPSBcIkJhc2VsaW5lXCIsIGluY2wgPSAwLjc1LCBwcmkgPSAwLjYwLCBuID0gMiksXG4gIFxuICBsaXN0KG5hbWUgPSBcIkluY2xVcDFcIiwgIGluY2wgPSAwLjgwLCBwcmkgPSAwLjYwLCBuID0gMiksXG4gIGxpc3QobmFtZSA9IFwiSW5jbFVwMlwiLCAgaW5jbCA9IDAuODUsIHByaSA9IDAuNjAsIG4gPSAyKSxcbiAgbGlzdChuYW1lID0gXCJJbmNsVXAzXCIsICBpbmNsID0gMC45MCwgcHJpID0gMC42MCwgbiA9IDIpLFxuICBcbiAgbGlzdChuYW1lID0gXCJQUklVcDFcIiwgICBpbmNsID0gMC43NSwgcHJpID0gMC42NSwgbiA9IDIpLFxuICBsaXN0KG5hbWUgPSBcIlBSSVVwMlwiLCAgIGluY2wgPSAwLjc1LCBwcmkgPSAwLjcwLCBuID0gMiksXG4gIGxpc3QobmFtZSA9IFwiUFJJVXAzXCIsICAgaW5jbCA9IDAuNzUsIHByaSA9IDAuNzUsIG4gPSAyKSxcbiAgXG4gIGxpc3QobmFtZSA9IFwiblVwMVwiLCAgIGluY2wgPSAwLjc1LCBwcmkgPSAwLjYwLCBuID0gMyksXG4gIGxpc3QobmFtZSA9IFwiblVwMlwiLCAgIGluY2wgPSAwLjc1LCBwcmkgPSAwLjY1LCBuID0gNCksXG4gIGxpc3QobmFtZSA9IFwiblVwM1wiLCAgIGluY2wgPSAwLjc1LCBwcmkgPSAwLjcwLCBuID0gNSlcbilcblxubGFwcGx5KHBhcmFtcywgZnVuY3Rpb24ocGFyYW0pIHtcbiAgXG4gIG1lc3NhZ2UoXCJSdW5uaW5nOiBcIiwgcGFyYW0kbmFtZSlcbiAgXG4gICMg5q2j5ZCR6Lev5b6E5YiG5p6QXG4gIGdldF9pbnRzb2xfWV9yZXNfRmluYWwodmFsLmluY2wuY3V0ID0gcGFyYW0kaW5jbCwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgdmFsLnByaS5jdXQgPSBwYXJhbSRwcmksIFxuICAgICAgICAgICAgICAgICAgICAgICAgIHZhbC5uLmN1dCA9IHBhcmFtJG4pXG4gICMg5Y+N5ZCR6Lev5b6E5YiG5p6QXG4gIGdldF9pbnRzb2xfbmVnWV9yZXNfRmluYWwodmFsLmluY2wuY3V0ID0gcGFyYW0kaW5jbCwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsLnByaS5jdXQgPSBwYXJhbSRwcmksIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhbC5uLmN1dCA9IHBhcmFtJG4pXG59KVxuXG5cbmBgYCJ9 -->
+
+```r
+# 定义参数组合（±0.10范围内扰动）
+params <- list(
+  list(name = \"Baseline\", incl = 0.75, pri = 0.60, n = 2),
+  
+  list(name = \"InclUp1\",  incl = 0.80, pri = 0.60, n = 2),
+  list(name = \"InclUp2\",  incl = 0.85, pri = 0.60, n = 2),
+  list(name = \"InclUp3\",  incl = 0.90, pri = 0.60, n = 2),
+  
+  list(name = \"PRIUp1\",   incl = 0.75, pri = 0.65, n = 2),
+  list(name = \"PRIUp2\",   incl = 0.75, pri = 0.70, n = 2),
+  list(name = \"PRIUp3\",   incl = 0.75, pri = 0.75, n = 2),
+  
+  list(name = \"nUp1\",   incl = 0.75, pri = 0.60, n = 3),
+  list(name = \"nUp2\",   incl = 0.75, pri = 0.65, n = 4),
+  list(name = \"nUp3\",   incl = 0.75, pri = 0.70, n = 5)
+)
+
+lapply(params, function(param) {
+  
+  message(\"Running: \", param$name)
+  
+  # 正向路径分析
+  get_intsol_Y_res_Final(val.incl.cut = param$incl, 
+                         val.pri.cut = param$pri, 
+                         val.n.cut = param$n)
+  # 反向路径分析
+  get_intsol_negY_res_Final(val.incl.cut = param$incl, 
+                            val.pri.cut = param$pri, 
+                            val.n.cut = param$n)
+})
+
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# 定义参数组合（±0.10范围内扰动）
+params <- list(
+  list(name = \"Baseline\", incl = 0.75, pri = 0.60, n = 2),
+  
+  list(name = \"InclUp1\",  incl = 0.80, pri = 0.60, n = 2),
+  list(name = \"InclUp2\",  incl = 0.85, pri = 0.60, n = 2),
+  list(name = \"InclUp3\",  incl = 0.90, pri = 0.60, n = 2),
+  
+  list(name = \"PRIUp1\",   incl = 0.75, pri = 0.65, n = 2),
+  list(name = \"PRIUp2\",   incl = 0.75, pri = 0.70, n = 2),
+  list(name = \"PRIUp3\",   incl = 0.75, pri = 0.75, n = 2),
+  
+  list(name = \"nUp1\",   incl = 0.75, pri = 0.60, n = 3),
+  list(name = \"nUp2\",   incl = 0.75, pri = 0.65, n = 4),
+  list(name = \"nUp3\",   incl = 0.75, pri = 0.70, n = 5)
+)
+
+lapply(params, function(param) {
+  
+  message(\"Running: \", param$name)
+  
+  # 正向路径分析
+  get_intsol_Y_res_Final(val.incl.cut = param$incl, 
+                         val.pri.cut = param$pri, 
+                         val.n.cut = param$n)
+  # 反向路径分析
+  get_intsol_negY_res_Final(val.incl.cut = param$incl, 
+                            val.pri.cut = param$pri, 
+                            val.n.cut = param$n)
+})
+
+
+```"

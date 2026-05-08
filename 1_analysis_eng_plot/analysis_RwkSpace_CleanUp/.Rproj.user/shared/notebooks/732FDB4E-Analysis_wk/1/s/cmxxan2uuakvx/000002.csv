@@ -1,0 +1,46 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwaW1zIC0gcHJpbWUgaW1wbGljYW50IG1lbWJlcnNoaXAgc2NvcmVzXG5cbmRmX1BJTVNfWSA8LSBpbnRzb2xfWV9lc2EkcGltcyAlPiVcbiAgcmVuYW1lX3dpdGgofiBwYXN0ZTAoLngsIFwi4oaSWVwiKSkgJT4lXG4gIHRpYmJsZTo6cm93bmFtZXNfdG9fY29sdW1uKHZhciA9IFwiQ0FTRVwiKVxuXG5kZl9QSU1TX25lZ1kgPC0gaW50c29sX25lZ1lfZXNhJHBpbXMgJT4lXG4gIHJlbmFtZV93aXRoKH4gcGFzdGUwKC54LCBcIuKGkn5ZXCIpKSAlPiVcbiAgdGliYmxlOjpyb3duYW1lc190b19jb2x1bW4odmFyID0gXCJDQVNFXCIpXG5cbmRmX1BJTVMgPC0gZHBseXI6OmZ1bGxfam9pbih4ID0gZGZfUElNU19ZLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB5ID0gZGZfUElNU19uZWdZLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBieSA9IFwiQ0FTRVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuXG4jIOeci+S4gOecvFxuZGZfUElNU1xuXG5gYGAifQ== -->
+
+```r
+# pims - prime implicant membership scores
+
+df_PIMS_Y <- intsol_Y_esa$pims %>%
+  rename_with(~ paste0(.x, \"→Y\")) %>%
+  tibble::rownames_to_column(var = \"CASE\")
+
+df_PIMS_negY <- intsol_negY_esa$pims %>%
+  rename_with(~ paste0(.x, \"→~Y\")) %>%
+  tibble::rownames_to_column(var = \"CASE\")
+
+df_PIMS <- dplyr::full_join(x = df_PIMS_Y, 
+                            y = df_PIMS_negY, 
+                            by = \"CASE\"
+                            )
+
+# 看一眼
+df_PIMS
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# pims - prime implicant membership scores
+
+df_PIMS_Y <- intsol_Y_esa$pims %>%
+  rename_with(~ paste0(.x, \"→Y\")) %>%
+  tibble::rownames_to_column(var = \"CASE\")
+
+df_PIMS_negY <- intsol_negY_esa$pims %>%
+  rename_with(~ paste0(.x, \"→~Y\")) %>%
+  tibble::rownames_to_column(var = \"CASE\")
+
+df_PIMS <- dplyr::full_join(x = df_PIMS_Y, 
+                            y = df_PIMS_negY, 
+                            by = \"CASE\"
+                            )
+
+# 看一眼
+df_PIMS
+
+```"

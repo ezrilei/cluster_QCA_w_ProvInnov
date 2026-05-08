@@ -1,0 +1,37 @@
+"0","
+pdf(file = ""./output/eng-【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合_汇总一致性大于0.9_且_汇总覆盖度大于0.5★.pdf"",
+    width = 13.5, height = 18
+)
+
+
+# 3 张 ggplot 图
+
+
+
+# final_plot <- (p1 | p2 | p3) / (p4 | p5 | p6) / (p7 | plot_spacer() | plot_spacer())
+final_plot2 <- wrap_plots(
+                          p_Y_X3_2017,
+                          p_Y_X6_2021,
+                          p_Y_X6_2022,
+                          p_Y_X6_2023,
+                          p_negY_negX3_2019,
+                          p_negY_negX3_2020,
+                          p_negY_negX3_2021,
+                          p_negY_negX3_2022,
+                          p_negY_negX3_2023,
+                          p_negY_negX6_2016,
+                          ncol = 3)  # 自动调整
+
+# 显示拼接后的图
+print(final_plot2)
+
+# pdf device off
+dev.off() 
+"
+"1","null device "
+"1","
+"
+"1","          1 "
+"1","
+"
+"0","final_plot2 # 输出到Rstudio Plots里 看一眼"

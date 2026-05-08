@@ -1,0 +1,34 @@
+"0","```r
+
+writexl::write_xlsx(x = yearly_table_BECON_AdjDis_greater_0_2,
+                    path = \"output/【Analysis_wk】2.必要条件分析_组间一致性调整距离大于0.2的因果组合情况_分年度.xlsx\")
+
+
+```"
+"0","```r
+# library(dplyr)
+# library(tidyr)
+
+# 1. 将数据转为 long 格式
+long_yearly <- yearly_table_BECON_AdjDis_greater_0_2 %>%
+  tidyr::pivot_longer(cols = as.character(2016:2023), names_to = \"year\", values_to = \"value\")
+
+
+# 2. 分别筛选符合条件的 Consistencies > 0.9 且 Coverages > 0.5
+consistency_high <- long_yearly %>%
+  filter(x == \"Consistencies\", value > 0.9) %>%
+  select(outcome_var, Result_Type, year) %>%
+  distinct()
+
+coverage_high <- long_yearly %>%
+  filter(x == \"Coverages\", value > 0.5) %>%
+  select(outcome_var, Result_Type, year) %>%
+  distinct()
+
+# 3. 找出同时满足两个条件的组合
+matched_cases <- inner_join(consistency_high, coverage_high,
+                            by = c(\"outcome_var\", \"Result_Type\", \"year\"))
+
+# 查看结果
+matched_cases
+```"

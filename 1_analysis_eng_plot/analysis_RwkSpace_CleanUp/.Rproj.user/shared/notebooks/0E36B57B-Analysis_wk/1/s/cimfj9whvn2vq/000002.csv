@@ -1,0 +1,150 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDnu5jlm75cbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZ2dyZXBlbClcblxuIyBzaG93IENOIHRleHRcbmxpYnJhcnkoc2hvd3RleHQpICNodHRwczovL2dpdGh1Yi5jb20veWl4dWFuL3Nob3d0ZXh0XG5zaG93dGV4dF9hdXRvKGVuYWJsZSA9IFRSVUUpXG4jIGZvbnRfYWRkKFwiZmFuZ1NvbmdcIiwgcmVndWxhciA9IFwiLi9mb250cy/mlrnmraPku7/lrotfR0JLLlRURlwiKSAjIDw8PDw8PDw8PDw8PDw8XG4jIGZvbnRfYWRkKFwiVGltZXNOZXdSb21hblwiLCByZWd1bGFyID0gXCIuL2ZvbnRzL1RpbWVzIE5ldyBSb21hbi50dGZcIilcbmZvbnRfYWRkKFwiU29uZ1RpXCIsIHJlZ3VsYXIgPSBcIi4vZm9udHMvIFNUU29uZ3RpLVJlZ3VsYXItU0MudHRmXCIpIyA8PDw8PDw8PDw8PDw8PFxuXG4jIHRleHQgcmVwZWwgZGF0YVxubGFiZWxfZGF0YSA8LSBkZl9jbHVzdGVyX2RhdGFfYWxsWV9CRUNPTlNfQkVDT1YgJT4lXG4gIGdyb3VwX2J5KFBBVEhXQVkpICU+JVxuICBmaWx0ZXIoWUVBUiA9PSBtYXgoWUVBUikpICU+JVxuICB1bmdyb3VwKClcblxuXG4jIHN0b3JlIHRvIHBkZiAoY3JlYXRlIGEgcGRmIGRldmljZSkgLS0tLS0tLS0tLS0tLS0tXG4jIHBkZihmaWxlID0gXCIuL291dHB1dF9tYW51YWwv57uE6Ze05LiA6Ie05oCn5rC05bmz6LaL5Yq/5Zu+LnBkZlwiLCB3aWR0aCA9IDEwLCBoZWlnaHQgPSA4KVxucGRmKGZpbGUgPSBcIi4vb3V0cHV0L+OAkEFuYWx5c2lzX3dr44CRMy7lhYXliIbmgKfliIbmnpBf57uE6Ze05LiA6Ie05oCn5Y+Y5YyW6LaL5Yq/5Zu+LnBkZlwiLCB3aWR0aCA9IDEwLCBoZWlnaHQgPSA4KVxuXG5wX2NvbmZpZ19CRUNPTlMgPC0gZ2dwbG90KGRmX2NsdXN0ZXJfZGF0YV9hbGxZX0JFQ09OU19CRUNPViwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgIGFlcyh4ID0gWUVBUiwgeSA9IEJFQ09OUywgZ3JvdXAgPSBQQVRIV0FZLCBjb2xvciA9IFBBVEhXQVkpKSArXG4gIGdlb21fbGluZSgpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgIyBnZW9tX2hsaW5lKHlpbnRlcmNlcHQgPSAwLjkwLCBsaW5ldHlwZSA9IFwiZGFzaGVkXCIsIGNvbG9yID0gXCJibGFja1wiKSArXG4gIHNjYWxlX3hfZGlzY3JldGUoKSArXG4gICNzY2FsZV95X2NvbnRpbnVvdXMoXG4gICMgIGJyZWFrcyA9IHNlcSgwLjAsIDEuMCwgYnkgPSAwLjEpLFxuICAjICBsaW1pdHMgPSBjKDAuMCwgMS4wKSxcbiAgIyAgZXhwYW5kID0gZXhwYW5zaW9uKG11bHQgPSBjKDAuMDEsIDAuMDEpKVxuICAjKSArXG4gIGxhYnMoXG4gICAgeCA9IFwi5bm05Lu9XCIsXG4gICAgeSA9IFwi57uE6Ze05LiA6Ie05oCnXCIsXG4gICAgY29sb3IgPSBcIuWboOaenOi3r+W+hFwiXG4gICkgK1xuICB0aGVtZV9idyhiYXNlX2ZhbWlseSA9IFwiU29uZ1RpXCIpICtcbiAgdGhlbWUoXG4gICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiLCBzaXplID0gMTQpLFxuICAgIGxlZ2VuZC50aXRsZSA9IGVsZW1lbnRfdGV4dChmYW1pbHkgPSBcIlNvbmdUaVwiLCBzaXplID0gMTMpLFxuICAgIHBsb3QubWFyZ2luID0gdW5pdChjKDEsIDQsIDEsIDEpLCBcImNtXCIpLFxuICAgIGxlZ2VuZC5wb3NpdGlvbiA9IFwiYm90dG9tXCJcbiAgKSArXG4gICMgZ3VpZGVzKGNvbG9yID0gZ3VpZGVfbGVnZW5kKG5jb2wgPSAxKSkgICMrICMgPDw8PDw8PDwg5q+P5YiXIDEg6aG577yM56uW5o6SXG4gICMg5re75Yqg5qCH562+77ya5Zyo5pyA5ZCO5LiA5bm077yI5aaCIDIwMjPvvInlj7PkvqfnlaXlvq7lgY/np7tcbiAgZ2VvbV90ZXh0X3JlcGVsKFxuICAgIGZhbWlseSA9IFwiU29uZ1RpXCIsXG4gICAgZGF0YSA9IGxhYmVsX2RhdGEsXG4gICAgYWVzKGxhYmVsID0gUEFUSFdBWSksXG4gICAgbnVkZ2VfeCA9IDAuNSwgICAgICAgICAgICAgIyDlkJHlj7PlgY/np7tcbiAgICBkaXJlY3Rpb24gPSBcInlcIiwgICAgICAgICAgICMg6YG/5YWN5LiK5LiL6YeN5Y+gXG4gICAgaGp1c3QgPSAwLCAgICAgICAgICAgICAgICAgIyDlt6blr7npvZBcbiAgICBzZWdtZW50LmNvbG9yID0gTkEsICAgICAgICAjIOS4jeaYvuekuui/nuaOpee6v1xuICAgIHNpemUgPSAzLjAsXG4gICAgYm94LnBhZGRpbmcgPSAwLjMsXG4gICAgcG9pbnQucGFkZGluZyA9IDAuMDUsXG4gICAgI2ZvcmNlID0gMC42LCAgICAgICAgICAgICAgIyDpgb/orqnlvLrluqbpmY3kvY7vvIzpgb/lhY3mjqjlpKrov5xcbiAgICAjZm9yY2VfcHVsbCA9IDAuMywgICAgICAgICAjIOWQuOW8leWKm+WinuW8uu+8jOmdoOi/kee6v+WwvlxuICAgIG1heC5vdmVybGFwcyA9IEluZixcbiAgICBzaG93LmxlZ2VuZCA9IEZBTFNFICAgICAgICAjIOS4jeeUqOWFtuWHuueOsOWcqOWbvuS+i++8jFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICMg5aaC5p6c5LiN5ZGK6K+J5YW25aaC5L2V5pi+56S65Zu+5L6L77yM5Lya5Zyo5Zu+5L6L5aSE5q+P5LiA5LiqY29uZmln5YmNIOWKoOm7mOiupOWbvuS+i+mhuSBcImFcIlxuICApXG5cbnByaW50KHBfY29uZmlnX0JFQ09OUylcbmRldi5vZmYoKVxuXG5wX2NvbmZpZ19CRUNPTlNcblxuYGBgIn0= -->
+
+```r
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+# font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+# font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+
+# text repel data
+label_data <- df_cluster_data_allY_BECONS_BECOV %>%
+  group_by(PATHWAY) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = \"./output_manual/组间一致性水平趋势图.pdf\", width = 10, height = 8)
+pdf(file = \"./output/【Analysis_wk】3.充分性分析_组间一致性变化趋势图.pdf\", width = 10, height = 8)
+
+p_config_BECONS <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECONS, group = PATHWAY, color = PATHWAY)) +
+  geom_line() +
+  geom_point() +
+  # geom_hline(yintercept = 0.90, linetype = \"dashed\", color = \"black\") +
+  scale_x_discrete() +
+  #scale_y_continuous(
+  #  breaks = seq(0.0, 1.0, by = 0.1),
+  #  limits = c(0.0, 1.0),
+  #  expand = expansion(mult = c(0.01, 0.01))
+  #) +
+  labs(
+    x = \"年份\",
+    y = \"组间一致性\",
+    color = \"因果路径\"
+  ) +
+  theme_bw(base_family = \"SongTi\") +
+  theme(
+    axis.title = element_text(family = \"SongTi\", size = 14),
+    legend.title = element_text(family = \"SongTi\", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), \"cm\"),
+    legend.position = \"bottom\"
+  ) +
+  # guides(color = guide_legend(ncol = 1))  #+ # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = \"SongTi\",
+    data = label_data,
+    aes(label = PATHWAY),
+    nudge_x = 0.5,             # 向右偏移
+    direction = \"y\",           # 避免上下重叠
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    #force = 0.6,              # 避让强度降低，避免推太远
+    #force_pull = 0.3,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 \"a\"
+  )
+
+print(p_config_BECONS)
+dev.off()
+
+p_config_BECONS
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# 绘图
+library(ggplot2)
+library(ggrepel)
+
+# show CN text
+library(showtext) #https://github.com/yixuan/showtext
+showtext_auto(enable = TRUE)
+# font_add(\"fangSong\", regular = \"./fonts/方正仿宋_GBK.TTF\") # <<<<<<<<<<<<<<
+# font_add(\"TimesNewRoman\", regular = \"./fonts/Times New Roman.ttf\")
+font_add(\"SongTi\", regular = \"./fonts/ STSongti-Regular-SC.ttf\")# <<<<<<<<<<<<<<
+
+# text repel data
+label_data <- df_cluster_data_allY_BECONS_BECOV %>%
+  group_by(PATHWAY) %>%
+  filter(YEAR == max(YEAR)) %>%
+  ungroup()
+
+
+# store to pdf (create a pdf device) ---------------
+# pdf(file = \"./output_manual/组间一致性水平趋势图.pdf\", width = 10, height = 8)
+pdf(file = \"./output/【Analysis_wk】3.充分性分析_组间一致性变化趋势图.pdf\", width = 10, height = 8)
+
+p_config_BECONS <- ggplot(df_cluster_data_allY_BECONS_BECOV, 
+                          aes(x = YEAR, y = BECONS, group = PATHWAY, color = PATHWAY)) +
+  geom_line() +
+  geom_point() +
+  # geom_hline(yintercept = 0.90, linetype = \"dashed\", color = \"black\") +
+  scale_x_discrete() +
+  #scale_y_continuous(
+  #  breaks = seq(0.0, 1.0, by = 0.1),
+  #  limits = c(0.0, 1.0),
+  #  expand = expansion(mult = c(0.01, 0.01))
+  #) +
+  labs(
+    x = \"年份\",
+    y = \"组间一致性\",
+    color = \"因果路径\"
+  ) +
+  theme_bw(base_family = \"SongTi\") +
+  theme(
+    axis.title = element_text(family = \"SongTi\", size = 14),
+    legend.title = element_text(family = \"SongTi\", size = 13),
+    plot.margin = unit(c(1, 4, 1, 1), \"cm\"),
+    legend.position = \"bottom\"
+  ) +
+  # guides(color = guide_legend(ncol = 1))  #+ # <<<<<<<< 每列 1 项，竖排
+  # 添加标签：在最后一年（如 2023）右侧略微偏移
+  geom_text_repel(
+    family = \"SongTi\",
+    data = label_data,
+    aes(label = PATHWAY),
+    nudge_x = 0.5,             # 向右偏移
+    direction = \"y\",           # 避免上下重叠
+    hjust = 0,                 # 左对齐
+    segment.color = NA,        # 不显示连接线
+    size = 3.0,
+    box.padding = 0.3,
+    point.padding = 0.05,
+    #force = 0.6,              # 避让强度降低，避免推太远
+    #force_pull = 0.3,         # 吸引力增强，靠近线尾
+    max.overlaps = Inf,
+    show.legend = FALSE        # 不用其出现在图例，
+                               # 如果不告诉其如何显示图例，会在图例处每一个config前 加默认图例项 \"a\"
+  )
+
+print(p_config_BECONS)
+dev.off()
+
+p_config_BECONS
+
+```"

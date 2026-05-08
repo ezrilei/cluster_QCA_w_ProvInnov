@@ -1,0 +1,90 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5leHRyYWN0X2NvbmZpZ19XSUNPTlNfYnlfeWVhciA8LSBmdW5jdGlvbihjbHVzdGVyX3Jlc3VsdCkge1xuICAjIEdldCBhbGwgY29uZmlndXJhdGlvbnMgaW4gdGhlIHJlc3VsdFxuICBjb25maWdfbGlzdCA8LSBjbHVzdGVyX3Jlc3VsdCRvdXRwdXRcbiAgcmVzdWx0X2xpc3QgPC0gbGlzdCgpXG4gIFxuICBmb3IgKGNvbmZpZ19uYW1lIGluIG5hbWVzKGNvbmZpZ19saXN0KSkge1xuICAgIGNvbmZpZ19vdXRwdXQgPC0gY29uZmlnX2xpc3RbW2NvbmZpZ19uYW1lXV1cbiAgICBcbiAgICAjIEV4dHJhY3QgeWVhciBmcm9tIGNsdXN0ZXJfaWRzLCBlLmcuLCBcIua5luWMlyAoOCkgXCIgIOKGkiBcIjIwMTZcIlxuICAgIHByb3ZzIDwtIGdzdWIocGF0dGVybiA9IFwiXFxcXCguKlxcXFwpXFxcXHMrXCIsIFxuICAgICAgICAgICAgICAgICAgcmVwbGFjZW1lbnQgPSBcIlwiLCBcbiAgICAgICAgICAgICAgICAgIHggPSBjb25maWdfb3V0cHV0JHVuaXRfaWRzXG4gICAgICAgICAgICAgICAgICApICU+JVxuICAgICAgIyDliKDljrsg56m65qC8XG4gICAgICBnc3ViKHBhdHRlcm4gPSBcIlxcXFxzXCIsXG4gICAgICAgICAgIHJlcGxhY2VtZW50ID0gXCJcIlxuICAgICAgICAgICApXG4gICAgXG4gICAgIyBFeHRyYWN0IFdJQ09OIHZhbHVlcyAoc2FtZSBsZW5ndGggYXMgcHJvdnMpXG4gICAgd2ljb3MgPC0gY29uZmlnX291dHB1dCRXSUNPTlNcblxuICAgIFxuICAgICMgQnVpbGQgYSBkYXRhIGZyYW1lXG4gICAgZGYgPC0gZGF0YS5mcmFtZShcbiAgICAgIFBST1ZTID0gcHJvdnMsXG4gICAgICBDT05GSUcgPSBjb25maWdfbmFtZSxcbiAgICAgIFdJQ09OUyA9IHdpY29zLFxuICAgICAgc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFXG4gICAgKVxuICAgIFxuICAgIHJlc3VsdF9saXN0W1tjb25maWdfbmFtZV1dIDwtIGRmXG4gIH1cbiAgXG4gICMgQ29tYmluZSBhbGwgY29uZmlndXJhdGlvbnNcbiAgZmluYWxfZGYgPC0gZG8uY2FsbChyYmluZCwgcmVzdWx0X2xpc3QpXG4gIHJvd25hbWVzKGZpbmFsX2RmKSA8LSBOVUxMXG4gIHJldHVybihmaW5hbF9kZilcbn1cblxuYGBgIn0= -->
+
+```r
+
+extract_config_WICONS_by_year <- function(cluster_result) {
+  # Get all configurations in the result
+  config_list <- cluster_result$output
+  result_list <- list()
+  
+  for (config_name in names(config_list)) {
+    config_output <- config_list[[config_name]]
+    
+    # Extract year from cluster_ids, e.g., \"湖北 (8) \"  → \"2016\"
+    provs <- gsub(pattern = \"\\(.*\\)\\s+\", 
+                  replacement = \"\", 
+                  x = config_output$unit_ids
+                  ) %>%
+      # 删去 空格
+      gsub(pattern = \"\\s\",
+           replacement = \"\"
+           )
+    
+    # Extract WICON values (same length as provs)
+    wicos <- config_output$WICONS
+
+    
+    # Build a data frame
+    df <- data.frame(
+      PROVS = provs,
+      CONFIG = config_name,
+      WICONS = wicos,
+      stringsAsFactors = FALSE
+    )
+    
+    result_list[[config_name]] <- df
+  }
+  
+  # Combine all configurations
+  final_df <- do.call(rbind, result_list)
+  rownames(final_df) <- NULL
+  return(final_df)
+}
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+extract_config_WICONS_by_year <- function(cluster_result) {
+  # Get all configurations in the result
+  config_list <- cluster_result$output
+  result_list <- list()
+  
+  for (config_name in names(config_list)) {
+    config_output <- config_list[[config_name]]
+    
+    # Extract year from cluster_ids, e.g., \"湖北 (8) \"  → \"2016\"
+    provs <- gsub(pattern = \"\\(.*\\)\\s+\", 
+                  replacement = \"\", 
+                  x = config_output$unit_ids
+                  ) %>%
+      # 删去 空格
+      gsub(pattern = \"\\s\",
+           replacement = \"\"
+           )
+    
+    # Extract WICON values (same length as provs)
+    wicos <- config_output$WICONS
+
+    
+    # Build a data frame
+    df <- data.frame(
+      PROVS = provs,
+      CONFIG = config_name,
+      WICONS = wicos,
+      stringsAsFactors = FALSE
+    )
+    
+    result_list[[config_name]] <- df
+  }
+  
+  # Combine all configurations
+  final_df <- do.call(rbind, result_list)
+  rownames(final_df) <- NULL
+  return(final_df)
+}
+
+```"

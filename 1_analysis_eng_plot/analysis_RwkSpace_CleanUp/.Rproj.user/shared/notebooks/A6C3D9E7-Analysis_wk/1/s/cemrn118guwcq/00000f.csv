@@ -1,0 +1,4 @@
+"0","summary_table_POCON_POCOV <- summary_table %>%"
+"0","  filter(Pooled_Consistency > 0.9 & Pooled_Coverage > 0.5)"
+"0",""
+"0","print(summary_table_POCON_POCOV)"

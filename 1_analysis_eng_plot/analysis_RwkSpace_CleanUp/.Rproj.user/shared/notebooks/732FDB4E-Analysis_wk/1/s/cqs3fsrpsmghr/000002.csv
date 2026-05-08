@@ -1,0 +1,84 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5leHRyYWN0X2NvbmZpZ19CRUNPTlNfYnlfeWVhciA8LSBmdW5jdGlvbihjbHVzdGVyX3Jlc3VsdCkge1xuICAjIEdldCBhbGwgY29uZmlndXJhdGlvbnMgaW4gdGhlIHJlc3VsdFxuICBjb25maWdfbGlzdCA8LSBjbHVzdGVyX3Jlc3VsdCRvdXRwdXRcbiAgcmVzdWx0X2xpc3QgPC0gbGlzdCgpXG4gIFxuICBmb3IgKGNvbmZpZ19uYW1lIGluIG5hbWVzKGNvbmZpZ19saXN0KSkge1xuICAgIGNvbmZpZ19vdXRwdXQgPC0gY29uZmlnX2xpc3RbW2NvbmZpZ19uYW1lXV1cbiAgICBcbiAgICAjIEV4dHJhY3QgeWVhciBmcm9tIGNsdXN0ZXJfaWRzLCBlLmcuLCBcIjIwMTYgKDMxKVwiIOKGkiBcIjIwMTZcIlxuICAgIHllYXJzIDwtIGdzdWIoXCIgXFxcXCguKlxcXFwpXCIsIFwiXCIsIGNvbmZpZ19vdXRwdXQkY2x1c3Rlcl9pZHMpXG4gICAgXG4gICAgIyBFeHRyYWN0IEJFQ09TIHZhbHVlcyAoc2FtZSBsZW5ndGggYXMgeWVhcnMpXG4gICAgYmVjb3MgPC0gY29uZmlnX291dHB1dCRCRUNPU1xuICAgIFxuICAgICMgRXh0cmFjdCBCRUNPViB2YWx1ZXNcbiAgICBiZWNvdiA8LSBjb25maWdfb3V0cHV0JENvdmVyYWdlcyRiZXR3ZWVuXG5cbiAgICBcbiAgICAjIEJ1aWxkIGEgZGF0YSBmcmFtZVxuICAgIGRmIDwtIGRhdGEuZnJhbWUoXG4gICAgICBZRUFSID0geWVhcnMsXG4gICAgICBDT05GSUcgPSBjb25maWdfbmFtZSxcbiAgICAgIEJFQ09OUyA9IGJlY29zLFxuICAgICAgQkVDT1YgPSBiZWNvdixcbiAgICAgIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRVxuICAgIClcbiAgICBcbiAgICByZXN1bHRfbGlzdFtbY29uZmlnX25hbWVdXSA8LSBkZlxuICB9XG4gIFxuICAjIENvbWJpbmUgYWxsIGNvbmZpZ3VyYXRpb25zXG4gIGZpbmFsX2RmIDwtIGRvLmNhbGwocmJpbmQsIHJlc3VsdF9saXN0KVxuICByb3duYW1lcyhmaW5hbF9kZikgPC0gTlVMTFxuICByZXR1cm4oZmluYWxfZGYpXG59XG5cbmBgYCJ9 -->
+
+```r
+
+extract_config_BECONS_by_year <- function(cluster_result) {
+  # Get all configurations in the result
+  config_list <- cluster_result$output
+  result_list <- list()
+  
+  for (config_name in names(config_list)) {
+    config_output <- config_list[[config_name]]
+    
+    # Extract year from cluster_ids, e.g., \"2016 (31)\" → \"2016\"
+    years <- gsub(\" \\(.*\\)\", \"\", config_output$cluster_ids)
+    
+    # Extract BECOS values (same length as years)
+    becos <- config_output$BECOS
+    
+    # Extract BECOV values
+    becov <- config_output$Coverages$between
+
+    
+    # Build a data frame
+    df <- data.frame(
+      YEAR = years,
+      CONFIG = config_name,
+      BECONS = becos,
+      BECOV = becov,
+      stringsAsFactors = FALSE
+    )
+    
+    result_list[[config_name]] <- df
+  }
+  
+  # Combine all configurations
+  final_df <- do.call(rbind, result_list)
+  rownames(final_df) <- NULL
+  return(final_df)
+}
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+
+extract_config_BECONS_by_year <- function(cluster_result) {
+  # Get all configurations in the result
+  config_list <- cluster_result$output
+  result_list <- list()
+  
+  for (config_name in names(config_list)) {
+    config_output <- config_list[[config_name]]
+    
+    # Extract year from cluster_ids, e.g., \"2016 (31)\" → \"2016\"
+    years <- gsub(\" \\(.*\\)\", \"\", config_output$cluster_ids)
+    
+    # Extract BECOS values (same length as years)
+    becos <- config_output$BECOS
+    
+    # Extract BECOV values
+    becov <- config_output$Coverages$between
+
+    
+    # Build a data frame
+    df <- data.frame(
+      YEAR = years,
+      CONFIG = config_name,
+      BECONS = becos,
+      BECOV = becov,
+      stringsAsFactors = FALSE
+    )
+    
+    result_list[[config_name]] <- df
+  }
+  
+  # Combine all configurations
+  final_df <- do.call(rbind, result_list)
+  rownames(final_df) <- NULL
+  return(final_df)
+}
+
+```"

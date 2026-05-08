@@ -1,0 +1,106 @@
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBnZXQgcm93IENTQSAtLS0tXG5yb3cuQ1NBIDwtIFFDQTo6ZmluZFJvd3Mob2JqID0gdHRfWSwgdHlwZSA9IDIpICAjIGNvbnRyYWRpY3Rvcnkgc2ltcGxpZnlpbmcgYXNzdW1wdGlvbnNcbnJvdy5DU0FcblxuIyBnZXQgY29uZmlnIENTQSAtLS0tXG5cbiMg5LiA6Ie05oCn5byC5bi455qE5qGI5L6LIERldmlhbnQgY2FzZXMgZm9yIGNvbnNpc3RlbmN5IChEQ0MpXG5cbnR0X1lfZGNjIDwtICBRQ0E6OnRydXRoVGFibGUoZGF0YSA9IGRmLkZ1enp5LmNhc2UsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIG91dGNvbWUgPSBcIllcIiwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbmRpdGlvbnMgPSBjb25kaXRpb25zICU+JSBwYXN0ZShjb2xsYXBzZSA9IFwiLFwiKSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGluY2wuY3V0ID0gMC43NSwgbi5jdXQgPSAyLCBwcmkuY3V0ID0gMC42LCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hvdy5jYXNlcyA9IFRSVUUsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIHNvcnQuYnkgPSBcIk9VVFwiLCAjIOS4jeiDvXNvcnQgYnkgT1VUIOWboOS4uuWQjumdonNsaWNl5piv5oyJ6KGM5Y+36L+b6KGM55qEXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBsZXRlID0gVFJVRSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRjYyA9IFRSVUUpXG5cblxuIyBnZXQgdW50ZW5hYmxlX0xSIGNvbmZpZyBmcm9tIHRydXRoVGFibGUgXG50dF9ZX0NTQSA8LSB0dF9ZX2RjYyR0dCAlPiUgXG4gIHNsaWNlKHJvdy5DU0EpICU+JSBcbiAgc2VsZWN0KGNvbmRpdGlvbnMpICMgc2VsZWN0KFgxLFgyLFgzLC4uLi4uLilcblxudHRfWV9DU0FcblxuIyBkZWYgZnVuY3Rpb25cbmNvbnZlcnRfdG9fY29uZmlnIDwtIGZ1bmN0aW9uKHJvdykge1xuICBuYW1lcyA8LSBjb2xuYW1lcyh0dF9ZX0NTQSkgICMg6I635Y+W5YiX5ZCNICMgIFwiWDFcIiBcIlgyXCIgXCJYM1wiIFwiWDRcIiBcIlg1XCIgXCJYNlwiIFwiWDdcIiBcIlg4XCIgXCJYOVwiXG4gIHRlcm1zIDwtIGlmZWxzZShyb3cgPT0gMSwgbmFtZXMsIHBhc3RlMChcIn5cIiwgbmFtZXMpKSAgIyAxOiDnm7TmjqXliJflkI0sIDA6IOWKoOS4iiB+XG4gIHBhc3RlKHRlcm1zLCBjb2xsYXBzZSA9IFwiKlwiKSAgIyDnlKggXCIqXCIg6L+e5o6l5omA5pyJ5Y+Y6YePXG59XG5cbiMgZW5kIGRlZiBmdW5jdGlvbi0tLS1cblxuXG4jIOWvueaVsOaNruahhueahOavj+S4gOihjOi/m+ihjOi9rOaNou+8jOW5tuWtmOWFpeWQkemHj1xuXG4jIFgxIFgyIFgzIFg0IFg1IFg2IFg3IFg4IFg5XG4jIDExNiAgMCAgMCAgMSAgMSAgMSAgMCAgMCAgMSAgMVxuIyDihpNcbiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxMTZcbiMgXCJ+WDEqflgyKlgzKlg0Klg1Kn5YNip+WDcqWDgqWDlcIlxuXG4jIOW6lOeUqOWHveaVsOWIsCB0dF9ZX0NTQSDmr4/kuIDooYxcblxuY29uZmlnLkNTQSA8LSBhcHBseSh0dF9ZX0NTQSwgMSwgY29udmVydF90b19jb25maWcpXG5jb25maWcuQ1NBXG5cbmBgYCJ9 -->
+
+```r
+# get row CSA ----
+row.CSA <- QCA::findRows(obj = tt_Y, type = 2)  # contradictory simplifying assumptions
+row.CSA
+
+# get config CSA ----
+
+# 一致性异常的案例 Deviant cases for consistency (DCC)
+
+tt_Y_dcc <-  QCA::truthTable(data = df.Fuzzy.case,
+                             outcome = \"Y\", 
+                             conditions = conditions %>% paste(collapse = \",\"), 
+                             incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                             show.cases = TRUE, 
+                             # sort.by = \"OUT\", # 不能sort by OUT 因为后面slice是按行号进行的
+                             complete = TRUE, 
+                             dcc = TRUE)
+
+
+# get untenable_LR config from truthTable 
+tt_Y_CSA <- tt_Y_dcc$tt %>% 
+  slice(row.CSA) %>% 
+  select(conditions) # select(X1,X2,X3,......)
+
+tt_Y_CSA
+
+# def function
+convert_to_config <- function(row) {
+  names <- colnames(tt_Y_CSA)  # 获取列名 #  \"X1\" \"X2\" \"X3\" \"X4\" \"X5\" \"X6\" \"X7\" \"X8\" \"X9\"
+  terms <- ifelse(row == 1, names, paste0(\"~\", names))  # 1: 直接列名, 0: 加上 ~
+  paste(terms, collapse = \"*\")  # 用 \"*\" 连接所有变量
+}
+
+# end def function----
+
+
+# 对数据框的每一行进行转换，并存入向量
+
+# X1 X2 X3 X4 X5 X6 X7 X8 X9
+# 116  0  0  1  1  1  0  0  1  1
+# ↓
+#                              116
+# \"~X1*~X2*X3*X4*X5*~X6*~X7*X8*X9\"
+
+# 应用函数到 tt_Y_CSA 每一行
+
+config.CSA <- apply(tt_Y_CSA, 1, convert_to_config)
+config.CSA
+
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+# get row CSA ----
+row.CSA <- QCA::findRows(obj = tt_Y, type = 2)  # contradictory simplifying assumptions
+row.CSA
+
+# get config CSA ----
+
+# 一致性异常的案例 Deviant cases for consistency (DCC)
+
+tt_Y_dcc <-  QCA::truthTable(data = df.Fuzzy.case,
+                             outcome = \"Y\", 
+                             conditions = conditions %>% paste(collapse = \",\"), 
+                             incl.cut = 0.75, n.cut = 2, pri.cut = 0.6, 
+                             show.cases = TRUE, 
+                             # sort.by = \"OUT\", # 不能sort by OUT 因为后面slice是按行号进行的
+                             complete = TRUE, 
+                             dcc = TRUE)
+
+
+# get untenable_LR config from truthTable 
+tt_Y_CSA <- tt_Y_dcc$tt %>% 
+  slice(row.CSA) %>% 
+  select(conditions) # select(X1,X2,X3,......)
+
+tt_Y_CSA
+
+# def function
+convert_to_config <- function(row) {
+  names <- colnames(tt_Y_CSA)  # 获取列名 #  \"X1\" \"X2\" \"X3\" \"X4\" \"X5\" \"X6\" \"X7\" \"X8\" \"X9\"
+  terms <- ifelse(row == 1, names, paste0(\"~\", names))  # 1: 直接列名, 0: 加上 ~
+  paste(terms, collapse = \"*\")  # 用 \"*\" 连接所有变量
+}
+
+# end def function----
+
+
+# 对数据框的每一行进行转换，并存入向量
+
+# X1 X2 X3 X4 X5 X6 X7 X8 X9
+# 116  0  0  1  1  1  0  0  1  1
+# ↓
+#                              116
+# \"~X1*~X2*X3*X4*X5*~X6*~X7*X8*X9\"
+
+# 应用函数到 tt_Y_CSA 每一行
+
+config.CSA <- apply(tt_Y_CSA, 1, convert_to_config)
+config.CSA
+
+```"

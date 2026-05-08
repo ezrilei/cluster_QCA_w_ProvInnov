@@ -1,0 +1,55 @@
+"1","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
+
+```r
+library(dplyr)
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+library(dplyr)
+```"
+"1","
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+"
+"1","
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xpYnJhcnkoYWRtaXNjKVxuI2xpYnJhcnkoUUNBKVxuIyBsaWJyYXJ5KGdncmVwZWwpXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KHBhdGNod29yaykgXG4jIGxpYnJhcnkoc3RhcmdhemVyKVxuIyBsaWJyYXJ5KFNldE1ldGhvZHMpXG4jIGxpYnJhcnkoeGZ1bikgIyBJbiBhdHRyKHgsIFwia25pdF9tZXRhXCIpIDogJ3hmdW46OmF0dHIoKScgaXMgZGVwcmVjYXRlZC5Vc2UgJ3hmdW46OmF0dHIyKCknIGluc3RlYWQuXG5gYGAifQ== -->
+
+```r
+#library(admisc)
+#library(QCA)
+# library(ggrepel)
+library(ggplot2)
+library(patchwork) 
+# library(stargazer)
+# library(SetMethods)
+# library(xfun) # In attr(x, \"knit_meta\") : 'xfun::attr()' is deprecated.Use 'xfun::attr2()' instead.
+```
+
+<!-- rnb-source-end -->
+"
+"0","```r
+#library(admisc)
+#library(QCA)
+# library(ggrepel)
+library(ggplot2)
+library(patchwork) 
+# library(stargazer)
+# library(SetMethods)
+# library(xfun) # In attr(x, \"knit_meta\") : 'xfun::attr()' is deprecated.Use 'xfun::attr2()' instead.
+```"
